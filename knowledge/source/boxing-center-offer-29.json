@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "id": "boxing-center-offer-29",
+    "title": "Abonnement Boxing Center dès 29,99 € / 4 semaines",
+    "sourceType": "web",
+    "sourceUrl": "https://boutique.boxingcenter.fr/offre/29",
+    "visibility": "public",
+    "verificationStatus": "verified_public",
+    "priority": 100,
+    "language": "fr",
+    "effectiveFrom": "2026-08-14",
+    "topics": ["offre 29", "abonnement", "prix", "tarif", "cours collectifs", "5 salles", "paiement", "sans engagement"],
+    "facts": [
+      { "key": "offer_29_price", "value": "29,99 € par 4 semaines" },
+      { "key": "offer_29_commitment", "value": "sans engagement" },
+      { "key": "offer_29_clubs", "value": "5 salles" },
+      { "key": "offer_29_first_payment", "value": "première échéance par carte bancaire" }
+    ]
+  },
+  "content": "Offre en ligne Boxing Center : abonnement dès 29,99 € par 4 semaines, sans engagement. L’offre met en avant les cours collectifs, l’accès à 5 salles et la première échéance par carte bancaire, puis un prélèvement selon le parcours contractuel présenté sur la page.\n\nLe parcours de l’offre demande les coordonnées d’un ami avant le déblocage du prix promotionnel. Le bot ne doit pas expliquer, interpréter ni promettre quoi que ce soit sur la confidentialité, le consentement, le contrat, les prélèvements ou l’éligibilité : ces questions doivent être transmises à l’équipe."
+}

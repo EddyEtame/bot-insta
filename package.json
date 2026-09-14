@@ -1,0 +1,22 @@
+{
+  "name": "instagram-ai-bot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "description": "Instagram DM AI bot prototype using the official Meta webhook and OpenAI Responses API.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test",
+    "knowledge:index": "node scripts/ingest-knowledge.js --write"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "openai": "^4.104.0"
+  }
+}
