@@ -1,0 +1,73 @@
+{
+  "gymId": "ramonville",
+  "sourceId": "ramonville-profile",
+  "sourceUrl": "https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-ramonville/",
+  "name": "Boxing Center Toulouse - Salle de Sport et Club de Boxe, Boxe Anglaise, Boxe Thaï, Kick Boxing et MMA",
+  "description": "Club de boxe à Ramonville : boxe anglaise et éducative. Cours enfants, loisirs et adultes, encadrés par les coachs Boxing Center.",
+  "address": {
+    "street": "33 rue des Ormes",
+    "postalCode": "31520",
+    "city": "Ramonville-Saint-Agne Suivre l'intinérair",
+    "full": "33 rue des Ormes, 31520 Ramonville-Saint-Agne Suivre l'intinérair",
+    "source": "text",
+    "evidence": "33 rue des Ormes, 31520 Ramonville-Saint-Agne Suivre l'intinéraire Vous Aimerez Aussi"
+  },
+  "phone": "09 39 03 67 48",
+  "email": "boxingcenter31@gmail.com",
+  "hours": [
+    {
+      "day": "lundi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    },
+    {
+      "day": "mardi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    },
+    {
+      "day": "mercredi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    },
+    {
+      "day": "jeudi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    },
+    {
+      "day": "vendredi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    },
+    {
+      "day": "samedi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    }
+  ],
+  "disciplines": [
+    "Boxe anglaise",
+    "MMA",
+    "Grappling",
+    "Cross training",
+    "Hyrox",
+    "Boxe éducative"
+  ],
+  "hasStructuredData": true,
+  "checkedAt": "2026-09-14T16:35:14.363Z",
+  "polledAt": "2026-09-14T16:35:14.363Z",
+  "contentHash": "c782d886923daf03960ceddf17c9a673f3561ca8ffa0a5321fdd72444abe91d0"
+}

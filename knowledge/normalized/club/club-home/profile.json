@@ -1,0 +1,67 @@
+{
+  "gymId": null,
+  "sourceId": "club-home",
+  "sourceUrl": "https://boxingcenter.fr/",
+  "name": "Boxing Center Toulouse - Salle de Sport et Club de Boxe, Boxe Anglaise, Boxe Thaï, Kick Boxing et MMA",
+  "description": "Boxing Center : environ 175 cours/semaine à Toulouse. Débutants, loisirs, enfants et femmes encadrés par les mêmes coachs que les compétiteurs. 5 salles.",
+  "address": null,
+  "phone": "09 39 03 67 48",
+  "email": "boxingcenter31@gmail.com",
+  "hours": [
+    {
+      "day": "lundi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    },
+    {
+      "day": "mardi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    },
+    {
+      "day": "mercredi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    },
+    {
+      "day": "jeudi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    },
+    {
+      "day": "vendredi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    },
+    {
+      "day": "samedi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    }
+  ],
+  "disciplines": [
+    "Boxe anglaise",
+    "Boxe thaï / K1",
+    "MMA",
+    "Grappling",
+    "Cross training",
+    "Hyrox",
+    "Boxe éducative"
+  ],
+  "hasStructuredData": true,
+  "checkedAt": "2026-09-14T16:35:14.363Z",
+  "polledAt": "2026-09-14T16:35:14.363Z",
+  "contentHash": "9aaf95b26933b51d8111ea2d5587971aac337e7bdc793735c103d7b39a9de6dc"
+}

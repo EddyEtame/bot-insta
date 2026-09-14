@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "id": "bc-club-offers",
+    "title": "Offres et tarifs Boxing Center",
+    "sourceType": "web",
+    "sourceUrl": "https://boutique.boxingcenter.fr/offre/29",
+    "visibility": "public",
+    "verificationStatus": "verified_public",
+    "priority": 96,
+    "language": "fr",
+    "effectiveFrom": null,
+    "effectiveUntil": null,
+    "docType": "offer",
+    "gyms": [],
+    "generated": true,
+    "checkedAt": "2026-09-14T16:35:14.363Z",
+    "capturedAt": "2026-09-14T16:35:14.363Z",
+    "maxAgeDays": 21,
+    "topics": [
+      "boxing center",
+      "toutes les salles",
+      "offre",
+      "offres",
+      "tarif",
+      "tarifs",
+      "prix",
+      "abonnement",
+      "inscription",
+      "Abonnement boxe dès 29 € — Boxing Center Toulouse"
+    ],
+    "facts": [
+      {
+        "key": "offer_club_abonnement-boxe-des-29-boxing-center-toulouse_price",
+        "value": "29,00 €"
+      }
+    ]
+  },
+  "content": "Offres publiées par Boxing Center (relevé du 2026-09-14) :\n- Abonnement boxe dès 29 € — Boxing Center Toulouse : 29,00 € · sans engagement"
+}

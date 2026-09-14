@@ -1,0 +1,34 @@
+{
+  "gymId": "saint-cyprien",
+  "sourceId": "saint-cyprien-profile",
+  "sourceUrl": "https://club-boxe-toulouse.com/",
+  "name": "Boxing Center",
+  "description": "Boxe anglaise, thaï/K1, grappling, Hyrox, Lady Punch et école dès 3 ans à Toulouse rive gauche, à 4 min du métro A. Séance d’essai 10€.",
+  "address": {
+    "street": "11 rue Sainte-Lucie",
+    "postalCode": "31300",
+    "city": "Toulouse Métro Ligne A",
+    "full": "11 rue Sainte-Lucie, 31300 Toulouse Métro Ligne A",
+    "source": "text",
+    "evidence": "Adresse 11 rue Sainte-Lucie, 31300 Toulouse Métro Ligne A · Saint-Cyprien République (4 min) Horaires Lun – Sam · 10h00 – 21h15"
+  },
+  "phone": "05 62 24 46 82",
+  "email": null,
+  "hours": [
+    {
+      "day": "lundi",
+      "open": "10:00",
+      "close": "21:15",
+      "source": "text",
+      "evidence": "Horaires Lun – Sam · 10h00 – 21h15"
+    }
+  ],
+  "disciplines": [
+    "Boxe anglaise",
+    "Cross training"
+  ],
+  "hasStructuredData": true,
+  "checkedAt": "2026-09-14T16:35:14.363Z",
+  "polledAt": "2026-09-14T16:35:14.363Z",
+  "contentHash": "b3a4016ffcf54caee677f49cc2389cff2477f53e1ef974efda7babb3425e643a"
+}

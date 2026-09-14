@@ -1,0 +1,72 @@
+{
+  "gymId": "minimes",
+  "sourceId": "minimes-profile",
+  "sourceUrl": "https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-minimes/",
+  "name": "Boxing Center Toulouse - Salle de Sport et Club de Boxe, Boxe Anglaise, Boxe Thaï, Kick Boxing et MMA",
+  "description": "Club de boxe à Toulouse Minimes : boxe anglaise, cours loisirs et compétition. Débutants bienvenus, coachs diplômés Boxing Center.",
+  "address": {
+    "street": "12 rue de Fenouillet",
+    "postalCode": "31200",
+    "city": "Toulouse",
+    "full": "12 rue de Fenouillet, 31200 Toulouse",
+    "source": "text",
+    "evidence": "12 rue de Fenouillet, 31200 Toulouse → 5 minutes depuis le métro ligne B – Barrière de Paris → Sortie de Rocade n°31 – Les Minimes"
+  },
+  "phone": "09 39 03 67 48",
+  "email": "boxingcenter31@gmail.com",
+  "hours": [
+    {
+      "day": "lundi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    },
+    {
+      "day": "mardi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    },
+    {
+      "day": "mercredi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    },
+    {
+      "day": "jeudi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    },
+    {
+      "day": "vendredi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    },
+    {
+      "day": "samedi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Lundi au Samedi : 10h00 – 21h30"
+    }
+  ],
+  "disciplines": [
+    "Boxe anglaise",
+    "MMA",
+    "Grappling",
+    "Cross training",
+    "Boxe éducative"
+  ],
+  "hasStructuredData": true,
+  "checkedAt": "2026-09-14T16:35:14.363Z",
+  "polledAt": "2026-09-14T16:35:14.363Z",
+  "contentHash": "8a96b9d116f184070b25ff61e9b48231c2f6252f5c17375e221dd58b172768b1"
+}

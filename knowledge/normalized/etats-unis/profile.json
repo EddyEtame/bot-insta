@@ -1,0 +1,65 @@
+{
+  "gymId": "etats-unis",
+  "sourceId": "etats-unis-profile",
+  "sourceUrl": "https://clubmma.fr/",
+  "name": "Boxing Center Toulouse États-Unis",
+  "description": "Club MMA à Toulouse, avenue des États-Unis : cage officielle, grappling, jiu-jitsu et boxe. 1 200 m², cours tous niveaux. Séance d'essai 10 €.",
+  "address": {
+    "street": "388 Avenue des États-Unis",
+    "postalCode": "31200",
+    "city": "Toulouse",
+    "full": "388 Avenue des États-Unis, 31200 Toulouse",
+    "source": "json-ld"
+  },
+  "phone": "+33562244682",
+  "email": "boxingcenter31@gmail.com",
+  "hours": [
+    {
+      "day": "lundi",
+      "open": "10:00",
+      "close": "21:15",
+      "source": "json-ld"
+    },
+    {
+      "day": "mardi",
+      "open": "10:00",
+      "close": "21:15",
+      "source": "json-ld"
+    },
+    {
+      "day": "mercredi",
+      "open": "10:00",
+      "close": "21:15",
+      "source": "json-ld"
+    },
+    {
+      "day": "jeudi",
+      "open": "10:00",
+      "close": "21:15",
+      "source": "json-ld"
+    },
+    {
+      "day": "vendredi",
+      "open": "10:00",
+      "close": "21:15",
+      "source": "json-ld"
+    },
+    {
+      "day": "samedi",
+      "open": "10:00",
+      "close": "21:15",
+      "source": "json-ld"
+    }
+  ],
+  "disciplines": [
+    "Boxe anglaise",
+    "MMA",
+    "Grappling",
+    "Cross training",
+    "Hyrox"
+  ],
+  "hasStructuredData": true,
+  "checkedAt": "2026-09-14T16:35:14.363Z",
+  "polledAt": "2026-09-14T16:35:14.363Z",
+  "contentHash": "d4f76f2b760d30485991b22a68d4aa610c71d91efd04d7b0eef58853a1f7be47"
+}

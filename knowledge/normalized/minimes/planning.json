@@ -1,7 +1,7 @@
 {
   "gymId": "minimes",
   "sourceId": "minimes-planning",
-  "sourceUrl": "file:///home/user/bot-insta/knowledge/exports/plannings/minimes.json",
+  "sourceUrl": "file:///home/runner/work/bot-insta/bot-insta/knowledge/exports/plannings/minimes.json",
   "season": "2026/2027",
   "notes": [
     "Case libre = salle ouverte. Accès badge, entraînement libre."
@@ -352,6 +352,6 @@
     "Open sparring"
   ],
   "checkedAt": "2026-09-14T00:00:00.000Z",
-  "polledAt": "2026-09-14T16:23:55.966Z",
+  "polledAt": "2026-09-14T16:35:14.363Z",
   "contentHash": "0017feca20c022d739adc3b26dc70f965dec68d8ec56c215aa8fee3d77829fc1"
 }

@@ -1,7 +1,7 @@
 {
   "gymId": "portet",
   "sourceId": "portet-planning",
-  "sourceUrl": "file:///home/user/bot-insta/knowledge/exports/plannings/portet.json",
+  "sourceUrl": "file:///home/runner/work/bot-insta/bot-insta/knowledge/exports/plannings/portet.json",
   "season": "2026/2027",
   "notes": [
     "Planning provisoire.",
@@ -403,6 +403,6 @@
     "Baby boxe"
   ],
   "checkedAt": "2026-09-14T00:00:00.000Z",
-  "polledAt": "2026-09-14T16:23:55.966Z",
+  "polledAt": "2026-09-14T16:35:14.363Z",
   "contentHash": "9fb5bb355fd5c0fe8b66a0b32ad6b32f88bc43542720e666e55367f5b9087c3d"
 }

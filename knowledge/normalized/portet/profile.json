@@ -1,0 +1,71 @@
+{
+  "gymId": "portet",
+  "sourceId": "portet-profile",
+  "sourceUrl": "https://boxing-center-portet.fr/",
+  "name": "Boxing Center Portet",
+  "description": "Club de boxe et MMA à Portet-sur-Garonne, au sud de Toulouse : boxe anglaise, kick-boxing, grappling, JJB, cours femmes et enfants, planning et tarifs.",
+  "address": {
+    "street": "61 route d’Espagne",
+    "postalCode": "31120",
+    "city": "Portet-sur-Garonne",
+    "full": "61 route d’Espagne, 31120 Portet-sur-Garonne",
+    "source": "text",
+    "evidence": "Au 61 route d’Espagne, 31120 Portet-sur-Garonne — la salle phare du groupe Boxing Center, 600 m² dédiés aux sports de combat. Combien coûte l’offre de rentrée ?"
+  },
+  "phone": "+33956653782",
+  "email": "boxingcenterportet@gmail.com",
+  "hours": [
+    {
+      "day": "lundi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Du lundi au samedi, de 10h00 à 21h30 ; fermé le dimanche. L’abonnement ouvre les 5 salles du réseau."
+    },
+    {
+      "day": "mardi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Du lundi au samedi, de 10h00 à 21h30 ; fermé le dimanche. L’abonnement ouvre les 5 salles du réseau."
+    },
+    {
+      "day": "mercredi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Du lundi au samedi, de 10h00 à 21h30 ; fermé le dimanche. L’abonnement ouvre les 5 salles du réseau."
+    },
+    {
+      "day": "jeudi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Du lundi au samedi, de 10h00 à 21h30 ; fermé le dimanche. L’abonnement ouvre les 5 salles du réseau."
+    },
+    {
+      "day": "vendredi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Du lundi au samedi, de 10h00 à 21h30 ; fermé le dimanche. L’abonnement ouvre les 5 salles du réseau."
+    },
+    {
+      "day": "samedi",
+      "open": "10:00",
+      "close": "21:30",
+      "source": "text",
+      "evidence": "Du lundi au samedi, de 10h00 à 21h30 ; fermé le dimanche. L’abonnement ouvre les 5 salles du réseau."
+    }
+  ],
+  "disciplines": [
+    "Boxe anglaise",
+    "MMA",
+    "Grappling",
+    "Boxe éducative"
+  ],
+  "hasStructuredData": true,
+  "checkedAt": "2026-09-14T16:35:14.363Z",
+  "polledAt": "2026-09-14T16:35:14.363Z",
+  "contentHash": "6714d9c7ef334420ce63238cd444e650607c2e89ac43c910c8c4e30fbdd80b4f"
+}

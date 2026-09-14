@@ -1,6 +1,6 @@
 {
-  "startedAt": "2026-09-14T16:30:09.743Z",
-  "finishedAt": "2026-09-14T16:30:26.247Z",
+  "startedAt": "2026-09-14T16:35:14.363Z",
+  "finishedAt": "2026-09-14T16:36:00.122Z",
   "dryRun": false,
   "registryErrors": [],
   "sources": [
@@ -12,25 +12,7 @@
       "url": "https://boutique.boxingcenter.fr/offre/29",
       "changes": {
         "added": [
-          "4-semaines",
-          "4-semaines-sans-engagement",
-          "01-clique-sur-je-profite-de-l-offre-a",
-          "02-pour-passer-de-a-indique-les-coordonnees-d-un-e-proche-qu",
-          "03-tu-paies-la-1-echeance-cb",
-          "1-echeance-cb",
-          "abonnement-boxe-des-4-semaines-cb-puis-prelevement-boxing-ce",
-          "abonnement-boxe-des-29-boxing-center-toulouse",
-          "accueil-offres",
-          "indique-le-prenom-le-nom-et-le-telephone-d-un-ami-qui-pourra",
-          "je-profite-de-l-offre-a",
-          "passe-de-a",
-          "plus-que-70-places-a",
-          "questions-frequentes",
-          "toutes-les-4-semaines-sans-engagement-et-sans-preavis-en-cas",
-          "05-tu-peux-ensuite-venir-t-entrainer-en-illimite-dans-les-5-",
-          "tarif-actuel",
-          "acces-aux-5-salles-et-a-toutes-les-disciplines-alternative-a",
-          "voir-12-mois"
+          "abonnement-boxe-des-29-boxing-center-toulouse"
         ],
         "removed": [],
         "repriced": [],
@@ -48,7 +30,6 @@
         "fields": [
           "phone",
           "email",
-          "address",
           "hours"
         ],
         "changed": true
@@ -60,11 +41,10 @@
       "gymId": "saint-cyprien",
       "docType": "profile",
       "status": "updated",
-      "url": "https://boxingcenter.fr/",
+      "url": "https://club-boxe-toulouse.com/",
       "changes": {
         "fields": [
           "phone",
-          "email",
           "address",
           "hours"
         ],
@@ -76,9 +56,14 @@
       "sourceId": "saint-cyprien-planning",
       "gymId": "saint-cyprien",
       "docType": "planning",
-      "status": "unchanged",
+      "status": "updated",
       "url": "file:///home/runner/work/bot-insta/bot-insta/knowledge/exports/plannings/saint-cyprien.json",
-      "changes": null,
+      "changes": {
+        "added": [],
+        "removed": [],
+        "notesChanged": false,
+        "changed": false
+      },
       "error": null
     },
     {
@@ -86,7 +71,7 @@
       "gymId": "etats-unis",
       "docType": "profile",
       "status": "updated",
-      "url": "https://boxingcenter.fr/",
+      "url": "https://clubmma.fr/",
       "changes": {
         "fields": [
           "phone",
@@ -102,9 +87,14 @@
       "sourceId": "etats-unis-planning",
       "gymId": "etats-unis",
       "docType": "planning",
-      "status": "unchanged",
+      "status": "updated",
       "url": "file:///home/runner/work/bot-insta/bot-insta/knowledge/exports/plannings/etats-unis.json",
-      "changes": null,
+      "changes": {
+        "added": [],
+        "removed": [],
+        "notesChanged": false,
+        "changed": false
+      },
       "error": null
     },
     {
@@ -112,7 +102,7 @@
       "gymId": "minimes",
       "docType": "profile",
       "status": "updated",
-      "url": "https://boxingcenter.fr/",
+      "url": "https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-minimes/",
       "changes": {
         "fields": [
           "phone",
@@ -128,9 +118,14 @@
       "sourceId": "minimes-planning",
       "gymId": "minimes",
       "docType": "planning",
-      "status": "unchanged",
+      "status": "updated",
       "url": "file:///home/runner/work/bot-insta/bot-insta/knowledge/exports/plannings/minimes.json",
-      "changes": null,
+      "changes": {
+        "added": [],
+        "removed": [],
+        "notesChanged": false,
+        "changed": false
+      },
       "error": null
     },
     {
@@ -138,7 +133,7 @@
       "gymId": "ramonville",
       "docType": "profile",
       "status": "updated",
-      "url": "https://boxingcenter.fr/",
+      "url": "https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-ramonville/",
       "changes": {
         "fields": [
           "phone",
@@ -154,9 +149,14 @@
       "sourceId": "ramonville-planning",
       "gymId": "ramonville",
       "docType": "planning",
-      "status": "unchanged",
+      "status": "updated",
       "url": "file:///home/runner/work/bot-insta/bot-insta/knowledge/exports/plannings/ramonville.json",
-      "changes": null,
+      "changes": {
+        "added": [],
+        "removed": [],
+        "notesChanged": false,
+        "changed": false
+      },
       "error": null
     },
     {
@@ -164,7 +164,7 @@
       "gymId": "portet",
       "docType": "profile",
       "status": "updated",
-      "url": "https://boxingcenter.fr/",
+      "url": "https://boxing-center-portet.fr/",
       "changes": {
         "fields": [
           "phone",
@@ -180,40 +180,27 @@
       "sourceId": "portet-planning",
       "gymId": "portet",
       "docType": "planning",
-      "status": "unchanged",
+      "status": "updated",
       "url": "file:///home/runner/work/bot-insta/bot-insta/knowledge/exports/plannings/portet.json",
-      "changes": null,
+      "changes": {
+        "added": [],
+        "removed": [],
+        "notesChanged": false,
+        "changed": false
+      },
       "error": null
     }
   ],
   "changes": [
     {
-      "at": "2026-09-14T16:30:09.743Z",
+      "at": "2026-09-14T16:35:14.363Z",
       "sourceId": "club-offers",
       "gymId": null,
       "docType": "offer",
       "url": "https://boutique.boxingcenter.fr/offre/29",
       "detail": {
         "added": [
-          "4-semaines",
-          "4-semaines-sans-engagement",
-          "01-clique-sur-je-profite-de-l-offre-a",
-          "02-pour-passer-de-a-indique-les-coordonnees-d-un-e-proche-qu",
-          "03-tu-paies-la-1-echeance-cb",
-          "1-echeance-cb",
-          "abonnement-boxe-des-4-semaines-cb-puis-prelevement-boxing-ce",
-          "abonnement-boxe-des-29-boxing-center-toulouse",
-          "accueil-offres",
-          "indique-le-prenom-le-nom-et-le-telephone-d-un-ami-qui-pourra",
-          "je-profite-de-l-offre-a",
-          "passe-de-a",
-          "plus-que-70-places-a",
-          "questions-frequentes",
-          "toutes-les-4-semaines-sans-engagement-et-sans-preavis-en-cas",
-          "05-tu-peux-ensuite-venir-t-entrainer-en-illimite-dans-les-5-",
-          "tarif-actuel",
-          "acces-aux-5-salles-et-a-toutes-les-disciplines-alternative-a",
-          "voir-12-mois"
+          "abonnement-boxe-des-29-boxing-center-toulouse"
         ],
         "removed": [],
         "repriced": [],
@@ -221,7 +208,7 @@
       }
     },
     {
-      "at": "2026-09-14T16:30:09.743Z",
+      "at": "2026-09-14T16:35:14.363Z",
       "sourceId": "club-home",
       "gymId": null,
       "docType": "profile",
@@ -230,22 +217,20 @@
         "fields": [
           "phone",
           "email",
-          "address",
           "hours"
         ],
         "changed": true
       }
     },
     {
-      "at": "2026-09-14T16:30:09.743Z",
+      "at": "2026-09-14T16:35:14.363Z",
       "sourceId": "saint-cyprien-profile",
       "gymId": "saint-cyprien",
       "docType": "profile",
-      "url": "https://boxingcenter.fr/",
+      "url": "https://club-boxe-toulouse.com/",
       "detail": {
         "fields": [
           "phone",
-          "email",
           "address",
           "hours"
         ],
@@ -253,11 +238,11 @@
       }
     },
     {
-      "at": "2026-09-14T16:30:09.743Z",
+      "at": "2026-09-14T16:35:14.363Z",
       "sourceId": "etats-unis-profile",
       "gymId": "etats-unis",
       "docType": "profile",
-      "url": "https://boxingcenter.fr/",
+      "url": "https://clubmma.fr/",
       "detail": {
         "fields": [
           "phone",
@@ -269,11 +254,11 @@
       }
     },
     {
-      "at": "2026-09-14T16:30:09.743Z",
+      "at": "2026-09-14T16:35:14.363Z",
       "sourceId": "minimes-profile",
       "gymId": "minimes",
       "docType": "profile",
-      "url": "https://boxingcenter.fr/",
+      "url": "https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-minimes/",
       "detail": {
         "fields": [
           "phone",
@@ -285,11 +270,11 @@
       }
     },
     {
-      "at": "2026-09-14T16:30:09.743Z",
+      "at": "2026-09-14T16:35:14.363Z",
       "sourceId": "ramonville-profile",
       "gymId": "ramonville",
       "docType": "profile",
-      "url": "https://boxingcenter.fr/",
+      "url": "https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-ramonville/",
       "detail": {
         "fields": [
           "phone",
@@ -301,11 +286,11 @@
       }
     },
     {
-      "at": "2026-09-14T16:30:09.743Z",
+      "at": "2026-09-14T16:35:14.363Z",
       "sourceId": "portet-profile",
       "gymId": "portet",
       "docType": "profile",
-      "url": "https://boxingcenter.fr/",
+      "url": "https://boxing-center-portet.fr/",
       "detail": {
         "fields": [
           "phone",
@@ -319,8 +304,8 @@
   ],
   "stats": {
     "total": 12,
-    "updated": 7,
-    "unchanged": 5,
+    "updated": 12,
+    "unchanged": 0,
     "failed": 0,
     "blocked": 0,
     "unresolved": 0,

@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "id": "bc-portet-profile",
+    "title": "Salle PORTET — informations pratiques",
+    "sourceType": "web",
+    "sourceUrl": "https://boxing-center-portet.fr/",
+    "visibility": "public",
+    "verificationStatus": "verified_public",
+    "priority": 80,
+    "language": "fr",
+    "effectiveFrom": null,
+    "effectiveUntil": null,
+    "docType": "profile",
+    "gyms": [
+      "portet"
+    ],
+    "generated": true,
+    "checkedAt": "2026-09-14T16:35:14.363Z",
+    "capturedAt": "2026-09-14T16:35:14.363Z",
+    "maxAgeDays": 120,
+    "topics": [
+      "PORTET",
+      "Boxing Center Portet",
+      "Portet-sur-Garonne",
+      "boxing center portet",
+      "portet sur garonne",
+      "route d'espagne",
+      "portet",
+      "adresse",
+      "acces",
+      "horaires",
+      "ouverture",
+      "telephone",
+      "contact",
+      "Boxe anglaise",
+      "MMA",
+      "Grappling",
+      "Boxe éducative"
+    ],
+    "facts": [
+      {
+        "key": "address_portet",
+        "value": "61 route d’Espagne, 31120 Portet-sur-Garonne"
+      },
+      {
+        "key": "phone_portet",
+        "value": "+33956653782"
+      },
+      {
+        "key": "hours_portet_lundi",
+        "value": "10h–21h30"
+      },
+      {
+        "key": "hours_portet_mardi",
+        "value": "10h–21h30"
+      },
+      {
+        "key": "hours_portet_mercredi",
+        "value": "10h–21h30"
+      },
+      {
+        "key": "hours_portet_jeudi",
+        "value": "10h–21h30"
+      },
+      {
+        "key": "hours_portet_vendredi",
+        "value": "10h–21h30"
+      },
+      {
+        "key": "hours_portet_samedi",
+        "value": "10h–21h30"
+      }
+    ]
+  },
+  "content": "Boxing Center Portet — salle Boxing Center à Portet-sur-Garonne.\nAdresse : 61 route d’Espagne, 31120 Portet-sur-Garonne.\nTéléphone : +33956653782.\nE-mail : boxingcenterportet@gmail.com.\nHoraires d’ouverture : lundi 10h–21h30 · mardi 10h–21h30 · mercredi 10h–21h30 · jeudi 10h–21h30 · vendredi 10h–21h30 · samedi 10h–21h30.\nDisciplines annoncées sur la page : Boxe anglaise, MMA, Grappling, Boxe éducative."
+}

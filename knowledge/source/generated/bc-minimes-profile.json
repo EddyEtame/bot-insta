@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "id": "bc-minimes-profile",
+    "title": "Salle MINIMES — informations pratiques",
+    "sourceType": "web",
+    "sourceUrl": "https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-minimes/",
+    "visibility": "public",
+    "verificationStatus": "verified_public",
+    "priority": 80,
+    "language": "fr",
+    "effectiveFrom": null,
+    "effectiveUntil": null,
+    "docType": "profile",
+    "gyms": [
+      "minimes"
+    ],
+    "generated": true,
+    "checkedAt": "2026-09-14T16:35:14.363Z",
+    "capturedAt": "2026-09-14T16:35:14.363Z",
+    "maxAgeDays": 120,
+    "topics": [
+      "MINIMES",
+      "Boxing Center Minimes",
+      "Toulouse",
+      "boxing center minimes",
+      "salle des minimes",
+      "barriere de paris",
+      "les minimes",
+      "minimes",
+      "adresse",
+      "acces",
+      "horaires",
+      "ouverture",
+      "telephone",
+      "contact",
+      "Boxe anglaise",
+      "MMA",
+      "Grappling",
+      "Cross training",
+      "Boxe éducative"
+    ],
+    "facts": [
+      {
+        "key": "address_minimes",
+        "value": "12 rue de Fenouillet, 31200 Toulouse"
+      },
+      {
+        "key": "phone_minimes",
+        "value": "09 39 03 67 48"
+      },
+      {
+        "key": "hours_minimes_lundi",
+        "value": "10h–21h30"
+      },
+      {
+        "key": "hours_minimes_mardi",
+        "value": "10h–21h30"
+      },
+      {
+        "key": "hours_minimes_mercredi",
+        "value": "10h–21h30"
+      },
+      {
+        "key": "hours_minimes_jeudi",
+        "value": "10h–21h30"
+      },
+      {
+        "key": "hours_minimes_vendredi",
+        "value": "10h–21h30"
+      },
+      {
+        "key": "hours_minimes_samedi",
+        "value": "10h–21h30"
+      }
+    ]
+  },
+  "content": "Boxing Center Toulouse - Salle de Sport et Club de Boxe, Boxe Anglaise, Boxe Thaï, Kick Boxing et MMA — salle Boxing Center à Toulouse.\nAdresse : 12 rue de Fenouillet, 31200 Toulouse.\nTéléphone : 09 39 03 67 48.\nE-mail : boxingcenter31@gmail.com.\nHoraires d’ouverture : lundi 10h–21h30 · mardi 10h–21h30 · mercredi 10h–21h30 · jeudi 10h–21h30 · vendredi 10h–21h30 · samedi 10h–21h30.\nDisciplines annoncées sur la page : Boxe anglaise, MMA, Grappling, Cross training, Boxe éducative."
+}

@@ -1,4 +1,286 @@
 {
   "version": 1,
-  "sources": {}
+  "sources": {
+    "club-offers": {
+      "etag": "W/\"3c41-n68qYcENMV1i3vA4V3nH6HSpUDI\"",
+      "lastModified": null,
+      "contentHash": "2c0e9b613b12638bd1a1f549dd5ff0e7e5cdb07d3a6f77de681f492e32b5e5d1",
+      "lastCheckedAt": "2026-09-14T16:35:14.363Z",
+      "lastChangedAt": "2026-09-14T16:35:14.363Z",
+      "lastStatus": "updated",
+      "resolvedUrl": "https://boutique.boxingcenter.fr/offre/29",
+      "resolvedAt": "2026-09-14T16:35:14.363Z",
+      "probeCooldownUntil": null,
+      "documentId": "bc-club-offers",
+      "failures": 0,
+      "lastError": null
+    },
+    "club-home": {
+      "etag": null,
+      "lastModified": null,
+      "contentHash": "9aaf95b26933b51d8111ea2d5587971aac337e7bdc793735c103d7b39a9de6dc",
+      "lastCheckedAt": "2026-09-14T16:35:14.363Z",
+      "lastChangedAt": "2026-09-14T16:35:14.363Z",
+      "lastStatus": "updated",
+      "resolvedUrl": "https://boxingcenter.fr/",
+      "resolvedAt": "2026-09-14T16:35:14.363Z",
+      "probeCooldownUntil": null,
+      "documentId": "bc-club-home",
+      "failures": 0,
+      "lastError": null
+    },
+    "saint-cyprien-profile": {
+      "candidateUrl": "https://club-boxe-toulouse.com/",
+      "probes": [
+        {
+          "url": "https://www.boxingcenter.fr/salles/saint-cyprien",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://www.boxingcenter.fr/salle/saint-cyprien",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://www.boxingcenter.fr/nos-salles/saint-cyprien",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://www.boxingcenter.fr/saint-cyprien",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://club-boxe-toulouse.com/",
+          "outcome": "confirmed"
+        }
+      ],
+      "etag": "W/\"e23ab7f22fd2c8c7ecd60cee76d6b09e\"",
+      "lastModified": "Thu, 10 Sep 2026 11:05:19 GMT",
+      "contentHash": "b3a4016ffcf54caee677f49cc2389cff2477f53e1ef974efda7babb3425e643a",
+      "lastCheckedAt": "2026-09-14T16:35:14.363Z",
+      "lastChangedAt": "2026-09-14T16:35:14.363Z",
+      "lastStatus": "updated",
+      "resolvedUrl": "https://club-boxe-toulouse.com/",
+      "resolvedAt": "2026-09-14T16:35:14.363Z",
+      "probeCooldownUntil": null,
+      "documentId": "bc-saint-cyprien-profile",
+      "failures": 0,
+      "lastError": null
+    },
+    "saint-cyprien-planning": {
+      "etag": null,
+      "lastModified": null,
+      "contentHash": "5d50fdf0734e08d617784e1d2cdcf391b3805984105d2c7e0d9244c34f913ce1",
+      "lastCheckedAt": "2026-09-14T16:35:14.363Z",
+      "lastChangedAt": "2026-09-14T16:35:14.363Z",
+      "lastStatus": "updated",
+      "resolvedUrl": null,
+      "resolvedAt": "2026-09-14T16:35:14.363Z",
+      "probeCooldownUntil": null,
+      "documentId": "bc-saint-cyprien-planning",
+      "failures": 0,
+      "lastError": null
+    },
+    "etats-unis-profile": {
+      "candidateUrl": "https://clubmma.fr/",
+      "probes": [
+        {
+          "url": "https://www.boxingcenter.fr/salles/etats-unis",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://www.boxingcenter.fr/salle/etats-unis",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://www.boxingcenter.fr/nos-salles/etats-unis",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://www.boxingcenter.fr/etats-unis",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://mmatoulouse.com/",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://clubmma.fr/",
+          "outcome": "confirmed"
+        }
+      ],
+      "etag": "W/\"9e5e83b9d619a267129fbc2be139c90f\"",
+      "lastModified": "Mon, 14 Sep 2026 16:35:31 GMT",
+      "contentHash": "d4f76f2b760d30485991b22a68d4aa610c71d91efd04d7b0eef58853a1f7be47",
+      "lastCheckedAt": "2026-09-14T16:35:14.363Z",
+      "lastChangedAt": "2026-09-14T16:35:14.363Z",
+      "lastStatus": "updated",
+      "resolvedUrl": "https://clubmma.fr/",
+      "resolvedAt": "2026-09-14T16:35:14.363Z",
+      "probeCooldownUntil": null,
+      "documentId": "bc-etats-unis-profile",
+      "failures": 0,
+      "lastError": null
+    },
+    "etats-unis-planning": {
+      "etag": null,
+      "lastModified": null,
+      "contentHash": "c17956ed9d667eeb3e5e82d14e6e329b1f770b881bae3b2d4e03ea034da4c156",
+      "lastCheckedAt": "2026-09-14T16:35:14.363Z",
+      "lastChangedAt": "2026-09-14T16:35:14.363Z",
+      "lastStatus": "updated",
+      "resolvedUrl": null,
+      "resolvedAt": "2026-09-14T16:35:14.363Z",
+      "probeCooldownUntil": null,
+      "documentId": "bc-etats-unis-planning",
+      "failures": 0,
+      "lastError": null
+    },
+    "minimes-profile": {
+      "probes": [
+        {
+          "url": "https://www.boxingcenter.fr/salles/minimes",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://www.boxingcenter.fr/salle/minimes",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://www.boxingcenter.fr/nos-salles/minimes",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://www.boxingcenter.fr/minimes",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://club-boxe-toulouse.com/",
+          "outcome": "page does not identify the gym"
+        }
+      ],
+      "etag": null,
+      "lastModified": null,
+      "contentHash": "8a96b9d116f184070b25ff61e9b48231c2f6252f5c17375e221dd58b172768b1",
+      "lastCheckedAt": "2026-09-14T16:35:14.363Z",
+      "lastChangedAt": "2026-09-14T16:35:14.363Z",
+      "lastStatus": "updated",
+      "resolvedUrl": "https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-minimes/",
+      "resolvedAt": "2026-09-14T16:35:14.363Z",
+      "probeCooldownUntil": null,
+      "documentId": "bc-minimes-profile",
+      "failures": 0,
+      "lastError": null
+    },
+    "minimes-planning": {
+      "etag": null,
+      "lastModified": null,
+      "contentHash": "0017feca20c022d739adc3b26dc70f965dec68d8ec56c215aa8fee3d77829fc1",
+      "lastCheckedAt": "2026-09-14T16:35:14.363Z",
+      "lastChangedAt": "2026-09-14T16:35:14.363Z",
+      "lastStatus": "updated",
+      "resolvedUrl": null,
+      "resolvedAt": "2026-09-14T16:35:14.363Z",
+      "probeCooldownUntil": null,
+      "documentId": "bc-minimes-planning",
+      "failures": 0,
+      "lastError": null
+    },
+    "ramonville-profile": {
+      "probes": [
+        {
+          "url": "https://www.boxingcenter.fr/salles/ramonville",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://www.boxingcenter.fr/salle/ramonville",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://www.boxingcenter.fr/nos-salles/ramonville",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://www.boxingcenter.fr/ramonville",
+          "outcome": "page does not identify the gym"
+        }
+      ],
+      "etag": null,
+      "lastModified": null,
+      "contentHash": "c782d886923daf03960ceddf17c9a673f3561ca8ffa0a5321fdd72444abe91d0",
+      "lastCheckedAt": "2026-09-14T16:35:14.363Z",
+      "lastChangedAt": "2026-09-14T16:35:14.363Z",
+      "lastStatus": "updated",
+      "resolvedUrl": "https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-ramonville/",
+      "resolvedAt": "2026-09-14T16:35:14.363Z",
+      "probeCooldownUntil": null,
+      "documentId": "bc-ramonville-profile",
+      "failures": 0,
+      "lastError": null
+    },
+    "ramonville-planning": {
+      "etag": null,
+      "lastModified": null,
+      "contentHash": "b75c1809403205d4ba18b7f1d84197b322baed671ba5c0930e689dec9bee979a",
+      "lastCheckedAt": "2026-09-14T16:35:14.363Z",
+      "lastChangedAt": "2026-09-14T16:35:14.363Z",
+      "lastStatus": "updated",
+      "resolvedUrl": null,
+      "resolvedAt": "2026-09-14T16:35:14.363Z",
+      "probeCooldownUntil": null,
+      "documentId": "bc-ramonville-planning",
+      "failures": 0,
+      "lastError": null
+    },
+    "portet-profile": {
+      "candidateUrl": "https://boxing-center-portet.fr/",
+      "probes": [
+        {
+          "url": "https://www.boxingcenter.fr/salles/portet",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://www.boxingcenter.fr/salle/portet",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://www.boxingcenter.fr/nos-salles/portet",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://www.boxingcenter.fr/portet",
+          "outcome": "page does not identify the gym"
+        },
+        {
+          "url": "https://boxing-center-portet.fr/",
+          "outcome": "confirmed"
+        }
+      ],
+      "etag": "W/\"72d463b9bf83816c3170bceae9cbb70d\"",
+      "lastModified": "Sun, 13 Sep 2026 15:05:20 GMT",
+      "contentHash": "6714d9c7ef334420ce63238cd444e650607c2e89ac43c910c8c4e30fbdd80b4f",
+      "lastCheckedAt": "2026-09-14T16:35:14.363Z",
+      "lastChangedAt": "2026-09-14T16:35:14.363Z",
+      "lastStatus": "updated",
+      "resolvedUrl": "https://boxing-center-portet.fr/",
+      "resolvedAt": "2026-09-14T16:35:14.363Z",
+      "probeCooldownUntil": null,
+      "documentId": "bc-portet-profile",
+      "failures": 0,
+      "lastError": null
+    },
+    "portet-planning": {
+      "etag": null,
+      "lastModified": null,
+      "contentHash": "9fb5bb355fd5c0fe8b66a0b32ad6b32f88bc43542720e666e55367f5b9087c3d",
+      "lastCheckedAt": "2026-09-14T16:35:14.363Z",
+      "lastChangedAt": "2026-09-14T16:35:14.363Z",
+      "lastStatus": "updated",
+      "resolvedUrl": null,
+      "resolvedAt": "2026-09-14T16:35:14.363Z",
+      "probeCooldownUntil": null,
+      "documentId": "bc-portet-planning",
+      "failures": 0,
+      "lastError": null
+    }
+  }
 }

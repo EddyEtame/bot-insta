@@ -1,7 +1,7 @@
 {
   "gymId": "saint-cyprien",
   "sourceId": "saint-cyprien-planning",
-  "sourceUrl": "file:///home/user/bot-insta/knowledge/exports/plannings/saint-cyprien.json",
+  "sourceUrl": "file:///home/runner/work/bot-insta/bot-insta/knowledge/exports/plannings/saint-cyprien.json",
   "season": "2026/2027",
   "notes": [
     "Case libre = salle ouverte. Accès badge, entraînement libre."
@@ -376,6 +376,6 @@
     "Baby boxe"
   ],
   "checkedAt": "2026-09-14T00:00:00.000Z",
-  "polledAt": "2026-09-14T16:23:55.966Z",
+  "polledAt": "2026-09-14T16:35:14.363Z",
   "contentHash": "5d50fdf0734e08d617784e1d2cdcf391b3805984105d2c7e0d9244c34f913ce1"
 }
