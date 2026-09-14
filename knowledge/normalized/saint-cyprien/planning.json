@@ -4,8 +4,7 @@
   "sourceUrl": "file:///home/user/bot-insta/knowledge/exports/plannings/saint-cyprien.json",
   "season": "2026/2027",
   "notes": [
-    "Case libre = salle ouverte. Accès badge, entraînement libre.",
-    "Accès libre du lundi au vendredi de 10h à 21h15, samedi de 10h à 21h15 hors créneaux encadrés."
+    "Case libre = salle ouverte. Accès badge, entraînement libre."
   ],
   "sessions": [
     {
@@ -377,6 +376,6 @@
     "Baby boxe"
   ],
   "checkedAt": "2026-09-14T00:00:00.000Z",
-  "polledAt": "2026-09-14T15:51:12.315Z",
-  "contentHash": "804b67bf5f61542c759d4942ca554e4a26108c60e02a0166f5d5c973094b50bd"
+  "polledAt": "2026-09-14T15:56:23.886Z",
+  "contentHash": "5d50fdf0734e08d617784e1d2cdcf391b3805984105d2c7e0d9244c34f913ce1"
 }
