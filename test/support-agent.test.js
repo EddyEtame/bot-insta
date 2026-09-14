@@ -16,21 +16,14 @@ const { InMemorySessionStore } = require("../src/session-store");
 const { sendInstagramText, sendUrl } = require("../src/instagram");
 const { createMessageProcessor, createSessionId, extractMessages, verifySignature } = require("../src/webhook");
 
+// Built from the real loader so the fixture can never drift from the shape the app reads.
 const config = {
-  appRoot: path.resolve(__dirname, ".."),
-  port: 3000,
+  ...loadConfig({ KNOWLEDGE_BASE_PATH: path.resolve(__dirname, "..", "knowledge") }),
   metaVerifyToken: "verify-me",
   metaAppSecret: "app-secret",
   metaApiVersion: "v25.0",
-  instagramApiMode: "instagram_login",
-  instagramAccountId: "",
   instagramAccessToken: "access-token",
   openaiApiKey: "openai-key",
-  openaiModel: "gpt-5-mini",
-  knowledgeBasePath: path.resolve(__dirname, "..", "knowledge"),
-  escalationWebhookUrl: "",
-  sessionTtlMs: 24 * 60 * 60 * 1000,
-  maxMessagesPerMinute: 8,
 };
 
 function evidence(overrides = {}) {
@@ -85,7 +78,9 @@ test("the curated corpus retrieves the current public offer without loading priv
   const result = knowledge.retrieve("Quel est le prix de l’offre 29 et est-ce sans engagement ?");
   assert.deepEqual(result.sources, ["boxing-center-offer-29"]);
   assert.equal(result.chunks[0].visibility, "public");
-  assert.equal(knowledge.getStatus().publicSourceCount, 1);
+  const status = knowledge.getStatus();
+  assert.equal(status.publicSourceCount, status.sourceCount);
+  assert.ok(status.publicSourceCount >= 1);
   assert.equal(knowledge.retrieve("Do you offer private lessons at 7:30 PM on Sundays?").hasEvidence, false);
 });
 

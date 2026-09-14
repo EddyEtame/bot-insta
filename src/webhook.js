@@ -41,10 +41,14 @@ function extractMessages(payload) {
   return messages;
 }
 
-function addProcessedId(processedMessageIds, messageId) {
-  if (processedMessageIds.has(messageId)) return false;
-  processedMessageIds.add(messageId);
-  if (processedMessageIds.size > 1_000) processedMessageIds.delete(processedMessageIds.values().next().value);
+/** Accepts either a ProcessedMessageLog or a plain Set, and answers a delivery once. */
+function addProcessedId(processedMessages, messageId) {
+  if (typeof processedMessages.add === "function" && typeof processedMessages.has === "function" && !(processedMessages instanceof Set)) {
+    return processedMessages.add(messageId) !== false;
+  }
+  if (processedMessages.has(messageId)) return false;
+  processedMessages.add(messageId);
+  if (processedMessages.size > 1_000) processedMessages.delete(processedMessages.values().next().value);
   return true;
 }
 
@@ -67,6 +71,7 @@ function createMessageProcessor({
   decisionEngine,
   responseValidator,
   rateLimiter,
+  claims = [],
   processedMessageIds = new Set(),
 }) {
   return async function processWebhookPayload(payload) {
@@ -79,6 +84,7 @@ function createMessageProcessor({
       const identity = { platform: incoming.platform, accountId: incoming.accountId, senderId: incoming.senderId };
       const sessionId = createSessionId(identity);
       const retrieval = knowledge.retrieve(incoming.text);
+      const requestedGyms = retrieval.analysis?.gymIds || [];
       let decision = decisionEngine.decide({
         text: incoming.text,
         retrieval,
@@ -90,7 +96,9 @@ function createMessageProcessor({
         category: decision.category,
         action: decision.action,
         sources: retrieval.sources,
+        gyms: requestedGyms,
         conflictCount: retrieval.conflicts.length,
+        staleCount: retrieval.staleSources?.length || 0,
       });
 
       if ([ACTIONS.IGNORE, ACTIONS.NO_RESPONSE].includes(decision.action)) continue;
@@ -120,7 +128,7 @@ function createMessageProcessor({
         }
       }
 
-      const validation = responseValidator({ reply, sourceIds, decision, retrieval });
+      const validation = responseValidator({ reply, sourceIds, decision, retrieval, claims });
       if (!validation.valid) {
         log("response.rejected", { sender: mask(incoming.senderId), reason: validation.reason });
         decision = fallbackDecision(decision, `Response validation failed: ${validation.reason}`);

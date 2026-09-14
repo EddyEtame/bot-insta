@@ -3,13 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "type": "commonjs",
-  "description": "Instagram DM AI bot prototype using the official Meta webhook and OpenAI Responses API.",
+  "description": "Agent de support Instagram Boxing Center : webhook Meta signé, corpus multi-salles relevé chaque dimanche, réponses tracées et validées.",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
-    "test": "node --test",
-    "knowledge:index": "node scripts/ingest-knowledge.js --write"
+    "test": "node --test \"test/**/*.test.js\"",
+    "evals": "node evals/lancer-bot.js",
+    "evals:live": "node evals/lancer-bot.js --live",
+    "knowledge:index": "node scripts/ingest-knowledge.js --write",
+    "knowledge:sync": "node scripts/sync-knowledge.js",
+    "knowledge:sync:dry": "node scripts/sync-knowledge.js --dry-run",
+    "knowledge:check": "node scripts/check-corpus.js",
+    "verify": "npm test && npm run evals && npm run knowledge:check"
   },
   "engines": {
     "node": ">=20"
