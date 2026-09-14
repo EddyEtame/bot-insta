@@ -1,33 +1,50 @@
 "use strict";
 
 const express = require("express");
+
 const { createAiService } = require("./ai");
 const { requiredValues } = require("./config");
 const { createDecisionEngine } = require("./decision-engine");
 const { escalate } = require("./escalation");
 const { sendInstagramText } = require("./instagram");
-const { loadKnowledgeBase } = require("./knowledge");
+const { KnowledgeStore } = require("./knowledge-store");
 const { InMemoryRateLimiter } = require("./rate-limiter");
 const { validateResponse } = require("./response-validator");
-const { InMemorySessionStore } = require("./session-store");
+const { createProcessedMessageLog, createSessionStore } = require("./session-store");
+const { createSyncService } = require("./sync/service");
+const { createWeeklyScheduler } = require("./sync/scheduler");
 const { createMessageProcessor, verifySignature } = require("./webhook");
 const { error, log } = require("./logger");
 
 function createApp(config, dependencies = {}) {
   const app = express();
-  const knowledge = dependencies.knowledge || loadKnowledgeBase(config);
-  const sessions = dependencies.sessions || new InMemorySessionStore({ ttlMs: config.sessionTtlMs });
-  const ai = dependencies.ai || createAiService(config);
+  const knowledgeStore = dependencies.knowledgeStore
+    || new KnowledgeStore(config, { knowledge: dependencies.knowledge, registry: dependencies.registry });
+  const sessions = dependencies.sessions || createSessionStore(config);
+  const processedMessageIds = dependencies.processedMessageIds || createProcessedMessageLog(config);
+  const ai = dependencies.ai || createAiService(config, null, { registry: knowledgeStore.registry });
+
+  const sync = dependencies.sync || createSyncService(config, {
+    logger: { log, error },
+    onComplete: (report) => {
+      // A fresh corpus must reach the next DM without a restart.
+      const status = knowledgeStore.reload();
+      log("knowledge.reloaded", { sourceCount: status.sourceCount, staleSourceCount: status.staleSourceCount, changes: report.changes.length });
+    },
+  });
+
   const processor = dependencies.processor || createMessageProcessor({
     config,
     sessions,
     ai,
     instagram: dependencies.instagram || sendInstagramText,
     escalation: dependencies.escalation || escalate,
-    knowledge,
-    decisionEngine: dependencies.decisionEngine || createDecisionEngine(),
+    knowledge: knowledgeStore,
+    decisionEngine: dependencies.decisionEngine || createDecisionEngine({ registry: knowledgeStore.registry }),
     responseValidator: dependencies.responseValidator || validateResponse,
     rateLimiter: dependencies.rateLimiter || new InMemoryRateLimiter({ limit: config.maxMessagesPerMinute }),
+    claims: knowledgeStore.claims,
+    processedMessageIds,
   });
 
   app.disable("x-powered-by");
@@ -35,7 +52,8 @@ function createApp(config, dependencies = {}) {
 
   app.get("/health", (req, res) => {
     const missing = requiredValues(config);
-    const knowledgeStatus = knowledge.getStatus();
+    const knowledgeStatus = knowledgeStore.getStatus();
+    const lastSync = sync.store.readReport();
     const knowledgeReady = knowledgeStatus.publicSourceCount > 0 && knowledgeStatus.loadErrors === 0;
     const status = !missing.length && knowledgeReady ? "ok" : "configuration_required";
     res.status(status === "ok" ? 200 : 503).json({
@@ -45,6 +63,23 @@ function createApp(config, dependencies = {}) {
         sourceCount: knowledgeStatus.sourceCount,
         publicSourceCount: knowledgeStatus.publicSourceCount,
         loadErrors: knowledgeStatus.loadErrors,
+        registryErrors: knowledgeStatus.registryErrors,
+        gymCount: knowledgeStatus.gymCount,
+        gymsWithPlanning: knowledgeStatus.gymsWithPlanning,
+        gymsWithProfile: knowledgeStatus.gymsWithProfile,
+        staleSourceCount: knowledgeStatus.staleSourceCount,
+        staleSourceIds: knowledgeStatus.staleSourceIds,
+        oldestCheckedAt: knowledgeStatus.oldestCheckedAt,
+        reloadedAt: knowledgeStatus.reloadedAt,
+      },
+      coverage: knowledgeStore.coverage(),
+      sync: {
+        enabled: config.sync.enabled,
+        timeZone: config.sync.timeZone,
+        nextRunAt: app.locals.scheduler?.nextRunAt?.toISOString() || null,
+        lastRunAt: lastSync?.finishedAt || null,
+        lastRunOk: lastSync?.ok ?? null,
+        lastRunStats: lastSync?.stats || null,
       },
     });
   });
@@ -78,6 +113,33 @@ function createApp(config, dependencies = {}) {
     error("http.unhandled_error", err);
     return res.status(500).json({ error: "Internal server error" });
   });
+
+  app.locals.knowledgeStore = knowledgeStore;
+  app.locals.sessions = sessions;
+  app.locals.sync = sync;
+
+  /** Started by the server, not by createApp, so tests never arm a timer. */
+  app.startWeeklySync = () => {
+    if (!config.sync.enabled) {
+      log("sync.disabled", { hint: "set KNOWLEDGE_SYNC_ENABLED=true to poll every Sunday" });
+      return null;
+    }
+    const scheduler = createWeeklyScheduler({
+      config,
+      logger: { log, error },
+      run: async ({ now, trigger }) => {
+        log("sync.started", { trigger });
+        const report = await sync.run({ now });
+        if (!report.skipped) {
+          await sync.notify(report).catch((err) => error("sync.notify_failed", err));
+        }
+        return report;
+      },
+    });
+    app.locals.scheduler = scheduler.start({ lastRunAt: sync.store.readReport()?.finishedAt || null });
+    return scheduler;
+  };
+
   return app;
 }
 

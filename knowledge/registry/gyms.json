@@ -1,0 +1,255 @@
+{
+  "version": 1,
+  "club": {
+    "id": "boxing-center",
+    "name": "Boxing Center",
+    "area": "Toulouse et agglomération",
+    "gymCount": 6,
+    "sites": {
+      "principal": "https://www.boxingcenter.fr",
+      "boutique": "https://boutique.boxingcenter.fr"
+    },
+    "disciplines": [
+      "Boxe anglaise",
+      "Boxe thaï / K1",
+      "MMA",
+      "Grappling",
+      "Cross training",
+      "Hyrox",
+      "Boxing fitness / Lady Punch",
+      "Boxe éducative"
+    ],
+    "provenance": {
+      "source": "skills/bc-master/SKILL.md",
+      "kind": "owner_reference",
+      "note": "Identité, liste des 6 salles et orthographe officielle validées par Eddy. Les faits par salle (adresse, horaires, planning, disciplines réellement dispensées) ne viennent PAS d'ici : ils sont fetchés."
+    }
+  },
+  "hostAllowlist": [
+    "boxingcenter.fr",
+    "www.boxingcenter.fr",
+    "boutique.boxingcenter.fr"
+  ],
+  "gyms": [
+    {
+      "id": "balma",
+      "displayName": "BALMA",
+      "name": "Boxing Center Balma",
+      "commune": "Balma",
+      "aliases": ["balma", "balmas", "salle de balma", "boxing center balma", "gramont"],
+      "status": "active",
+      "repo": null,
+      "sources": [
+        {
+          "id": "balma-profile",
+          "docType": "profile",
+          "kind": "url",
+          "url": null,
+          "candidates": [
+            "https://www.boxingcenter.fr/salles/balma",
+            "https://www.boxingcenter.fr/salle/balma",
+            "https://www.boxingcenter.fr/nos-salles/balma",
+            "https://www.boxingcenter.fr/balma"
+          ]
+        },
+        {
+          "id": "balma-planning",
+          "docType": "planning",
+          "kind": "url",
+          "url": null,
+          "candidates": [
+            "https://www.boxingcenter.fr/salles/balma/planning",
+            "https://www.boxingcenter.fr/planning/balma",
+            "https://www.boxingcenter.fr/planning-balma"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "saint-cyprien",
+      "displayName": "SAINT-CYPRIEN",
+      "name": "Boxing Center Saint-Cyprien",
+      "commune": "Toulouse",
+      "aliases": ["saint-cyprien", "saint cyprien", "st cyprien", "st-cyprien", "st cyp", "cyprien", "patte d'oie"],
+      "status": "active",
+      "repo": "bc-st-cyprien",
+      "sources": [
+        {
+          "id": "saint-cyprien-profile",
+          "docType": "profile",
+          "kind": "url",
+          "url": null,
+          "candidates": [
+            "https://www.boxingcenter.fr/salles/saint-cyprien",
+            "https://www.boxingcenter.fr/salle/saint-cyprien",
+            "https://www.boxingcenter.fr/nos-salles/saint-cyprien",
+            "https://www.boxingcenter.fr/saint-cyprien"
+          ]
+        },
+        {
+          "id": "saint-cyprien-planning",
+          "docType": "planning",
+          "kind": "url",
+          "url": null,
+          "candidates": [
+            "https://www.boxingcenter.fr/salles/saint-cyprien/planning",
+            "https://www.boxingcenter.fr/planning/saint-cyprien",
+            "https://www.boxingcenter.fr/planning-saint-cyprien"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etats-unis",
+      "displayName": "ÉTATS-UNIS",
+      "name": "Boxing Center États-Unis",
+      "commune": "Toulouse",
+      "aliases": ["etats-unis", "états-unis", "etats unis", "états unis", "avenue des etats-unis", "avenue des états-unis", "usa"],
+      "status": "active",
+      "repo": null,
+      "sources": [
+        {
+          "id": "etats-unis-profile",
+          "docType": "profile",
+          "kind": "url",
+          "url": null,
+          "candidates": [
+            "https://www.boxingcenter.fr/salles/etats-unis",
+            "https://www.boxingcenter.fr/salle/etats-unis",
+            "https://www.boxingcenter.fr/nos-salles/etats-unis",
+            "https://www.boxingcenter.fr/etats-unis"
+          ]
+        },
+        {
+          "id": "etats-unis-planning",
+          "docType": "planning",
+          "kind": "url",
+          "url": null,
+          "candidates": [
+            "https://www.boxingcenter.fr/salles/etats-unis/planning",
+            "https://www.boxingcenter.fr/planning/etats-unis",
+            "https://www.boxingcenter.fr/planning-etats-unis"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "minimes",
+      "displayName": "MINIMES",
+      "name": "Boxing Center Minimes",
+      "commune": "Toulouse",
+      "aliases": ["minimes", "les minimes", "salle des minimes", "barriere de paris"],
+      "status": "active",
+      "repo": "bc-minimes",
+      "sources": [
+        {
+          "id": "minimes-profile",
+          "docType": "profile",
+          "kind": "url",
+          "url": null,
+          "candidates": [
+            "https://www.boxingcenter.fr/salles/minimes",
+            "https://www.boxingcenter.fr/salle/minimes",
+            "https://www.boxingcenter.fr/nos-salles/minimes",
+            "https://www.boxingcenter.fr/minimes"
+          ]
+        },
+        {
+          "id": "minimes-planning",
+          "docType": "planning",
+          "kind": "url",
+          "url": null,
+          "candidates": [
+            "https://www.boxingcenter.fr/salles/minimes/planning",
+            "https://www.boxingcenter.fr/planning/minimes",
+            "https://www.boxingcenter.fr/planning-minimes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ramonville",
+      "displayName": "RAMONVILLE",
+      "name": "Boxing Center Ramonville",
+      "commune": "Ramonville-Saint-Agne",
+      "aliases": ["ramonville", "ramonville-saint-agne", "ramonville saint agne", "ramonville st agne"],
+      "status": "active",
+      "repo": "bc-ramonville",
+      "sources": [
+        {
+          "id": "ramonville-profile",
+          "docType": "profile",
+          "kind": "url",
+          "url": null,
+          "candidates": [
+            "https://www.boxingcenter.fr/salles/ramonville",
+            "https://www.boxingcenter.fr/salle/ramonville",
+            "https://www.boxingcenter.fr/nos-salles/ramonville",
+            "https://www.boxingcenter.fr/ramonville"
+          ]
+        },
+        {
+          "id": "ramonville-planning",
+          "docType": "planning",
+          "kind": "url",
+          "url": null,
+          "candidates": [
+            "https://www.boxingcenter.fr/salles/ramonville/planning",
+            "https://www.boxingcenter.fr/planning/ramonville",
+            "https://www.boxingcenter.fr/planning-ramonville"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portet",
+      "displayName": "PORTET",
+      "name": "Boxing Center Portet",
+      "commune": "Portet-sur-Garonne",
+      "aliases": ["portet", "portet-sur-garonne", "portet sur garonne", "route d'espagne"],
+      "status": "active",
+      "repo": "boxing-center-portet",
+      "sources": [
+        {
+          "id": "portet-profile",
+          "docType": "profile",
+          "kind": "url",
+          "url": null,
+          "candidates": [
+            "https://www.boxingcenter.fr/salles/portet",
+            "https://www.boxingcenter.fr/salle/portet",
+            "https://www.boxingcenter.fr/nos-salles/portet",
+            "https://www.boxingcenter.fr/portet"
+          ]
+        },
+        {
+          "id": "portet-planning",
+          "docType": "planning",
+          "kind": "url",
+          "url": null,
+          "candidates": [
+            "https://www.boxingcenter.fr/salles/portet/planning",
+            "https://www.boxingcenter.fr/planning/portet",
+            "https://www.boxingcenter.fr/planning-portet"
+          ]
+        }
+      ]
+    }
+  ],
+  "clubSources": [
+    {
+      "id": "club-offers",
+      "docType": "offer",
+      "kind": "url",
+      "url": "https://boutique.boxingcenter.fr/offre/29",
+      "candidates": []
+    },
+    {
+      "id": "club-home",
+      "docType": "profile",
+      "kind": "url",
+      "url": "https://www.boxingcenter.fr/",
+      "candidates": []
+    }
+  ]
+}

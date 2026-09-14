@@ -1,0 +1,68 @@
+name: Relevé du dimanche
+
+# Le corpus est relevé chaque dimanche : plannings, informations pratiques et offres
+# de chaque salle. 03:30 UTC = 05:30 à Paris en été, 04:30 en hiver (GitHub ne planifie
+# qu'en UTC ; le planificateur interne du serveur, lui, vise 04:30 Europe/Paris exactement).
+on:
+  schedule:
+    - cron: "30 3 * * 0"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Re-chercher les URL des salles non résolues"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: releve-corpus
+  cancel-in-progress: false
+
+jobs:
+  releve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Relever les sites des salles
+        env:
+          KNOWLEDGE_SYNC_USER_AGENT: ${{ vars.KNOWLEDGE_SYNC_USER_AGENT }}
+          ESCALATION_WEBHOOK_URL: ${{ secrets.ESCALATION_WEBHOOK_URL }}
+        run: node scripts/sync-knowledge.js --notify ${{ inputs.force && '--force' || '' }} | tee releve.txt
+
+      - name: Contrôles de corpus
+        run: node scripts/check-corpus.js
+
+      - name: Évals du bot (déterministes, sans appel modèle)
+        run: npm run evals
+
+      - name: Publier le corpus mis à jour
+        run: |
+          if [ -z "$(git status --porcelain knowledge/)" ]; then
+            echo "Rien de nouveau cette semaine."
+            exit 0
+          fi
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
+          git add knowledge/
+          git commit -m "corpus: relevé du dimanche — plannings, infos et offres des salles à jour"
+          git push
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: releve-corpus
+          path: |
+            releve.txt
+            knowledge/metadata/last-sync.json
+            knowledge/metadata/changelog.jsonl
+          retention-days: 90

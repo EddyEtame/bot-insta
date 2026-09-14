@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "note": "Contrôles de vérité appliqués à CHAQUE réponse sortante. `forbidden` : la formule ne doit jamais sortir. `requires_evidence` : la formule n'est autorisée que si elle figure dans les extraits réellement retrouvés — c'est la faute « la politique a changé, le prompt a gardé l'ancienne » encodée en garde-fou. Ajouter ici tout fait publié puis démenti (FAIT_FAUX) : la faute apprise devient un contrôle, pas un souvenir.",
+  "claims": [
+    { "id": "promesse_inscription", "kind": "forbidden", "pattern": "je vous inscris|je t'inscris|je vous enregistre|j'ai créé votre compte", "why": "Le bot ne peut inscrire personne : l'inscription passe par la boutique ou l'équipe." },
+    { "id": "promesse_reservation", "kind": "forbidden", "pattern": "je vous réserve|je te réserve|je bloque votre place|je vous garde une place", "why": "Aucune réservation n'est possible depuis la messagerie." },
+    { "id": "promesse_rappel", "kind": "forbidden", "pattern": "je vous rappelle|je vous téléphone|je vous appelle dans", "why": "Le bot ne passe pas d'appel ; c'est l'équipe qui recontacte." },
+    { "id": "promesse_geste_commercial", "kind": "forbidden", "pattern": "je peux vous faire un geste|je vous fais un prix|remise exceptionnelle rien que pour vous", "why": "Aucune négociation tarifaire n'est déléguée au bot." },
+    { "id": "avis_medical", "kind": "forbidden", "pattern": "aucune contre-indication|sans aucun risque|c'est sans danger pour votre|vous pouvez reprendre le sport sans", "why": "Aucun avis médical : ces demandes partent en escalade." },
+    { "id": "garantie", "kind": "forbidden", "pattern": "satisfait ou remboursé|remboursement garanti|garanti sans engagement", "why": "Les questions de remboursement partent à l'équipe, sans promesse." },
+    { "id": "essai_gratuit", "kind": "requires_evidence", "pattern": "séance d'essai|cours d'essai|essai gratuit|premier cours gratuit", "why": "Ne se dit que si l'offre figure dans les sources retrouvées le jour même." },
+    { "id": "gratuite", "kind": "requires_evidence", "pattern": "gratuit|gratuite|offert|offerte|sans frais", "why": "Une gratuité s'affirme uniquement si la source la porte." },
+    { "id": "sans_engagement", "kind": "requires_evidence", "pattern": "sans engagement", "why": "Condition contractuelle : elle doit venir de la source." },
+    { "id": "illimite", "kind": "requires_evidence", "pattern": "illimité|illimitée|accès total|24h/24", "why": "Portée d'accès : elle doit venir de la source." },
+    { "id": "toutes_les_salles", "kind": "requires_evidence", "pattern": "toutes les salles|dans les 6 salles|dans les six salles", "why": "La portée d'un abonnement varie selon l'offre : elle doit venir de la source." }
+  ]
+}

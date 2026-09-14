@@ -5,3 +5,9 @@ node_modules/
 coverage/
 *.log
 knowledge/indexes/*.json
+
+# Raw fetched snapshots: audit material, never business evidence
+knowledge/raw/
+knowledge/metadata/sync.lock
+# Durable session and deduplication state
+.data/
