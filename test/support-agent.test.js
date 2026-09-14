@@ -76,8 +76,9 @@ async function withServer(app, run) {
 test("the curated corpus retrieves the current public offer without loading private desktop material", () => {
   const knowledge = loadKnowledgeBase(config);
   const result = knowledge.retrieve("Quel est le prix de l’offre 29 et est-ce sans engagement ?");
-  assert.deepEqual(result.sources, ["boxing-center-offer-29"]);
-  assert.equal(result.chunks[0].visibility, "public");
+  // The polled offer page leads; the curated note about the subscription path comes with it.
+  assert.ok(result.sources.includes("boxing-center-offer-29"));
+  assert.equal(result.chunks.every((chunk) => chunk.visibility === "public"), true);
   const status = knowledge.getStatus();
   assert.equal(status.publicSourceCount, status.sourceCount);
   assert.ok(status.publicSourceCount >= 1);

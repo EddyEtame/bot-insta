@@ -107,7 +107,7 @@ function createPipeline({ config, registry, http, robots, store, logger = { log(
         continue;
       }
       try {
-        const response = await http.get(candidate);
+        const response = await http.get(candidate, { timeoutMs: config.sync.probeTimeoutMs });
         const text = htmlToText(response.body || "");
         if (identifiesGym({ html: response.body || "", text, url: response.url, gym })) {
           state.candidateUrl = response.url;

@@ -174,3 +174,40 @@ test("funnel copy carrying a price is not an offer", () => {
   const fromJsonLd = normalizeOffersDocument({ html: structured }).offers;
   assert.deepEqual(fromJsonLd.map((offer) => offer.name), ["Abonnement 4 semaines"]);
 });
+
+test("a city stops at its own name, and a phone number is written the way it is dialled", () => {
+  const { addressFromText, cleanCity, formatFrenchPhone } = require("../src/sync/normalizers/profile");
+  // Both tails shipped on the second real poll before this check existed.
+  assert.equal(cleanCity("Toulouse Métro Ligne A"), "Toulouse");
+  assert.equal(cleanCity("Ramonville-Saint-Agne Suivre l'itinéraire"), "Ramonville-Saint-Agne");
+  assert.equal(cleanCity("Portet-sur-Garonne"), "Portet-sur-Garonne");
+  assert.equal(addressFromText("33 rue des Ormes, 31520 Ramonville-Saint-Agne Suivre l'itinéraire").full, "33 rue des Ormes, 31520 Ramonville-Saint-Agne");
+  assert.equal(formatFrenchPhone("+33562244682"), "05 62 24 46 82");
+  assert.equal(formatFrenchPhone("0033956653782"), "09 56 65 37 82");
+  assert.equal(formatFrenchPhone("05.61.11.22.33"), "05 61 11 22 33");
+  assert.equal(formatFrenchPhone("09 39 03 67 48"), "09 39 03 67 48");
+});
+
+test("a host that keeps failing is set aside instead of costing a timeout per candidate", async () => {
+  const workspace = createWorkspace({ KNOWLEDGE_SYNC_RETRIES: "0", KNOWLEDGE_SYNC_DELAY_MS: "0" });
+  try {
+    let attempts = 0;
+    const client = createHttpClient({
+      config: workspace.config,
+      allowlist: ["boxingcenter.fr"],
+      fetchImpl: async () => {
+        attempts += 1;
+        const error = new Error("connect ETIMEDOUT");
+        error.name = "AbortError";
+        throw error;
+      },
+      sleep: async () => {},
+    });
+    for (let index = 0; index < 6; index += 1) {
+      await client.get(`https://dead.boxingcenter.fr/p${index}`).catch(() => {});
+    }
+    assert.equal(attempts, workspace.config.sync.hostFailureLimit);
+  } finally {
+    workspace.cleanup();
+  }
+});

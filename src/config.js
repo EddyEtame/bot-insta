@@ -103,6 +103,9 @@ function loadConfig(env = process.env) {
       userAgent: String(env.KNOWLEDGE_SYNC_USER_AGENT || "BoxingCenterSupportBot/1.0 (+https://www.boxingcenter.fr; contact: secretariat.boxingcenter@gmail.com)").trim(),
       extraAllowedHosts: readList(env.KNOWLEDGE_SYNC_ALLOWED_HOSTS),
       requestTimeoutMs: readNumber("KNOWLEDGE_SYNC_TIMEOUT_MS", env.KNOWLEDGE_SYNC_TIMEOUT_MS, 15_000, { min: 1_000, max: 120_000 }),
+      // Probing a guess must never cost as much as reading a confirmed page.
+      probeTimeoutMs: readNumber("KNOWLEDGE_SYNC_PROBE_TIMEOUT_MS", env.KNOWLEDGE_SYNC_PROBE_TIMEOUT_MS, 6_000, { min: 500, max: 60_000 }),
+      hostFailureLimit: readNumber("KNOWLEDGE_SYNC_HOST_FAILURE_LIMIT", env.KNOWLEDGE_SYNC_HOST_FAILURE_LIMIT, 3, { min: 1, max: 20 }),
       maxBytes: readNumber("KNOWLEDGE_SYNC_MAX_BYTES", env.KNOWLEDGE_SYNC_MAX_BYTES, 2_000_000, { min: 10_000, max: 20_000_000 }),
       maxPagesPerGym: readNumber("KNOWLEDGE_SYNC_MAX_PAGES", env.KNOWLEDGE_SYNC_MAX_PAGES, 12, { min: 1, max: 200 }),
       politenessDelayMs: readNumber("KNOWLEDGE_SYNC_DELAY_MS", env.KNOWLEDGE_SYNC_DELAY_MS, 1_200, { min: 0, max: 60_000 }),

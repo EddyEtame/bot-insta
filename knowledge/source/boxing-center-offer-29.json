@@ -1,21 +1,20 @@
 {
   "metadata": {
     "id": "boxing-center-offer-29",
-    "title": "Abonnement Boxing Center dès 29,99 € / 4 semaines",
+    "title": "Offre en ligne Boxing Center — parcours et cadre",
     "sourceType": "web",
     "sourceUrl": "https://boutique.boxingcenter.fr/offre/29",
     "visibility": "public",
     "verificationStatus": "verified_public",
-    "priority": 100,
+    "priority": 90,
     "language": "fr",
     "effectiveFrom": "2026-08-14",
-    "topics": ["offre 29", "abonnement", "prix", "tarif", "cours collectifs", "5 salles", "paiement", "sans engagement"],
+    "topics": ["offre", "abonnement", "boutique", "parrainage", "paiement", "cours collectifs", "5 salles", "sans engagement"],
+    "note": "Le PRIX de cette offre n'est plus écrit ici : il est relevé chaque semaine sur la page elle-même (bc-club-offers). Un prix recopié à la main vieillit en silence — celui-ci disait encore 29,99 € quand la page affichait 29 €.",
     "facts": [
-      { "key": "offer_29_price", "value": "29,99 € par 4 semaines" },
-      { "key": "offer_29_commitment", "value": "sans engagement" },
       { "key": "offer_29_clubs", "value": "5 salles" },
       { "key": "offer_29_first_payment", "value": "première échéance par carte bancaire" }
     ]
   },
-  "content": "Offre en ligne Boxing Center : abonnement dès 29,99 € par 4 semaines, sans engagement. L’offre met en avant les cours collectifs, l’accès à 5 salles et la première échéance par carte bancaire, puis un prélèvement selon le parcours contractuel présenté sur la page.\n\nLe parcours de l’offre demande les coordonnées d’un ami avant le déblocage du prix promotionnel. Le bot ne doit pas expliquer, interpréter ni promettre quoi que ce soit sur la confidentialité, le consentement, le contrat, les prélèvements ou l’éligibilité : ces questions doivent être transmises à l’équipe."
+  "content": "Offre en ligne Boxing Center, souscrite depuis la boutique : abonnement aux cours collectifs avec accès aux 5 salles, première échéance par carte bancaire puis prélèvement selon le parcours contractuel présenté sur la page.\n\nLe parcours de l’offre demande les coordonnées d’un ami avant le déblocage du prix promotionnel. Le bot ne doit pas expliquer, interpréter ni promettre quoi que ce soit sur la confidentialité, le consentement, le contrat, les prélèvements ou l’éligibilité : ces questions doivent être transmises à l’équipe."
 }

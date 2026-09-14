@@ -14,7 +14,9 @@ const ARTICLES = "(?:(?:de|du|des|d['’]?|la|le|les)\\s*){0,2}";
  */
 const STREET_LINE = new RegExp(`\\b(\\d{1,4}(?:\\s?(?:bis|ter|quater))?)[,\\s]+((?:${STREET_WORDS})\\s+${ARTICLES}[A-ZÀ-Ÿ][\\wÀ-ÿ'’-]*(?:\\s+[A-Za-zÀ-ÿ'’-]+){0,4})`, "u");
 const POSTAL_LINE = /\b(\d{5})[,\s]+([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'’\- ]{2,40})/;
-const PHONE = /(?:\+33|0)\s?[1-9](?:[\s.\-]?\d{2}){4}/;
+const PHONE = /(?:\+33|0033|0)\s?[1-9](?:[\s.\-]?\d{2}){4}/;
+/** Words that follow a city on a contact block and are not part of its name. */
+const CITY_NOISE = /^(m[ée]tro|ligne|tram|tramway|bus|parking|t[ée]l|t[ée]l[ée]phone|horaires?|ouvert|contact|suivre|itin[ée]raire|intin[ée]rair\w*|acc[èe]s|plan|voir|france|adresse|email|mail)$/i;
 const EMAIL = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i;
 
 const SCHEMA_DAY = {
@@ -35,7 +37,7 @@ function addressFromJsonLd(entry) {
   if (typeof address === "string") return { full: collapseWhitespace(address), street: null, postalCode: null, city: null, source: "json-ld" };
   const street = address.streetAddress ? collapseWhitespace(String(address.streetAddress)) : null;
   const postalCode = address.postalCode ? collapseWhitespace(String(address.postalCode)) : null;
-  const city = address.addressLocality ? collapseWhitespace(String(address.addressLocality)) : null;
+  const city = address.addressLocality ? cleanCity(String(address.addressLocality)) : null;
   if (!street && !postalCode && !city) return null;
   return { street, postalCode, city, full: [street, [postalCode, city].filter(Boolean).join(" ")].filter(Boolean).join(", "), source: "json-ld" };
 }
@@ -91,6 +93,26 @@ function hoursFromText(text) {
  * An address is published only when a street line and a postal code sit together —
  * a lone street fragment, or a postal code from a footer, is not an address.
  */
+/** A commune name is a few capitalised words — not the sentence that follows it. */
+function cleanCity(raw) {
+  const words = collapseWhitespace(raw).split(/\s+/);
+  const kept = [];
+  for (const word of words) {
+    if (kept.length >= 3) break;
+    const bare = word.replace(/[.,;:]+$/, "");
+    if (!bare || CITY_NOISE.test(bare) || !/^[A-ZÀ-Ÿ0-9]/.test(bare)) break;
+    kept.push(bare);
+  }
+  return kept.join(" ").replace(/[,;:.\-–—]+$/, "").trim();
+}
+
+/** "+33562244682" is a number nobody reads aloud: French numbers are shown in pairs. */
+function formatFrenchPhone(raw) {
+  const digits = String(raw || "").replace(/[^\d+]/g, "");
+  const national = digits.startsWith("+33") ? `0${digits.slice(3)}` : digits.startsWith("0033") ? `0${digits.slice(4)}` : digits;
+  return /^0\d{9}$/.test(national) ? national.match(/.{2}/g).join(" ") : collapseWhitespace(raw);
+}
+
 function addressFromText(text) {
   const lines = String(text || "").split("\n").map(collapseWhitespace);
   for (let index = 0; index < lines.length; index += 1) {
@@ -100,7 +122,8 @@ function addressFromText(text) {
     const postal = POSTAL_LINE.exec(window);
     if (!postal) continue;
     const streetText = collapseWhitespace(`${street[1]} ${street[2]}`).replace(/[,;|]+$/, "");
-    const city = collapseWhitespace(postal[2]);
+    const city = cleanCity(postal[2]);
+    if (!city) continue;
     return {
       street: streetText,
       postalCode: postal[1],
@@ -145,7 +168,7 @@ function normalizeProfileDocument({ html = "", text = null, gymId = null, source
     name: collapseWhitespace(String(place?.name || meta.title || "")) || null,
     description: meta.description ? collapseWhitespace(meta.description) : null,
     address,
-    phone: phoneMatch ? collapseWhitespace(phoneMatch) : null,
+    phone: phoneMatch ? formatFrenchPhone(phoneMatch) : null,
     email: emailMatch ? emailMatch.toLowerCase() : null,
     hours,
     disciplines: disciplinesFromText(plainText, knownDisciplines),
@@ -156,6 +179,8 @@ function normalizeProfileDocument({ html = "", text = null, gymId = null, source
 module.exports = {
   addressFromJsonLd,
   addressFromText,
+  cleanCity,
+  formatFrenchPhone,
   dedupeHours,
   disciplinesFromText,
   hoursFromJsonLd,

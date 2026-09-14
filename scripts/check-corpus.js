@@ -66,6 +66,26 @@ function checkCorpus({ config, now = new Date(), strict = false }) {
     }
   }
 
+  // One page, one source of prices. A page legitimately lists several tariffs, but two
+  // different documents pricing the same page means one of them is a copy going stale —
+  // exactly how a bot ends up quoting last season's price.
+  const pricedDocumentsByUrl = new Map();
+  for (const document of knowledge.documents) {
+    if (document.visibility !== "public" || !document.sourceUrl) continue;
+    const prices = document.facts
+      .filter((fact) => /price|prix|tarif/i.test(fact.key) && /\d\s*€/.test(String(fact.value)))
+      .map((fact) => String(fact.value));
+    if (!prices.length) continue;
+    if (!pricedDocumentsByUrl.has(document.sourceUrl)) pricedDocumentsByUrl.set(document.sourceUrl, new Map());
+    pricedDocumentsByUrl.get(document.sourceUrl).set(document.id, prices);
+  }
+  for (const [url, documents] of pricedDocumentsByUrl) {
+    if (documents.size > 1) {
+      const detail = [...documents.entries()].map(([id, prices]) => `${id} (${prices.join(", ")})`).join(" et ");
+      failures.push(`PRIX DIVERGENT : ${url} est tarifé par deux sources — ${detail}`);
+    }
+  }
+
   for (const [key, values] of factValues) {
     if (values.size > 1) {
       failures.push(`CONTRADICTION : « ${key} » vaut ${[...values.entries()].map(([value, id]) => `« ${value} » (${id})`).join(" et ")}`);

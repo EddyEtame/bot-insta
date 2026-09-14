@@ -93,7 +93,10 @@ test("a club-specific question is answered from that club, or handed over — ne
   assert.equal(etatsUnis.sources[0], "bc-etats-unis-planning");
   assert.match(etatsUnis.chunks.map((chunk) => chunk.content).join("\n"), /Jiu-jitsu brésilien/);
 
-  // No club has its practical sheet yet: the offer page must not stand in for an address.
+  // An address question is answered from that club's own sheet, never from another's.
   const address = knowledge.retrieve("c'est quoi l'adresse de la salle des Minimes ?", { now });
-  assert.deepEqual(address.missingForGym, [{ gymId: "minimes", docType: "profile" }]);
+  assert.equal(address.sources[0], "bc-minimes-profile");
+  assert.deepEqual(address.missingForGym, []);
+  assert.equal(address.sources.some((id) => /portet|ramonville|cyprien|etats/.test(id)), false);
+  assert.match(address.chunks[0].content, /Adresse :/);
 });

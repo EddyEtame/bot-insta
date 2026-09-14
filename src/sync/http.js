@@ -86,6 +86,9 @@ function createHttpClient({ config, allowlist, fetchImpl = fetch, sleep = (ms) =
   const settings = config.sync;
   const allowed = [...new Set([...(allowlist || []), ...settings.extraAllowedHosts])].map((host) => host.toLowerCase());
   const lastRequestAt = new Map();
+  // A host that keeps timing out costs one timeout per remaining candidate. After a few
+  // failures in a row it is set aside for the rest of the run, and a success clears it.
+  const consecutiveFailures = new Map();
 
   async function respectPoliteness(url) {
     const host = hostOf(url);
@@ -98,9 +101,9 @@ function createHttpClient({ config, allowlist, fetchImpl = fetch, sleep = (ms) =
     lastRequestAt.set(host, Date.now());
   }
 
-  async function singleRequest(url, { headers = {}, method = "GET" } = {}) {
+  async function singleRequest(url, { headers = {}, method = "GET", timeoutMs = settings.requestTimeoutMs } = {}) {
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), settings.requestTimeoutMs);
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
     try {
       return await fetchImpl(url, {
         method,
@@ -122,7 +125,7 @@ function createHttpClient({ config, allowlist, fetchImpl = fetch, sleep = (ms) =
    * Conditional GET with allowlist enforcement on every redirect hop, a byte cap,
    * and backoff on retryable failures. Returns { notModified: true } on HTTP 304.
    */
-  async function get(url, { etag = null, lastModified = null, headers = {} } = {}) {
+  async function get(url, { etag = null, lastModified = null, headers = {}, timeoutMs } = {}) {
     let target = url;
     for (let hop = 0; hop <= MAX_REDIRECTS; hop += 1) {
       if (!/^https:\/\//i.test(target)) throw new FetchError(`Refused non-HTTPS URL: ${target}`, { url: target });
@@ -134,12 +137,17 @@ function createHttpClient({ config, allowlist, fetchImpl = fetch, sleep = (ms) =
         ...headers,
       };
 
+      const host = hostOf(target);
+      if ((consecutiveFailures.get(host) || 0) >= settings.hostFailureLimit) {
+        throw new FetchError(`Host set aside after ${settings.hostFailureLimit} failures in a row: ${host}`, { url: target });
+      }
+
       let response = null;
       let lastError = null;
       for (let attempt = 0; attempt <= settings.maxRetries; attempt += 1) {
         await respectPoliteness(target);
         try {
-          response = await singleRequest(target, { headers: conditional });
+          response = await singleRequest(target, { headers: conditional, timeoutMs });
           if (!RETRYABLE_STATUS.has(response.status)) break;
           lastError = new FetchError(`HTTP ${response.status}`, { status: response.status, url: target, retryable: true });
         } catch (err) {
@@ -148,7 +156,11 @@ function createHttpClient({ config, allowlist, fetchImpl = fetch, sleep = (ms) =
         }
         if (attempt < settings.maxRetries) await sleep(retryDelayMs(attempt, response));
       }
-      if (!response) throw lastError || new FetchError("Request failed", { url: target, retryable: true });
+      if (!response) {
+        consecutiveFailures.set(host, (consecutiveFailures.get(host) || 0) + 1);
+        throw lastError || new FetchError("Request failed", { url: target, retryable: true });
+      }
+      consecutiveFailures.set(host, 0);
 
       if (response.status === 304) return { url: target, status: 304, notModified: true, body: null, headers: {} };
       if (response.status >= 300 && response.status < 400) {
@@ -179,7 +191,7 @@ function createHttpClient({ config, allowlist, fetchImpl = fetch, sleep = (ms) =
     throw new FetchError(`Too many redirects starting at ${url}`, { url });
   }
 
-  return { allowed, get, isAllowedHost: (url) => isHostAllowed(url, allowed) };
+  return { allowed, consecutiveFailures, get, isAllowedHost: (url) => isHostAllowed(url, allowed) };
 }
 
 module.exports = { FetchError, createHttpClient, decodeBody, isHostAllowed, readCappedBody };

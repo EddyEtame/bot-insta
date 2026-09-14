@@ -158,8 +158,30 @@ test("the build controls pass on a synced corpus and catch a contradiction the m
       metadata: { ...existing.metadata, id: "bc-ramonville-broken", facts: [] },
       content: "Il n’y a pas de cours le dimanche à Ramonville.",
     }));
+    // Two prices for the same page: a hand-written tariff that quietly went out of date.
+    fs.writeFileSync(path.join(workspace.directory, "source", "generated", "bc-old-price.json"), JSON.stringify({
+      metadata: {
+        ...existing.metadata,
+        id: "bc-old-price",
+        docType: "offer",
+        sourceUrl: "https://boutique.boxingcenter.fr/offre/29",
+        facts: [{ key: "offer_club_x_price", value: "29,99 €" }],
+      },
+      content: "Abonnement : 29,99 € par 4 semaines",
+    }));
+    fs.writeFileSync(path.join(workspace.directory, "source", "generated", "bc-new-price.json"), JSON.stringify({
+      metadata: {
+        ...existing.metadata,
+        id: "bc-new-price",
+        docType: "offer",
+        sourceUrl: "https://boutique.boxingcenter.fr/offre/29",
+        facts: [{ key: "offer_club_y_price", value: "29,00 €" }],
+      },
+      content: "Abonnement : 29 € par 4 semaines",
+    }));
     const dirty = checkCorpus({ config: workspace.config, now: new Date("2026-09-14T09:00:00Z") });
     assert.ok(dirty.failures.some((failure) => failure.startsWith("CONTRADICTION")));
+    assert.ok(dirty.failures.some((failure) => failure.startsWith("PRIX DIVERGENT")));
     assert.ok(dirty.failures.some((failure) => failure.startsWith("VENTE_NEGATIVE")));
     assert.ok(dirty.failures.some((failure) => failure.startsWith("FAITS")));
     assert.equal(knowledge.getStatus().registryErrors, 0);
