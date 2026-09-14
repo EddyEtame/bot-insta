@@ -7,7 +7,7 @@ const { normalizePlanning } = require("../planning");
 const { containsPhrase } = require("../text");
 const { buildOffersDocument, buildPlanningDocument, buildProfileDocument } = require("./documents");
 const { hashContent } = require("./store");
-const { htmlToText } = require("./html");
+const { extractMeta, extractSections, htmlToText } = require("./html");
 const { isHostAllowed } = require("./http");
 const { normalizeOffersDocument } = require("./normalizers/offers");
 const { normalizePlanningDocument } = require("./normalizers/planning");
@@ -23,10 +23,21 @@ const STATUS = Object.freeze({
   EMPTY: "empty",
 });
 
-/** A candidate page only counts as this gym's page when it names the gym and the club. */
-function looksLikeGymPage(text, gym) {
-  if (!gym) return containsPhrase(text, "boxing center");
-  return containsPhrase(text, "boxing center") && gym.aliases.some((alias) => containsPhrase(text, alias));
+/**
+ * A page is a club's page only when it says so where a page declares what it is about:
+ * its URL or its title/first heading. Mentioning the club somewhere in the body is not
+ * enough — the group's home page names all five, and a site that redirects unknown paths
+ * to that home page would otherwise hand the same sheet to every club.
+ */
+function identifiesGym({ html = "", text = "", url = "", gym }) {
+  if (!containsPhrase(text, "boxing center")) return false;
+  if (!gym) return true;
+  const title = extractMeta(html).title || "";
+  const heading = extractSections(html).find((section) => section.level <= 2)?.heading || "";
+  const path = decodeURIComponent(String(url || "")).toLowerCase();
+  const namedInUrl = gym.aliases.some((alias) => path.includes(alias.replace(/\s+/g, "-")) || path.includes(alias.replace(/\s+/g, "")));
+  const namedInTitle = gym.aliases.some((alias) => containsPhrase(`${title} ${heading}`, alias));
+  return namedInUrl || namedInTitle;
 }
 
 function urlSlugs(gym) {
@@ -98,7 +109,7 @@ function createPipeline({ config, registry, http, robots, store, logger = { log(
       try {
         const response = await http.get(candidate);
         const text = htmlToText(response.body || "");
-        if (looksLikeGymPage(text, gym)) {
+        if (identifiesGym({ html: response.body || "", text, url: response.url, gym })) {
           state.candidateUrl = response.url;
           attempts.push({ url: candidate, outcome: "confirmed" });
           return { url: response.url, response, attempts };
@@ -452,4 +463,4 @@ function createPipeline({ config, registry, http, robots, store, logger = { log(
   return { run, syncSource, probeCandidates, discoverFromSitemap, STATUS };
 }
 
-module.exports = { STATUS, createPipeline, diffOffers, diffPlanning, diffProfile, discoveryScore, looksLikeGymPage, parseSitemap };
+module.exports = { STATUS, createPipeline, diffOffers, diffPlanning, diffProfile, discoveryScore, identifiesGym, parseSitemap };

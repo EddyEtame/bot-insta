@@ -5,9 +5,15 @@ const { collapseWhitespace, flatten } = require("../../text");
 const { extractJsonLd, extractMeta, htmlToText } = require("../html");
 const { dayFromText } = require("./planning");
 
-const STREET_WORDS = "rue|avenue|av\\.|bd|boulevard|chemin|route|impasse|all[ée]e|place|quai|cours|voie|zone|z\\.?a\\.?c?\\.?";
-const ADDRESS_LINE = new RegExp(`\\b(\\d{1,4}(?:\\s?(?:bis|ter|quater))?)\\s+((?:${STREET_WORDS})\\s+[^\\n,;|]{3,60})`, "i");
-const POSTAL_LINE = /\b(\d{5})\s+([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'’\- ]{2,40})/;
+const STREET_WORDS = "rue|avenue|av\\.|bd|boulevard|chemin|route|impasse|all[ée]e|place|quai|cours|voie";
+const ARTICLES = "(?:(?:de|du|des|d['’]?|la|le|les)\\s*){0,2}";
+/**
+ * A street name starts with a proper noun. Without that, "175 cours chaque semaine dans
+ * nos 5 clubs" reads as an address — and a wrong address is the one fact a customer
+ * travels on.
+ */
+const STREET_LINE = new RegExp(`\\b(\\d{1,4}(?:\\s?(?:bis|ter|quater))?)[,\\s]+((?:${STREET_WORDS})\\s+${ARTICLES}[A-ZÀ-Ÿ][\\wÀ-ÿ'’-]*(?:\\s+[A-Za-zÀ-ÿ'’-]+){0,4})`, "u");
+const POSTAL_LINE = /\b(\d{5})[,\s]+([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'’\- ]{2,40})/;
 const PHONE = /(?:\+33|0)\s?[1-9](?:[\s.\-]?\d{2}){4}/;
 const EMAIL = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i;
 
@@ -81,21 +87,30 @@ function hoursFromText(text) {
   return hours;
 }
 
+/**
+ * An address is published only when a street line and a postal code sit together —
+ * a lone street fragment, or a postal code from a footer, is not an address.
+ */
 function addressFromText(text) {
-  const street = ADDRESS_LINE.exec(text);
-  const postal = POSTAL_LINE.exec(text);
-  if (!street && !postal) return null;
-  const streetText = street ? collapseWhitespace(`${street[1]} ${street[2]}`) : null;
-  const postalCode = postal ? postal[1] : null;
-  const city = postal ? collapseWhitespace(postal[2]) : null;
-  return {
-    street: streetText,
-    postalCode,
-    city,
-    full: [streetText, [postalCode, city].filter(Boolean).join(" ")].filter(Boolean).join(", "),
-    source: "text",
-    evidence: collapseWhitespace(street?.[0] || postal?.[0] || ""),
-  };
+  const lines = String(text || "").split("\n").map(collapseWhitespace);
+  for (let index = 0; index < lines.length; index += 1) {
+    const street = STREET_LINE.exec(lines[index]);
+    if (!street) continue;
+    const window = lines.slice(index, index + 3).join(" ");
+    const postal = POSTAL_LINE.exec(window);
+    if (!postal) continue;
+    const streetText = collapseWhitespace(`${street[1]} ${street[2]}`).replace(/[,;|]+$/, "");
+    const city = collapseWhitespace(postal[2]);
+    return {
+      street: streetText,
+      postalCode: postal[1],
+      city,
+      full: `${streetText}, ${postal[1]} ${city}`,
+      source: "text",
+      evidence: collapseWhitespace(window).slice(0, 160),
+    };
+  }
+  return null;
 }
 
 function dedupeHours(hours) {

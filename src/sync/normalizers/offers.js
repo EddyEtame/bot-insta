@@ -4,6 +4,11 @@ const { collapseWhitespace, slugify } = require("../../text");
 const { extractJsonLd, extractSections, htmlToText } = require("../html");
 
 const PRICE = /(\d{1,4}(?:[.,]\d{1,2})?)\s*(?:€|eur\b|euros?\b)/i;
+
+/** What an offer is called. A price on a line that names no offer is not an offer. */
+const OFFER_WORDS = /(abonnement|offre|pass\b|carte|formule|tarif|s[ée]ance|cours|ann[ée]e|mois|semaines|illimit|engagement|inscription|adh[ée]sion|licence)/i;
+/** Funnel and navigation copy that happens to carry a price. */
+const NOISE_WORDS = /(clique|cliquez|indique|renseigne|pr[ée]nom|t[ée]l[ée]phone|ami\b|proche|place[s]?\b|questions? fr[ée]quentes|accueil|panier|connexion|newsletter|cookie|voir\b|^\d{2}\s|[?]$)/i;
 const PRICE_GLOBAL = new RegExp(PRICE.source, "gi");
 
 // Order matters: the specific periods are tested before the generic monthly one.
@@ -57,9 +62,12 @@ function offerFromJsonLd(entry) {
 /** Trailing scraps left once the price is removed: "3 mois illimités : au lieu de" → "3 mois illimités". */
 function cleanOfferName(value) {
   return collapseWhitespace(String(value || "")
-    .replace(/\b(?:au lieu de|au lieu|à partir de|a partir de|dès|des|seulement|soit)\s*$/i, "")
-    .replace(/^[\s:;,.\-–—·•*|]+/, "")
-    .replace(/[\s:;,.\-–—·•*|]+$/, "")).slice(0, 80);
+    // A price removed from the middle of a sentence leaves its connector dangling.
+    .replace(/\s*\b(?:au lieu de|au lieu|à partir de|a partir de|dès|des|seulement|soit)\b\s*(?=[—–\-:,./]|$)/gi, " ")
+    .replace(/\s*[:/]\s*(?=[—–\-:,./]|$)/g, " ")
+    .replace(/\s*([—–\-:])\s*\1+/g, " $1 ")
+    .replace(/^[\s:;,.\-–—·•*|/]+/, "")
+    .replace(/[\s:;,.\-–—·•*|/]+$/, "")).slice(0, 80);
 }
 
 /** Lines of the page paired with the heading they sit under. */
@@ -97,6 +105,8 @@ function offersFromText(plainText, sections) {
     const useHeading = heading && headingUse.get(heading) === 1 && cleanOfferName(heading).length >= 4;
     const name = useHeading ? cleanOfferName(heading) : fromLine;
     if (!name || !/[a-zà-ÿ]{3}/i.test(name)) continue;
+    // The name has to say what is being sold, and not be the funnel copy around it.
+    if (!useHeading && (!OFFER_WORDS.test(name) || NOISE_WORDS.test(name) || name.split(/\s+/).length < 2)) continue;
     const cheapest = [...amounts].sort((left, right) => left.amount - right.amount)[0];
     const highest = [...amounts].sort((left, right) => right.amount - left.amount)[0];
     offers.push({
@@ -112,18 +122,25 @@ function offersFromText(plainText, sections) {
       availability: null,
       evidence: line,
       source: "text",
+      fromHeading: useHeading,
     });
   }
   return offers;
 }
 
+/** Same price, same period, same offer — whatever the marketing page calls it each time. */
+function offerRank(offer) {
+  return (offer.source === "json-ld" ? 100 : 0) + (offer.fromHeading ? 10 : 0) + (offer.commitment ? 5 : 0) + Math.min(offer.name.length / 20, 4);
+}
+
 function dedupeOffers(offers) {
   const byKey = new Map();
   for (const offer of offers) {
-    const key = `${offer.id}|${offer.price}|${offer.period?.id || ""}`;
+    const key = `${offer.price}|${offer.period?.id || ""}`;
     const previous = byKey.get(key);
-    // Structured data wins over a text guess for the same offer.
-    if (!previous || (previous.source === "text" && offer.source === "json-ld")) byKey.set(key, offer);
+    if (!previous || offerRank(offer) > offerRank(previous)) {
+      byKey.set(key, previous ? { ...offer, commitment: offer.commitment || previous.commitment } : offer);
+    }
   }
   return [...byKey.values()].sort((left, right) => left.price - right.price || left.name.localeCompare(right.name, "fr"));
 }
@@ -132,7 +149,8 @@ function normalizeOffersDocument({ html = "", text = null, gymId = null, sourceI
   const plainText = text || htmlToText(html);
   const sections = html ? extractSections(html) : [];
   const structured = extractJsonLd(html).map(offerFromJsonLd).filter(Boolean);
-  const offers = dedupeOffers([...structured, ...offersFromText(plainText, sections)]);
+  // Structured data is the page speaking for itself: when it exists, the text is noise.
+  const offers = dedupeOffers(structured.length ? structured : offersFromText(plainText, sections));
   return { gymId, sourceId, sourceUrl, offers, hasStructuredData: structured.length > 0 };
 }
 
@@ -145,6 +163,8 @@ function offerFacts(offers, scope) {
 
 module.exports = {
   COMMITMENT_PATTERNS,
+  NOISE_WORDS,
+  OFFER_WORDS,
   PERIOD_PATTERNS,
   cleanOfferName,
   dedupeOffers,
