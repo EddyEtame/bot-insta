@@ -33,12 +33,14 @@ function gymTopics(gym) {
   return gym ? [gym.displayName, gym.name, gym.commune, ...gym.aliases].filter(Boolean) : ["boxing center", "toutes les salles"];
 }
 
-function buildPlanningDocument({ gym, planning, sourceUrl, checkedAt, capturedAt, maxAgeDays, verificationStatus }) {
-  const content = renderPlanning(planning, { gymLabel: gym.displayName });
+function buildPlanningDocument({ gym, planning, sourceUrl, checkedAt, capturedAt, maxAgeDays, verificationStatus, documentId, effectiveFrom = null, effectiveUntil = null }) {
+  const content = renderPlanning(planning, { gymLabel: gym.displayName, maxDays: 7 });
   if (!content) return null;
   return {
     metadata: baseMetadata({
-      id: `bc-${gym.id}-planning`,
+      id: documentId || `bc-${gym.id}-planning`,
+      effectiveFrom,
+      effectiveUntil,
       title: `Planning ${gym.displayName}`,
       docType: "planning",
       gymIds: [gym.id],
@@ -82,13 +84,15 @@ function profileFacts(gym, profile) {
   return facts;
 }
 
-function buildProfileDocument({ gym, profile, sourceUrl, checkedAt, capturedAt, maxAgeDays, verificationStatus }) {
+function buildProfileDocument({ gym, profile, sourceUrl, checkedAt, capturedAt, maxAgeDays, verificationStatus, documentId, effectiveFrom = null, effectiveUntil = null }) {
   const content = renderProfile(gym, profile);
   const hasSubstance = Boolean(profile.address?.full || profile.phone || profile.hours?.length || profile.disciplines?.length);
   if (!hasSubstance) return null;
   return {
     metadata: baseMetadata({
-      id: `bc-${gym.id}-profile`,
+      id: documentId || `bc-${gym.id}-profile`,
+      effectiveFrom,
+      effectiveUntil,
       title: `Salle ${gym.displayName} — informations pratiques`,
       docType: "profile",
       gymIds: [gym.id],
@@ -112,13 +116,15 @@ function renderOffer(offer) {
   return `- ${parts.join(" · ")}`;
 }
 
-function buildOffersDocument({ gym, offers, sourceUrl, checkedAt, capturedAt, maxAgeDays, verificationStatus }) {
+function buildOffersDocument({ gym, offers, sourceUrl, checkedAt, capturedAt, maxAgeDays, verificationStatus, documentId, effectiveFrom = null, effectiveUntil = null }) {
   if (!offers.length) return null;
   const scope = gym ? gym.id : "club";
   const label = gym ? gym.displayName : "Boxing Center";
   return {
     metadata: baseMetadata({
-      id: `bc-${scope}-offers`,
+      id: documentId || `bc-${scope}-offers`,
+      effectiveFrom,
+      effectiveUntil,
       title: `Offres et tarifs ${label}`,
       docType: "offer",
       gymIds: gym ? [gym.id] : [],

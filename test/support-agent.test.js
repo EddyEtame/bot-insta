@@ -78,7 +78,9 @@ test("the curated corpus retrieves the current public offer without loading priv
   const result = knowledge.retrieve("Quel est le prix de l’offre 29 et est-ce sans engagement ?");
   assert.deepEqual(result.sources, ["boxing-center-offer-29"]);
   assert.equal(result.chunks[0].visibility, "public");
-  assert.equal(knowledge.getStatus().publicSourceCount, 1);
+  const status = knowledge.getStatus();
+  assert.equal(status.publicSourceCount, status.sourceCount);
+  assert.ok(status.publicSourceCount >= 1);
   assert.equal(knowledge.retrieve("Do you offer private lessons at 7:30 PM on Sundays?").hasEvidence, false);
 });
 

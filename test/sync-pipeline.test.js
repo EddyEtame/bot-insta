@@ -34,8 +34,12 @@ test("a fetched club page becomes a normalized record, a source document and a s
   const { workspace, store, pipeline } = harness();
   try {
     const report = await pipeline.run({ now: new Date("2026-09-13T04:30:00Z") });
-    assert.equal(report.stats.updated, 4);
-    assert.deepEqual(store.listGeneratedSources().sort(), ["bc-balma-planning", "bc-balma-profile", "bc-club-offers", "bc-club-profile"]);
+    // Four pages from the site, plus the season plannings handed over as files.
+    assert.equal(report.stats.updated, 4 + 3);
+    // Club-wide pages are keyed by their source, so two of them never overwrite each other.
+    for (const id of ["bc-balma-planning", "bc-balma-profile", "bc-club-home", "bc-club-offers"]) {
+      assert.ok(store.listGeneratedSources().includes(id), `${id} should have been generated`);
+    }
 
     const planning = store.readNormalized("balma", "planning");
     assert.equal(planning.sessions.length, 5);
@@ -65,7 +69,7 @@ test("a second run revalidates without rewriting, and a changed planning is diff
 
     const unchanged = await pipeline.run({ now: new Date("2026-09-20T04:30:00Z") });
     assert.equal(unchanged.stats.updated, 0);
-    assert.equal(unchanged.stats.unchanged, 4);
+    assert.equal(unchanged.stats.unchanged, 4 + 3);
     assert.equal(unchanged.changes.length, 0);
     assert.ok(log.length - callsAfterFirst < callsAfterFirst, "revalidation must be cheaper than discovery");
 
@@ -138,7 +142,8 @@ test("the corpus produced by a sync is what retrieval then answers from", async 
     assert.equal(result.sources[0], "bc-balma-planning");
     assert.equal(result.sources.some((id) => id.includes("portet")), false);
     assert.match(result.chunks[0].content, /MARDI/);
-    assert.equal(knowledge.getStatus(new Date("2026-09-14T09:00:00Z")).gymsWithPlanning, 1);
+    // Balma from the site, plus the three clubs whose season planning was handed over.
+    assert.equal(knowledge.getStatus(new Date("2026-09-14T09:00:00Z")).gymsWithPlanning, 4);
   } finally {
     workspace.cleanup();
   }

@@ -1,0 +1,193 @@
+{
+  "gymId": "saint-cyprien",
+  "season": "2026/2027",
+  "verifiedAt": "2026-09-14",
+  "provenance": "Planning officiel « SAINT-CYPRIEN — saison 2026-2027 », transmis par Eddy le 2026-09-14. Transcription case par case de l'affiche.",
+  "notes": [
+    "Case libre = salle ouverte. Accès badge, entraînement libre.",
+    "Accès libre du lundi au vendredi de 10h à 21h15, samedi de 10h à 21h15 hors créneaux encadrés."
+  ],
+  "sessions": [
+    {
+      "day": "lundi",
+      "start": "12h40",
+      "end": "13h20",
+      "discipline": "Boxing Camp"
+    },
+    {
+      "day": "lundi",
+      "start": "18h20",
+      "end": "19h00",
+      "discipline": "Boxing Camp"
+    },
+    {
+      "day": "lundi",
+      "start": "19h00",
+      "end": "20h00",
+      "discipline": "Cross-training"
+    },
+    {
+      "day": "lundi",
+      "start": "20h00",
+      "end": "21h15",
+      "discipline": "Boxe anglaise"
+    },
+    {
+      "day": "mardi",
+      "start": "12h40",
+      "end": "13h20",
+      "discipline": "Boxe thaï / K1"
+    },
+    {
+      "day": "mardi",
+      "start": "18h20",
+      "end": "19h00",
+      "discipline": "Lady Punch"
+    },
+    {
+      "day": "mardi",
+      "start": "19h00",
+      "end": "20h00",
+      "discipline": "Grappling"
+    },
+    {
+      "day": "mardi",
+      "start": "20h00",
+      "end": "21h15",
+      "discipline": "Boxe thaï / K1"
+    },
+    {
+      "day": "mercredi",
+      "start": "12h40",
+      "end": "13h20",
+      "discipline": "Boxe anglaise"
+    },
+    {
+      "day": "mercredi",
+      "start": "15h00",
+      "end": "16h00",
+      "discipline": "Boxe éducative",
+      "audience": "7/11 ans"
+    },
+    {
+      "day": "mercredi",
+      "start": "16h00",
+      "end": "17h00",
+      "discipline": "Boxe éducative",
+      "audience": "12/16 ans"
+    },
+    {
+      "day": "mercredi",
+      "start": "17h00",
+      "end": "18h15",
+      "discipline": "Boxe éducative",
+      "level": "compétiteurs"
+    },
+    {
+      "day": "mercredi",
+      "start": "18h20",
+      "end": "19h00",
+      "discipline": "Hyrox"
+    },
+    {
+      "day": "mercredi",
+      "start": "19h00",
+      "end": "20h00",
+      "discipline": "Cross-training"
+    },
+    {
+      "day": "mercredi",
+      "start": "20h00",
+      "end": "21h15",
+      "discipline": "Boxe anglaise"
+    },
+    {
+      "day": "jeudi",
+      "start": "12h40",
+      "end": "13h20",
+      "discipline": "Boxe thaï / K1"
+    },
+    {
+      "day": "jeudi",
+      "start": "18h20",
+      "end": "19h00",
+      "discipline": "Lady Punch"
+    },
+    {
+      "day": "jeudi",
+      "start": "19h00",
+      "end": "20h00",
+      "discipline": "Grappling"
+    },
+    {
+      "day": "jeudi",
+      "start": "20h00",
+      "end": "21h15",
+      "discipline": "Boxe thaï / K1"
+    },
+    {
+      "day": "vendredi",
+      "start": "12h40",
+      "end": "13h20",
+      "discipline": "Boxe anglaise"
+    },
+    {
+      "day": "vendredi",
+      "start": "18h20",
+      "end": "19h00",
+      "discipline": "Boxing Camp"
+    },
+    {
+      "day": "vendredi",
+      "start": "19h00",
+      "end": "20h00",
+      "discipline": "Boxe thaï / K1"
+    },
+    {
+      "day": "vendredi",
+      "start": "20h00",
+      "end": "21h15",
+      "discipline": "Boxe anglaise"
+    },
+    {
+      "day": "samedi",
+      "start": "11h00",
+      "end": "12h00",
+      "discipline": "Boxing Camp"
+    },
+    {
+      "day": "samedi",
+      "start": "14h15",
+      "end": "15h00",
+      "discipline": "Baby boxe",
+      "audience": "3/6 ans"
+    },
+    {
+      "day": "samedi",
+      "start": "15h00",
+      "end": "16h00",
+      "discipline": "Boxe éducative",
+      "audience": "7/11 ans"
+    },
+    {
+      "day": "samedi",
+      "start": "16h00",
+      "end": "17h00",
+      "discipline": "Boxe éducative",
+      "audience": "12/16 ans"
+    },
+    {
+      "day": "samedi",
+      "start": "17h00",
+      "end": "18h15",
+      "discipline": "Boxe éducative",
+      "level": "compétiteurs"
+    },
+    {
+      "day": "samedi",
+      "start": "18h00",
+      "end": "20h00",
+      "discipline": "Boxe thaï / K1"
+    }
+  ]
+}

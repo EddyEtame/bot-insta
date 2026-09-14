@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "id": "bc-minimes-planning",
+    "title": "Planning MINIMES",
+    "sourceType": "web",
+    "sourceUrl": null,
+    "visibility": "public",
+    "verificationStatus": "verified_public",
+    "priority": 92,
+    "language": "fr",
+    "effectiveFrom": null,
+    "effectiveUntil": null,
+    "docType": "planning",
+    "gyms": [
+      "minimes"
+    ],
+    "generated": true,
+    "checkedAt": "2026-09-14T00:00:00.000Z",
+    "capturedAt": "2026-09-14T00:00:00.000Z",
+    "maxAgeDays": 365,
+    "topics": [
+      "MINIMES",
+      "Boxing Center Minimes",
+      "Toulouse",
+      "boxing center minimes",
+      "salle des minimes",
+      "barriere de paris",
+      "les minimes",
+      "minimes",
+      "planning",
+      "horaires",
+      "cours",
+      "creneaux",
+      "lundi",
+      "mardi",
+      "mercredi",
+      "jeudi",
+      "vendredi",
+      "samedi",
+      "Boxing Camp",
+      "Boxe compétiteurs",
+      "Boxing Lady",
+      "Boxe anglaise",
+      "Cross-training",
+      "Boxe éducative",
+      "Boxe pieds-poings",
+      "Baby boxe",
+      "Open sparring"
+    ],
+    "facts": [
+      {
+        "key": "planning_minimes_lundi",
+        "value": "12h40–13h20 Boxing Camp | 18h–19h30 Boxe compétiteurs | 18h30–19h30 Boxing Lady | 19h40–21h Boxe anglaise · loisirs"
+      },
+      {
+        "key": "planning_minimes_mardi",
+        "value": "12h40–13h20 Boxe anglaise · loisirs | 18h–19h30 Boxe compétiteurs | 18h30–19h30 Cross-training | 19h40–21h Boxe anglaise · loisirs"
+      },
+      {
+        "key": "planning_minimes_mercredi",
+        "value": "12h40–13h20 Boxe anglaise · loisirs | 15h–16h Boxe éducative · enfants 7/11 ans | 16h–17h Boxe éducative · ados 12/16 ans | 17h–18h30 Boxe éducative · compétiteurs | 18h30–19h30 Boxing Lady | 19h40–21h Boxe pieds-poings"
+      },
+      {
+        "key": "planning_minimes_jeudi",
+        "value": "12h40–13h20 Boxe anglaise · loisirs | 18h–19h30 Boxe compétiteurs | 18h30–19h30 Cross-training | 19h40–21h Boxe anglaise · loisirs"
+      },
+      {
+        "key": "planning_minimes_vendredi",
+        "value": "12h40–13h20 Boxing Camp | 18h–19h30 Boxe compétiteurs | 19h40–21h Boxe anglaise · loisirs"
+      },
+      {
+        "key": "planning_minimes_samedi",
+        "value": "11h–12h Boxing Camp | 14h15–15h Baby boxe · 3/6 ans | 15h–16h Boxe éducative · enfants 7/11 ans | 16h–17h Boxe éducative · ados 12/16 ans | 17h–18h30 Boxe éducative · compétiteurs | 18h30–19h30 Open sparring"
+      }
+    ]
+  },
+  "content": "Planning MINIMES — saison 2026/2027\n\nLUNDI : 12h40–13h20 Boxing Camp | 18h–19h30 Boxe compétiteurs | 18h30–19h30 Boxing Lady | 19h40–21h Boxe anglaise · loisirs\n\nMARDI : 12h40–13h20 Boxe anglaise · loisirs | 18h–19h30 Boxe compétiteurs | 18h30–19h30 Cross-training | 19h40–21h Boxe anglaise · loisirs\n\nMERCREDI : 12h40–13h20 Boxe anglaise · loisirs | 15h–16h Boxe éducative · enfants 7/11 ans | 16h–17h Boxe éducative · ados 12/16 ans | 17h–18h30 Boxe éducative · compétiteurs | 18h30–19h30 Boxing Lady | 19h40–21h Boxe pieds-poings\n\nJEUDI : 12h40–13h20 Boxe anglaise · loisirs | 18h–19h30 Boxe compétiteurs | 18h30–19h30 Cross-training | 19h40–21h Boxe anglaise · loisirs\n\nVENDREDI : 12h40–13h20 Boxing Camp | 18h–19h30 Boxe compétiteurs | 19h40–21h Boxe anglaise · loisirs\n\nSAMEDI : 11h–12h Boxing Camp | 14h15–15h Baby boxe · 3/6 ans | 15h–16h Boxe éducative · enfants 7/11 ans | 16h–17h Boxe éducative · ados 12/16 ans | 17h–18h30 Boxe éducative · compétiteurs | 18h30–19h30 Open sparring\n\nCase libre = salle ouverte. Accès badge, entraînement libre."
+}

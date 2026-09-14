@@ -92,9 +92,31 @@ export file is supported too:
 { "id": "ramonville-planning", "docType": "planning", "kind": "file", "file": "ramonville.json" }
 ```
 
-with `BC_PLANNINGS_PATH` pointing at the folder holding those exports (a clone of the
-Plannings repository, for instance). The file may be the site's HTML or a JSON record
-shaped like `{ "sessions": [{ "day": "mardi", "start": "18h30", "end": "20h", "discipline": "MMA" }] }`.
+Exports live in `knowledge/exports/` by default — `BC_PLANNINGS_PATH` points somewhere
+else, a clone of the Plannings repository for instance. The file may be the site's HTML,
+or a JSON record:
+
+```json
+{
+  "gymId": "minimes",
+  "season": "2026/2027",
+  "verifiedAt": "2026-09-14",
+  "provenance": "Planning officiel « BARRIÈRE DE PARIS – MINIMES », transmis le 2026-09-14",
+  "notes": ["Case libre = salle ouverte. Accès badge, entraînement libre."],
+  "sessions": [
+    { "day": "mercredi", "start": "15h00", "end": "16h00", "discipline": "Boxe éducative", "audience": "enfants 7/11 ans" },
+    { "day": "mercredi", "start": "19h40", "end": "21h00", "discipline": "Boxe pieds-poings", "room": "salle 2" }
+  ]
+}
+```
+
+`verifiedAt` is the day a human last checked that planning against reality — it becomes the
+document's check date, because **a file cannot verify itself** and a fresh clone would
+otherwise make every export look checked today. Season plannings carry
+`"maxAgeDays": 365` on their registry source, so they live for a season instead of
+expiring on a web page's ten-day clock; when the season changes, replace the export and
+move `verifiedAt` forward. `npm test` refuses an export whose sessions do not all survive
+normalization, so a mistyped hour is caught before it reaches a customer.
 
 ## Freshness is part of the answer
 

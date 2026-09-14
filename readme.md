@@ -37,7 +37,15 @@ every Sunday 04:30 Europe/Paris
 
 `knowledge/registry/gyms.json` holds Balma, Saint-Cyprien, États-Unis, Minimes,
 Ramonville and Portet: their official spelling, the ways customers actually write them
-(`st cyp`, `portet sur garonne`, `route d'espagne`), and the sources to poll for each.
+(`st cyp`, `portet sur garonne`, `route d'espagne`), and the sources to poll for each —
+`boxingcenter.fr`, the boutique, `boxing-center-portet.fr`, `club-boxe-toulouse.com`,
+`mmatoulouse.com` and `clubmma.fr`.
+
+Three clubs answer from their real season planning today, transcribed from the club's own
+2026-2027 posters into `knowledge/exports/plannings/`: **Saint-Cyprien** (29 slots),
+**États-Unis** (46 slots across its salle boxe, boxing fitness and salle MMA) and
+**Minimes** (27 slots). Each export carries the date a human verified it, and the poll
+republishes it without ever pretending to have checked it itself.
 The registry is the only place a club is declared; everything else derives from it —
 detection in a message, retrieval scope, corpus layout, coverage reporting, and the
 "which club do you mean?" question.
@@ -109,6 +117,7 @@ to `https://graph.facebook.com/{version}/{instagram-account-id}/messages`.
 ```text
 knowledge/
   registry/gyms.json     the six clubs and the sources to poll
+  exports/plannings/     season plannings handed over by the club, with their verification date
   source/                curated facts, reviewed by a human
   source/generated/      written by the weekly poll, never by hand
   rules/                 persona and truth controls
@@ -149,6 +158,7 @@ that club's page is never published.
 | Approved, fresh, club-matching evidence | `ANSWER` through the AI composer |
 | Vague message | `CLARIFY` without an AI call |
 | Club-specific question with no club named | `CLARIFY` listing the six clubs |
+| Club named, but no knowledge of that kind for it | `ESCALATE` — a club-wide page never stands in |
 | Evidence exists but is past its freshness budget | `ESCALATE` |
 | Question about a club the corpus does not cover yet | `ESCALATE` |
 | Privatisation, entreprise, cours particulier, stage, certificat — unless the evidence covers it | `ESCALATE` |
@@ -197,8 +207,8 @@ use the exact current API/version/permission configuration Meta shows for the ac
 ## Tests and evals
 
 ```powershell
-npm test          # 50 tests: retrieval, fetching, normalizing, guards, scheduling, end-to-end DMs
-npm run evals     # 15 cases: contrôle / bord / limite, plus D0 anti-drift, no API call
+npm test          # 54 tests: retrieval, fetching, normalizing, guards, scheduling, end-to-end DMs, shipped corpus
+npm run evals     # 20 cases: contrôle / bord / limite, plus D0 anti-drift, no API call
 npm run evals:live  # same cases, composed by the real model, validated as in production
 ```
 
@@ -211,9 +221,13 @@ code stop describing the same world.
 
 - No real Instagram credentials or Meta app configuration are in this workspace, so a
   live end-to-end DM has not been claimed as complete.
-- Only Balma-shaped pages are proven end to end here, against a fixture site. The other
-  five clubs need their real URLs in `knowledge/registry/gyms.json` — until then the
-  Sunday report lists them as `unresolved` and the bot asks the team rather than guessing.
+- Saint-Cyprien, États-Unis and Minimes answer from their real season planning. **Balma,
+  Ramonville and Portet still have none** — their posters have not been handed over yet,
+  and the Sunday poll reports them as `unresolved` until their URLs are confirmed. Until
+  then the bot asks the team for those clubs rather than guessing.
+- Web fetching has never run against the real domains from this workspace (its egress
+  policy blocks them); the first real `npm run knowledge:sync` will say which pages
+  resolve and which need their URL written into the registry.
 - Rate limits and the in-memory index are still per-process; sessions and deduplication
   are durable when `SESSION_STORE=file`. Use shared storage and a queue before running
   more than one instance.

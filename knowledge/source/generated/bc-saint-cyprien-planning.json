@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "id": "bc-saint-cyprien-planning",
+    "title": "Planning SAINT-CYPRIEN",
+    "sourceType": "web",
+    "sourceUrl": null,
+    "visibility": "public",
+    "verificationStatus": "verified_public",
+    "priority": 92,
+    "language": "fr",
+    "effectiveFrom": null,
+    "effectiveUntil": null,
+    "docType": "planning",
+    "gyms": [
+      "saint-cyprien"
+    ],
+    "generated": true,
+    "checkedAt": "2026-09-14T00:00:00.000Z",
+    "capturedAt": "2026-09-14T00:00:00.000Z",
+    "maxAgeDays": 365,
+    "topics": [
+      "SAINT-CYPRIEN",
+      "Boxing Center Saint-Cyprien",
+      "Toulouse",
+      "boxing center saint cyprien",
+      "saint cyprien",
+      "patte d'oie",
+      "st cyprien",
+      "cyprien",
+      "st cyp",
+      "planning",
+      "horaires",
+      "cours",
+      "creneaux",
+      "lundi",
+      "mardi",
+      "mercredi",
+      "jeudi",
+      "vendredi",
+      "samedi",
+      "Boxing Camp",
+      "Cross-training",
+      "Boxe anglaise",
+      "Boxe thaï / K1",
+      "Lady Punch",
+      "Grappling",
+      "Boxe éducative",
+      "Hyrox",
+      "Baby boxe"
+    ],
+    "facts": [
+      {
+        "key": "planning_saint-cyprien_lundi",
+        "value": "12h40–13h20 Boxing Camp | 18h20–19h Boxing Camp | 19h–20h Cross-training | 20h–21h15 Boxe anglaise"
+      },
+      {
+        "key": "planning_saint-cyprien_mardi",
+        "value": "12h40–13h20 Boxe thaï / K1 | 18h20–19h Lady Punch | 19h–20h Grappling | 20h–21h15 Boxe thaï / K1"
+      },
+      {
+        "key": "planning_saint-cyprien_mercredi",
+        "value": "12h40–13h20 Boxe anglaise | 15h–16h Boxe éducative · 7/11 ans | 16h–17h Boxe éducative · 12/16 ans | 17h–18h15 Boxe éducative · compétiteurs | 18h20–19h Hyrox | 19h–20h Cross-training | 20h–21h15 Boxe anglaise"
+      },
+      {
+        "key": "planning_saint-cyprien_jeudi",
+        "value": "12h40–13h20 Boxe thaï / K1 | 18h20–19h Lady Punch | 19h–20h Grappling | 20h–21h15 Boxe thaï / K1"
+      },
+      {
+        "key": "planning_saint-cyprien_vendredi",
+        "value": "12h40–13h20 Boxe anglaise | 18h20–19h Boxing Camp | 19h–20h Boxe thaï / K1 | 20h–21h15 Boxe anglaise"
+      },
+      {
+        "key": "planning_saint-cyprien_samedi",
+        "value": "11h–12h Boxing Camp | 14h15–15h Baby boxe · 3/6 ans | 15h–16h Boxe éducative · 7/11 ans | 16h–17h Boxe éducative · 12/16 ans | 17h–18h15 Boxe éducative · compétiteurs | 18h–20h Boxe thaï / K1"
+      }
+    ]
+  },
+  "content": "Planning SAINT-CYPRIEN — saison 2026/2027\n\nLUNDI : 12h40–13h20 Boxing Camp | 18h20–19h Boxing Camp | 19h–20h Cross-training | 20h–21h15 Boxe anglaise\n\nMARDI : 12h40–13h20 Boxe thaï / K1 | 18h20–19h Lady Punch | 19h–20h Grappling | 20h–21h15 Boxe thaï / K1\n\nMERCREDI : 12h40–13h20 Boxe anglaise | 15h–16h Boxe éducative · 7/11 ans | 16h–17h Boxe éducative · 12/16 ans | 17h–18h15 Boxe éducative · compétiteurs | 18h20–19h Hyrox | 19h–20h Cross-training | 20h–21h15 Boxe anglaise\n\nJEUDI : 12h40–13h20 Boxe thaï / K1 | 18h20–19h Lady Punch | 19h–20h Grappling | 20h–21h15 Boxe thaï / K1\n\nVENDREDI : 12h40–13h20 Boxe anglaise | 18h20–19h Boxing Camp | 19h–20h Boxe thaï / K1 | 20h–21h15 Boxe anglaise\n\nSAMEDI : 11h–12h Boxing Camp | 14h15–15h Baby boxe · 3/6 ans | 15h–16h Boxe éducative · 7/11 ans | 16h–17h Boxe éducative · 12/16 ans | 17h–18h15 Boxe éducative · compétiteurs | 18h–20h Boxe thaï / K1\n\nCase libre = salle ouverte. Accès badge, entraînement libre. Accès libre du lundi au vendredi de 10h à 21h15, samedi de 10h à 21h15 hors créneaux encadrés."
+}

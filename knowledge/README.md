@@ -7,6 +7,7 @@ knowledge/
   source/generated/      documents written by the weekly poll — never edited by hand
   rules/persona.md       tone and conversation design, never retrieved as evidence
   rules/forbidden-claims.json   truth controls applied to every outgoing reply
+  exports/plannings/     season plannings handed over by the club, each with its verification date
   normalized/<gym>/      structured records per club: planning.json, profile.json, offers.json
   metadata/              fetch state, changelog, last report
   raw/                   timestamped snapshots of what each site actually served (ignored by Git)

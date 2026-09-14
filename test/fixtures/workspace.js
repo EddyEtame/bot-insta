@@ -21,6 +21,10 @@ function createWorkspace(env = {}) {
     path.join(PROJECT_KNOWLEDGE, "source", "boxing-center-offer-29.json"),
     path.join(directory, "source", "boxing-center-offer-29.json"),
   );
+  // The real planning exports come along: the bench then measures the corpus that ships,
+  // not a corpus invented for the bench.
+  const exports = path.join(PROJECT_KNOWLEDGE, "exports");
+  if (fs.existsSync(exports)) fs.cpSync(exports, path.join(directory, "exports"), { recursive: true });
   const config = loadConfig({ KNOWLEDGE_BASE_PATH: directory, KNOWLEDGE_SYNC_DELAY_MS: "0", ...env });
   return {
     directory,

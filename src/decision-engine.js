@@ -1,5 +1,7 @@
 "use strict";
 
+const { detectDisciplines } = require("./planning");
+
 const ACTIONS = Object.freeze({
   ANSWER: "ANSWER",
   CLARIFY: "CLARIFY",
@@ -17,6 +19,7 @@ const REASONS = Object.freeze({
   CONFLICT: "Conflicting approved knowledge",
   NEEDS_GYM: "The answer differs per club and no club was named",
   TOPIC_NOT_COVERED: "The request is outside what the approved corpus covers",
+  MISSING_FOR_GYM: "No approved knowledge of that kind for the club the customer named",
 });
 
 function isFrench(text) {
@@ -64,6 +67,8 @@ function classify(text) {
   // Naming a day in a club DM is a schedule question, whatever the verb around it.
   if (/(planning|horaire|creneau|quel jour|quels jours|cours de|seance|entrainement|schedule|timetable|a quelle heure)/i.test(plain)) return "planning_question";
   if (/\b(lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|week ?end|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(plain)) return "planning_question";
+  // "Vous avez du jiu-jitsu ?" asks what is on the planning, whatever words surround it.
+  if (detectDisciplines(normalized).length) return "planning_question";
   if (/(adresse|\bou est\b|\bou se trouve\b|\bou sont\b|\bc est ou\b|\bvous etes ou\b|acces|parking|metro|comment venir|where is|address|located|itineraire)/i.test(plain)) return "location_question";
   if (/(prix|tarif|coût|combien|price|cost|offre|abonnement|cours|horaire|salle|team building|inscription|register|membership|booking)/i.test(normalized)) return "business_question";
   return "unknown";
@@ -126,6 +131,10 @@ function createDecisionEngine({ registry = null } = {}) {
         return { ...base, action: ACTIONS.ESCALATE, reply: copy.escalation, reason: REASONS.NO_EVIDENCE };
       }
       if (retrieval.conflicts?.length) return { ...base, action: ACTIONS.ESCALATE, reply: copy.escalation, reason: REASONS.CONFLICT };
+      if (retrieval.missingForGym?.length) {
+        const missing = retrieval.missingForGym[0];
+        return { ...base, action: ACTIONS.ESCALATE, reply: copy.escalation, reason: `${REASONS.MISSING_FOR_GYM} (${missing.gymId}/${missing.docType})` };
+      }
       // Privatisation, entreprise, cours particulier: quoting the standard price here is a wrong answer.
       const specialTopic = detectSpecialTopic(String(text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
       if (specialTopic && !evidenceCoversTopic(retrieval, specialTopic)) {

@@ -9,13 +9,20 @@ const { containsPhrase, flatten } = require("./text");
  */
 const DISCIPLINE_SYNONYMS = Object.freeze({
   "boxe-anglaise": ["boxe anglaise", "anglaise", "english boxing", "noble art"],
-  "boxe-thai": ["boxe thai", "thai", "muay thai", "k1", "k 1", "kick boxing", "kickboxing", "boxe pieds poings"],
+  "boxe-thai": ["boxe thai", "thai", "muay thai", "k1", "k 1", "kick boxing", "kickboxing", "boxe pieds poings", "pieds poings"],
   mma: ["mma", "free fight", "cage", "arts martiaux mixtes"],
-  grappling: ["grappling", "lutte", "jjb", "jiu jitsu", "sol", "no gi"],
+  jjb: ["jiu jitsu bresilien", "jiu jitsu", "jujitsu", "jjb", "bjj"],
+  grappling: ["grappling", "lutte", "no gi", "combat au sol"],
   "cross-training": ["cross training", "crosstraining", "cross fit", "renfo", "renforcement", "prepa physique", "preparation physique"],
   hyrox: ["hyrox"],
-  "boxing-fitness": ["boxing fitness", "fitness", "lady punch", "cardio boxe", "cardio boxing", "sac de frappe"],
-  "boxe-educative": ["boxe educative", "educative", "enfant", "enfants", "kids", "ados", "adolescent", "jeunes"],
+  "boxing-hiit": ["boxing hiit", "hiit"],
+  "boxing-camp": ["boxing camp"],
+  "boxing-fitness": ["boxing fitness", "fitness", "lady punch", "boxing lady", "cardio boxe", "cardio boxing", "sac de frappe"],
+  // Audience words (enfants, ados, kids…) live in AUDIENCE_PATTERNS, not here:
+  // "Asso MMA enfants" is an MMA class, not a boxe éducative class.
+  "boxe-educative": ["boxe educative", "educative", "baby boxe"],
+  sparring: ["open sparring", "sparring"],
+  competition: ["boxe competiteurs", "competiteurs", "competiteur"],
 });
 
 const AUDIENCE_PATTERNS = Object.freeze([
@@ -79,7 +86,7 @@ function normalizeSession(raw) {
 }
 
 function sessionKey(session) {
-  return [session.dayIndex, session.start, flatten(session.discipline), flatten(session.audience || "")].join("|");
+  return [session.dayIndex, session.start, flatten(session.discipline), flatten(session.audience || ""), flatten(session.room || "")].join("|");
 }
 
 function sortSessions(sessions) {
@@ -149,9 +156,13 @@ function filterSessions(sessions, { days = [], disciplines = [], audiences = [] 
 
 function renderSession(session) {
   const time = session.end ? `${displayTime(session.start)}–${displayTime(session.end)}` : displayTime(session.start);
-  const details = [session.discipline, session.audience, session.level, session.coach ? `avec ${session.coach}` : null]
-    .filter(Boolean)
-    .join(" · ");
+  const details = [
+    session.discipline,
+    session.audience,
+    session.level,
+    session.room ? `salle ${session.room}` : null,
+    session.coach ? `avec ${session.coach}` : null,
+  ].filter(Boolean).join(" · ");
   return `${time} ${details}`;
 }
 
@@ -159,19 +170,17 @@ function renderSession(session) {
 function renderPlanning(planning, { gymLabel, days = [], disciplines = [], audiences = [], maxDays = 7 } = {}) {
   const selected = filterSessions(planning.sessions, { days, disciplines, audiences });
   if (!selected.length) return "";
-  const lines = [];
   const header = [gymLabel || planning.gymId, planning.season ? `saison ${planning.season}` : null].filter(Boolean).join(" — ");
-  lines.push(`Planning ${header}`);
   const byDay = new Map();
   for (const session of sortSessions(selected)) {
     if (!byDay.has(session.day)) byDay.set(session.day, []);
     byDay.get(session.day).push(session);
   }
-  for (const [day, daySessions] of [...byDay.entries()].slice(0, maxDays)) {
-    lines.push(`${day.toUpperCase()} : ${daySessions.map(renderSession).join(" | ")}`);
-  }
-  for (const note of planning.notes) lines.push(note);
-  return lines.join("\n");
+  const dayBlocks = [...byDay.entries()].slice(0, maxDays)
+    .map(([day, daySessions]) => `${day.toUpperCase()} : ${daySessions.map(renderSession).join(" | ")}`);
+  // One paragraph per day: a six-day planning is then retrieved and quoted day by day
+  // instead of arriving as one block too large to fit in a DM.
+  return [`Planning ${header}`, ...dayBlocks, planning.notes.join(" ")].filter(Boolean).join("\n\n");
 }
 
 /** One fact per gym+day, so two gyms claiming different Tuesday schedules cannot silently merge. */

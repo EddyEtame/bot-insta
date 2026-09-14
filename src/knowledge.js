@@ -93,6 +93,7 @@ function splitIntoChunks(document) {
     }
     current = `${current}${current ? "\n\n" : ""}${paragraph}`;
   }
+  if (current) groups.push(current);
   return (groups.length ? groups : [document.content]).map((content, index) => ({
     ...document,
     chunkId: `${document.id}:${index + 1}`,
@@ -138,11 +139,13 @@ function analyzeQuery(text, registry) {
 /** Keeps the header, the requested days and the closing notes: a DM should not carry a full week. */
 function focusPlanningContent(content, days) {
   if (!days.length) return content;
-  const lines = content.split("\n");
   const dayLabels = new Set(days.map((day) => dayById(day)?.fr.toUpperCase()).filter(Boolean));
   const isDayLine = (line) => DAYS.some((day) => line.toUpperCase().startsWith(`${day.fr.toUpperCase()} :`));
-  const kept = lines.filter((line, index) => index === 0 || !isDayLine(line) || [...dayLabels].some((label) => line.toUpperCase().startsWith(`${label} :`)));
-  return kept.some(isDayLine) ? kept.join("\n") : content;
+  const lines = content.split("\n");
+  const kept = lines.filter((line, index) =>
+    index === 0 || !isDayLine(line) || [...dayLabels].some((label) => line.toUpperCase().startsWith(`${label} :`)));
+  if (!kept.some(isDayLine)) return content;
+  return kept.join("\n").replace(/\n{3,}/g, "\n\n").trim();
 }
 
 class KnowledgeBase {
@@ -232,6 +235,17 @@ class KnowledgeBase {
       && (analysis.wantsPlanning || analysis.wantsProfile)
       && gymSpecificDocs.size > 1;
 
+    /**
+     * A club-wide document is not an answer to a club-specific question: the offer page
+     * must never stand in for the planning of a club the corpus does not cover yet.
+     */
+    const askedDocTypes = analysis.docTypes.filter((docType) => docType !== "offer");
+    const missingForGym = analysis.gymIds.length
+      ? askedDocTypes
+        .filter((docType) => !selected.some((chunk) => chunk.docType === docType && (chunk.gyms || []).some((gymId) => analysis.gymIds.includes(gymId))))
+        .map((docType) => ({ gymId: analysis.gymIds[0], docType }))
+      : [];
+
     return {
       query,
       analysis,
@@ -243,6 +257,7 @@ class KnowledgeBase {
       staleSources: stale,
       wrongGymSources: [...new Set(wrongGym)],
       needsGym,
+      missingForGym,
     };
   }
 

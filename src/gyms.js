@@ -39,6 +39,12 @@ function normalizeSource(raw, { gymId = null, errors, index }) {
     file: raw?.file ? String(raw.file) : null,
     candidates,
     required: raw?.required === true,
+    // Per-source overrides: a season planning handed over as a file does not expire
+    // on the same clock as a web page that can change silently.
+    maxAgeDays: Number.isFinite(Number(raw?.maxAgeDays)) ? Number(raw.maxAgeDays) : null,
+    effectiveFrom: raw?.effectiveFrom ? String(raw.effectiveFrom) : null,
+    effectiveUntil: raw?.effectiveUntil ? String(raw.effectiveUntil) : null,
+    label: raw?.label ? String(raw.label) : null,
   };
 }
 

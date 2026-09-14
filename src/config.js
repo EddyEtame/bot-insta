@@ -99,7 +99,11 @@ function loadConfig(env = process.env) {
       maxRetries: readNumber("KNOWLEDGE_SYNC_RETRIES", env.KNOWLEDGE_SYNC_RETRIES, 2, { min: 0, max: 5 }),
       keepSnapshots: readNumber("KNOWLEDGE_SYNC_KEEP_SNAPSHOTS", env.KNOWLEDGE_SYNC_KEEP_SNAPSHOTS, 6, { min: 1, max: 100 }),
       probeCooldownDays: readNumber("KNOWLEDGE_SYNC_PROBE_COOLDOWN_DAYS", env.KNOWLEDGE_SYNC_PROBE_COOLDOWN_DAYS, 14, { min: 0, max: 365 }),
-      planningExportPath: env.BC_PLANNINGS_PATH ? resolveProjectPath(String(env.BC_PLANNINGS_PATH).trim(), appRoot) : null,
+      // Defaults to the exports folder inside the corpus, so a planning handed over as a
+      // file is ingested with no configuration at all.
+      planningExportPath: env.BC_PLANNINGS_PATH
+        ? resolveProjectPath(String(env.BC_PLANNINGS_PATH).trim(), appRoot)
+        : path.join(knowledgeBasePath, "exports"),
     },
     freshness: {
       planning: readNumber("KNOWLEDGE_MAX_AGE_PLANNING_DAYS", env.KNOWLEDGE_MAX_AGE_PLANNING_DAYS, 10, { min: 1, max: 365 }),

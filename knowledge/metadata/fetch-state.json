@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "sources": {
+    "saint-cyprien-planning": {
+      "etag": null,
+      "lastModified": null,
+      "contentHash": "804b67bf5f61542c759d4942ca554e4a26108c60e02a0166f5d5c973094b50bd",
+      "lastCheckedAt": "2026-09-14T15:51:12.315Z",
+      "lastChangedAt": "2026-09-14T15:51:12.315Z",
+      "lastStatus": "updated",
+      "resolvedUrl": null,
+      "resolvedAt": "2026-09-14T15:51:12.315Z",
+      "probeCooldownUntil": null,
+      "documentId": "bc-saint-cyprien-planning",
+      "failures": 0,
+      "lastError": null
+    },
+    "etats-unis-planning": {
+      "etag": null,
+      "lastModified": null,
+      "contentHash": "c17956ed9d667eeb3e5e82d14e6e329b1f770b881bae3b2d4e03ea034da4c156",
+      "lastCheckedAt": "2026-09-14T15:51:12.315Z",
+      "lastChangedAt": "2026-09-14T15:51:12.315Z",
+      "lastStatus": "updated",
+      "resolvedUrl": null,
+      "resolvedAt": "2026-09-14T15:51:12.315Z",
+      "probeCooldownUntil": null,
+      "documentId": "bc-etats-unis-planning",
+      "failures": 0,
+      "lastError": null
+    },
+    "minimes-planning": {
+      "etag": null,
+      "lastModified": null,
+      "contentHash": "0017feca20c022d739adc3b26dc70f965dec68d8ec56c215aa8fee3d77829fc1",
+      "lastCheckedAt": "2026-09-14T15:51:12.315Z",
+      "lastChangedAt": "2026-09-14T15:51:12.315Z",
+      "lastStatus": "updated",
+      "resolvedUrl": null,
+      "resolvedAt": "2026-09-14T15:51:12.315Z",
+      "probeCooldownUntil": null,
+      "documentId": "bc-minimes-planning",
+      "failures": 0,
+      "lastError": null
+    }
+  }
+}

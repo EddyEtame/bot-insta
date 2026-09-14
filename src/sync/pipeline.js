@@ -162,7 +162,19 @@ function createPipeline({ config, registry, http, robots, store, logger = { log(
     const target = path.resolve(root, source.file);
     if (!target.startsWith(path.resolve(root))) throw new Error(`File source escapes the export directory: ${source.file}`);
     if (!fs.existsSync(target)) return null;
-    return { body: fs.readFileSync(target, "utf8"), url: `file://${target}` };
+    // The check date of a handed-over planning is the day a human last verified it —
+    // never the day the poll ran, because a file cannot verify itself. The file says so
+    // itself through `verifiedAt`; its modification time is only the fallback, and a
+    // fresh clone would otherwise make every export look checked today.
+    const body = fs.readFileSync(target, "utf8");
+    let verifiedAt = null;
+    try {
+      const declared = JSON.parse(body)?.verifiedAt;
+      if (declared && Number.isFinite(Date.parse(declared))) verifiedAt = new Date(declared).toISOString();
+    } catch {
+      verifiedAt = null;
+    }
+    return { body, url: `file://${target}`, checkedAt: verifiedAt || fs.statSync(target).mtime.toISOString() };
   }
 
   function normalizeBody({ source, gym, body, url }) {
@@ -197,16 +209,24 @@ function createPipeline({ config, registry, http, robots, store, logger = { log(
     };
   }
 
+  /** Club-wide pages are documented per source, so two of them never overwrite each other. */
+  function documentIdFor(source, gym) {
+    return gym ? `bc-${gym.id}-${source.docType}` : `bc-${source.id.replace(/[^a-z0-9-]+/gi, "-").toLowerCase()}`;
+  }
+
   function buildDocument({ source, gym, record, checkedAt, capturedAt, url }) {
-    const maxAgeDays = config.freshness[source.docType] ?? 30;
     const isOfficial = url.startsWith("file://") || isHostAllowed(url, officialHosts);
     const shared = {
       gym: gym || clubPseudoGym(),
-      sourceUrl: url.startsWith("file://") ? null : url,
+      sourceUrl: source.url && url.startsWith("file://") ? source.url : (url.startsWith("file://") ? null : url),
       checkedAt,
       capturedAt,
-      maxAgeDays,
-      // Only the club's own domains publish straight into the answering corpus.
+      documentId: documentIdFor(source, gym),
+      effectiveFrom: source.effectiveFrom,
+      effectiveUntil: source.effectiveUntil,
+      maxAgeDays: source.maxAgeDays ?? config.freshness[source.docType] ?? 30,
+      // Only the club's own domains, and plannings handed over by the club, publish
+      // straight into the answering corpus.
       verificationStatus: isOfficial ? "verified_public" : "pending_review",
     };
     if (source.docType === "planning") return buildPlanningDocument({ ...shared, planning: record });
@@ -222,7 +242,7 @@ function createPipeline({ config, registry, http, robots, store, logger = { log(
 
   async function syncSource(source, { state, now, dryRun, force = false }) {
     const gym = source.gymId ? registry.get(source.gymId) : null;
-    const scope = gym?.id || "club";
+    const scope = gym?.id || `club/${source.id}`;
     const sourceState = state.sources[source.id] || {};
     const result = { sourceId: source.id, gymId: source.gymId, docType: source.docType, status: STATUS.SKIPPED, url: null, changes: null, error: null };
     const checkedAt = now.toISOString();
@@ -230,6 +250,7 @@ function createPipeline({ config, registry, http, robots, store, logger = { log(
     let body = null;
     let url = sourceState.resolvedUrl || source.url || null;
     let headers = {};
+    let fileCheckedAt = null;
 
     if (source.kind === "file") {
       const file = readFileSource(source);
@@ -240,6 +261,7 @@ function createPipeline({ config, registry, http, robots, store, logger = { log(
       }
       body = file.body;
       url = file.url;
+      fileCheckedAt = file.checkedAt;
     } else {
       const cooldownActive = sourceState.probeCooldownUntil && Date.parse(sourceState.probeCooldownUntil) > now.getTime();
       if (!url && cooldownActive && !force) {
@@ -332,8 +354,9 @@ function createPipeline({ config, registry, http, robots, store, logger = { log(
       return { result, sourceState };
     }
 
+    const verifiedAt = fileCheckedAt || checkedAt;
     const previous = store.readNormalized(scope, source.docType);
-    const document = buildDocument({ source, gym, record, checkedAt, capturedAt: checkedAt, url });
+    const document = buildDocument({ source, gym, record, checkedAt: verifiedAt, capturedAt: verifiedAt, url });
     if (!document) {
       sourceState.lastCheckedAt = checkedAt;
       sourceState.lastStatus = STATUS.EMPTY;
@@ -352,7 +375,8 @@ function createPipeline({ config, registry, http, robots, store, logger = { log(
         ...record,
         sourceId: source.id,
         sourceUrl: url,
-        checkedAt,
+        checkedAt: verifiedAt,
+        polledAt: checkedAt,
         contentHash,
       });
       store.writeSourceDocument(document);

@@ -72,6 +72,13 @@ lui-même (`KNOWLEDGE_SYNC_ENABLED=true`), GitHub Actions
 (`.github/workflows/releve-dimanche.yml`), ou le Planificateur de tâches Windows.
 Manuel : `npm run knowledge:sync`. Détail complet : `docs/KNOWLEDGE_SYNC.md`.
 
+**Les plannings de saison transmis à la main** vivent dans `knowledge/exports/plannings/`
+(un fichier par salle, `verifiedAt` = le jour où un humain l'a vérifié, `maxAgeDays` 365 sur
+la source du registre). Saint-Cyprien, États-Unis (trois espaces) et Minimes y sont déjà,
+transcrits de ses affiches 2026-2027. Pour en ajouter un : déposer le fichier, pointer la
+source du registre dessus en `kind: "file"`, relancer `npm run knowledge:sync`. Les tests
+refusent un export dont un créneau ne survit pas à la normalisation.
+
 **Quand une salle manque au rapport (`unresolved`)**, il n'y a rien à deviner : mettre
 l'URL réelle dans `knowledge/registry/gyms.json` (et le domaine dans `hostAllowlist` si la
 salle a son propre site). Tant que ce n'est pas fait, le bot demande à l'équipe plutôt que

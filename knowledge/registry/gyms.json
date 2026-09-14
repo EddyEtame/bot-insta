@@ -6,8 +6,12 @@
     "area": "Toulouse et agglomération",
     "gymCount": 6,
     "sites": {
-      "principal": "https://www.boxingcenter.fr",
-      "boutique": "https://boutique.boxingcenter.fr"
+      "principal": "https://boxingcenter.fr",
+      "boutique": "https://boutique.boxingcenter.fr",
+      "portet": "https://boxing-center-portet.fr/",
+      "boxe": "https://club-boxe-toulouse.com/",
+      "mma": "https://mmatoulouse.com/",
+      "mma_club": "https://clubmma.fr/"
     },
     "disciplines": [
       "Boxe anglaise",
@@ -28,7 +32,15 @@
   "hostAllowlist": [
     "boxingcenter.fr",
     "www.boxingcenter.fr",
-    "boutique.boxingcenter.fr"
+    "boutique.boxingcenter.fr",
+    "boxing-center-portet.fr",
+    "www.boxing-center-portet.fr",
+    "club-boxe-toulouse.com",
+    "www.club-boxe-toulouse.com",
+    "mmatoulouse.com",
+    "www.mmatoulouse.com",
+    "clubmma.fr",
+    "www.clubmma.fr"
   ],
   "gyms": [
     {
@@ -36,7 +48,13 @@
       "displayName": "BALMA",
       "name": "Boxing Center Balma",
       "commune": "Balma",
-      "aliases": ["balma", "balmas", "salle de balma", "boxing center balma", "gramont"],
+      "aliases": [
+        "balma",
+        "balmas",
+        "salle de balma",
+        "boxing center balma",
+        "gramont"
+      ],
       "status": "active",
       "repo": null,
       "sources": [
@@ -70,7 +88,15 @@
       "displayName": "SAINT-CYPRIEN",
       "name": "Boxing Center Saint-Cyprien",
       "commune": "Toulouse",
-      "aliases": ["saint-cyprien", "saint cyprien", "st cyprien", "st-cyprien", "st cyp", "cyprien", "patte d'oie"],
+      "aliases": [
+        "saint-cyprien",
+        "saint cyprien",
+        "st cyprien",
+        "st-cyprien",
+        "st cyp",
+        "cyprien",
+        "patte d'oie"
+      ],
       "status": "active",
       "repo": "bc-st-cyprien",
       "sources": [
@@ -83,19 +109,19 @@
             "https://www.boxingcenter.fr/salles/saint-cyprien",
             "https://www.boxingcenter.fr/salle/saint-cyprien",
             "https://www.boxingcenter.fr/nos-salles/saint-cyprien",
-            "https://www.boxingcenter.fr/saint-cyprien"
+            "https://www.boxingcenter.fr/saint-cyprien",
+            "https://club-boxe-toulouse.com/"
           ]
         },
         {
           "id": "saint-cyprien-planning",
           "docType": "planning",
-          "kind": "url",
+          "kind": "file",
           "url": null,
-          "candidates": [
-            "https://www.boxingcenter.fr/salles/saint-cyprien/planning",
-            "https://www.boxingcenter.fr/planning/saint-cyprien",
-            "https://www.boxingcenter.fr/planning-saint-cyprien"
-          ]
+          "candidates": [],
+          "file": "plannings/saint-cyprien.json",
+          "label": "Planning officiel saison 2026-2027 (saint-cyprien)",
+          "maxAgeDays": 365
         }
       ]
     },
@@ -104,7 +130,15 @@
       "displayName": "ÉTATS-UNIS",
       "name": "Boxing Center États-Unis",
       "commune": "Toulouse",
-      "aliases": ["etats-unis", "états-unis", "etats unis", "états unis", "avenue des etats-unis", "avenue des états-unis", "usa"],
+      "aliases": [
+        "etats-unis",
+        "états-unis",
+        "etats unis",
+        "états unis",
+        "avenue des etats-unis",
+        "avenue des états-unis",
+        "usa"
+      ],
       "status": "active",
       "repo": null,
       "sources": [
@@ -117,19 +151,21 @@
             "https://www.boxingcenter.fr/salles/etats-unis",
             "https://www.boxingcenter.fr/salle/etats-unis",
             "https://www.boxingcenter.fr/nos-salles/etats-unis",
-            "https://www.boxingcenter.fr/etats-unis"
+            "https://www.boxingcenter.fr/etats-unis",
+            "https://mmatoulouse.com/",
+            "https://clubmma.fr/",
+            "https://club-boxe-toulouse.com/"
           ]
         },
         {
           "id": "etats-unis-planning",
           "docType": "planning",
-          "kind": "url",
+          "kind": "file",
           "url": null,
-          "candidates": [
-            "https://www.boxingcenter.fr/salles/etats-unis/planning",
-            "https://www.boxingcenter.fr/planning/etats-unis",
-            "https://www.boxingcenter.fr/planning-etats-unis"
-          ]
+          "candidates": [],
+          "file": "plannings/etats-unis.json",
+          "label": "Planning officiel saison 2026-2027 (etats-unis)",
+          "maxAgeDays": 365
         }
       ]
     },
@@ -138,7 +174,12 @@
       "displayName": "MINIMES",
       "name": "Boxing Center Minimes",
       "commune": "Toulouse",
-      "aliases": ["minimes", "les minimes", "salle des minimes", "barriere de paris"],
+      "aliases": [
+        "minimes",
+        "les minimes",
+        "salle des minimes",
+        "barriere de paris"
+      ],
       "status": "active",
       "repo": "bc-minimes",
       "sources": [
@@ -151,19 +192,19 @@
             "https://www.boxingcenter.fr/salles/minimes",
             "https://www.boxingcenter.fr/salle/minimes",
             "https://www.boxingcenter.fr/nos-salles/minimes",
-            "https://www.boxingcenter.fr/minimes"
+            "https://www.boxingcenter.fr/minimes",
+            "https://club-boxe-toulouse.com/"
           ]
         },
         {
           "id": "minimes-planning",
           "docType": "planning",
-          "kind": "url",
+          "kind": "file",
           "url": null,
-          "candidates": [
-            "https://www.boxingcenter.fr/salles/minimes/planning",
-            "https://www.boxingcenter.fr/planning/minimes",
-            "https://www.boxingcenter.fr/planning-minimes"
-          ]
+          "candidates": [],
+          "file": "plannings/minimes.json",
+          "label": "Planning officiel saison 2026-2027 (minimes)",
+          "maxAgeDays": 365
         }
       ]
     },
@@ -172,7 +213,12 @@
       "displayName": "RAMONVILLE",
       "name": "Boxing Center Ramonville",
       "commune": "Ramonville-Saint-Agne",
-      "aliases": ["ramonville", "ramonville-saint-agne", "ramonville saint agne", "ramonville st agne"],
+      "aliases": [
+        "ramonville",
+        "ramonville-saint-agne",
+        "ramonville saint agne",
+        "ramonville st agne"
+      ],
       "status": "active",
       "repo": "bc-ramonville",
       "sources": [
@@ -206,7 +252,12 @@
       "displayName": "PORTET",
       "name": "Boxing Center Portet",
       "commune": "Portet-sur-Garonne",
-      "aliases": ["portet", "portet-sur-garonne", "portet sur garonne", "route d'espagne"],
+      "aliases": [
+        "portet",
+        "portet-sur-garonne",
+        "portet sur garonne",
+        "route d'espagne"
+      ],
       "status": "active",
       "repo": "boxing-center-portet",
       "sources": [
@@ -219,7 +270,9 @@
             "https://www.boxingcenter.fr/salles/portet",
             "https://www.boxingcenter.fr/salle/portet",
             "https://www.boxingcenter.fr/nos-salles/portet",
-            "https://www.boxingcenter.fr/portet"
+            "https://www.boxingcenter.fr/portet",
+            "https://boxing-center-portet.fr/",
+            "https://boxing-center-portet.fr/la-salle"
           ]
         },
         {
@@ -230,7 +283,10 @@
           "candidates": [
             "https://www.boxingcenter.fr/salles/portet/planning",
             "https://www.boxingcenter.fr/planning/portet",
-            "https://www.boxingcenter.fr/planning-portet"
+            "https://www.boxingcenter.fr/planning-portet",
+            "https://boxing-center-portet.fr/planning",
+            "https://boxing-center-portet.fr/le-planning",
+            "https://boxing-center-portet.fr/plannings"
           ]
         }
       ]
@@ -249,7 +305,10 @@
       "docType": "profile",
       "kind": "url",
       "url": "https://www.boxingcenter.fr/",
-      "candidates": []
+      "candidates": [
+        "https://boxingcenter.fr/",
+        "https://www.boxingcenter.fr/"
+      ]
     }
   ]
 }
