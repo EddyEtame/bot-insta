@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "id": "bc-portet-planning",
+    "title": "Planning PORTET",
+    "sourceType": "web",
+    "sourceUrl": null,
+    "visibility": "public",
+    "verificationStatus": "verified_public",
+    "priority": 92,
+    "language": "fr",
+    "effectiveFrom": null,
+    "effectiveUntil": null,
+    "docType": "planning",
+    "gyms": [
+      "portet"
+    ],
+    "generated": true,
+    "checkedAt": "2026-09-14T00:00:00.000Z",
+    "capturedAt": "2026-09-14T00:00:00.000Z",
+    "maxAgeDays": 365,
+    "topics": [
+      "PORTET",
+      "Boxing Center Portet",
+      "Portet-sur-Garonne",
+      "boxing center portet",
+      "portet sur garonne",
+      "route d'espagne",
+      "portet",
+      "planning",
+      "horaires",
+      "cours",
+      "creneaux",
+      "lundi",
+      "mardi",
+      "mercredi",
+      "jeudi",
+      "vendredi",
+      "samedi",
+      "Boxe anglaise",
+      "Boxe éducative",
+      "Boxe anglaise amateurs et pros",
+      "Préparation physique",
+      "Lady Kick",
+      "Kick / K1",
+      "Kick",
+      "Boxing Lady",
+      "Sparring boxe anglaise et kick",
+      "Boxe française",
+      "Baby boxe"
+    ],
+    "facts": [
+      {
+        "key": "planning_portet_lundi",
+        "value": "12h30–13h30 Boxe anglaise | 18h–19h Boxe éducative · confirmés | 19h–21h30 Boxe anglaise amateurs et pros"
+      },
+      {
+        "key": "planning_portet_mardi",
+        "value": "12h30–13h30 Préparation physique | 16h–17h Boxe anglaise · loisirs | 18h–19h Lady Kick | 19h–20h Kick / K1 | 20h–21h30 Boxe anglaise · loisirs"
+      },
+      {
+        "key": "planning_portet_mercredi",
+        "value": "12h30–13h30 Kick / K1 | 14h–15h Kick · enfants | 15h–16h Kick · ados | 16h–17h Boxe éducative · 7/11 ans | 17h–18h Boxe éducative · 12/16 ans | 18h–19h Boxing Lady | 19h–20h Préparation physique | 20h–21h30 Kick / K1"
+      },
+      {
+        "key": "planning_portet_jeudi",
+        "value": "12h30–13h30 Boxe anglaise | 18h–19h Lady Kick | 19h–20h Kick / K1 | 20h–21h30 Boxe anglaise · loisirs"
+      },
+      {
+        "key": "planning_portet_vendredi",
+        "value": "12h30–13h30 Sparring boxe anglaise et kick | 18h–19h Boxe anglaise amateurs et pros | 19h–21h30 Sparring boxe anglaise et kick"
+      },
+      {
+        "key": "planning_portet_samedi",
+        "value": "10h–11h Boxe française | 10h–11h Kick · enfants | 11h–12h Kick · ados | 11h–12h Préparation physique | 12h30–13h30 Boxe anglaise | 15h–16h Baby boxe · 4/6 ans | 16h–17h Boxe éducative · 7/11 ans | 17h–18h Boxe éducative · 12/16 ans"
+      }
+    ]
+  },
+  "content": "Planning PORTET — saison 2026/2027\n\nLUNDI : 12h30–13h30 Boxe anglaise | 18h–19h Boxe éducative · confirmés | 19h–21h30 Boxe anglaise amateurs et pros\n\nMARDI : 12h30–13h30 Préparation physique | 16h–17h Boxe anglaise · loisirs | 18h–19h Lady Kick | 19h–20h Kick / K1 | 20h–21h30 Boxe anglaise · loisirs\n\nMERCREDI : 12h30–13h30 Kick / K1 | 14h–15h Kick · enfants | 15h–16h Kick · ados | 16h–17h Boxe éducative · 7/11 ans | 17h–18h Boxe éducative · 12/16 ans | 18h–19h Boxing Lady | 19h–20h Préparation physique | 20h–21h30 Kick / K1\n\nJEUDI : 12h30–13h30 Boxe anglaise | 18h–19h Lady Kick | 19h–20h Kick / K1 | 20h–21h30 Boxe anglaise · loisirs\n\nVENDREDI : 12h30–13h30 Sparring boxe anglaise et kick | 18h–19h Boxe anglaise amateurs et pros | 19h–21h30 Sparring boxe anglaise et kick\n\nSAMEDI : 10h–11h Boxe française | 10h–11h Kick · enfants | 11h–12h Kick · ados | 11h–12h Préparation physique | 12h30–13h30 Boxe anglaise | 15h–16h Baby boxe · 4/6 ans | 16h–17h Boxe éducative · 7/11 ans | 17h–18h Boxe éducative · 12/16 ans\n\nPlanning provisoire. Case libre = salle ouverte. Accès badge, entraînement libre."
+}

@@ -2,7 +2,7 @@
 
 ```text
 knowledge/
-  registry/gyms.json     the six clubs: ids, aliases, hosts, and the sources to poll
+  registry/gyms.json     the open clubs: ids, aliases, hosts, and the sources to poll
   source/                curated business facts, reviewed by a human
   source/generated/      documents written by the weekly poll — never edited by hand
   rules/persona.md       tone and conversation design, never retrieved as evidence

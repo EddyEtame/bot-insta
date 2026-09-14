@@ -25,6 +25,16 @@ function readNumber(name, value, fallback, { min = 0, max = Number.MAX_SAFE_INTE
   return parsed;
 }
 
+/**
+ * A number when one is really there, null otherwise. `Number(null)` is 0, and a 0-day
+ * freshness budget silently makes every document stale — so absence must stay absence.
+ */
+function optionalNumber(value) {
+  if (value === null || value === undefined || value === "") return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
 function readList(value) {
   return String(value || "").split(",").map((item) => item.trim().toLowerCase()).filter(Boolean);
 }
@@ -118,4 +128,4 @@ function loadConfig(env = process.env) {
   return config;
 }
 
-module.exports = { DAY_IDS, loadConfig, readBoolean, readList, readNumber, readWeekday, requiredValues };
+module.exports = { DAY_IDS, loadConfig, optionalNumber, readBoolean, readList, readNumber, readWeekday, requiredValues };

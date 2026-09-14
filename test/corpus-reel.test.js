@@ -28,7 +28,7 @@ function exportFiles() {
 test("every handed-over planning is complete, dated, and belongs to a club in the registry", () => {
   const registry = loadGymRegistry(config);
   const files = exportFiles();
-  assert.ok(files.length >= 3, "the season plannings should be in knowledge/exports/plannings");
+  assert.ok(files.length >= 5, "every open club needs its season planning in knowledge/exports/plannings");
 
   for (const file of files) {
     const raw = JSON.parse(fs.readFileSync(path.join(EXPORTS, file), "utf8"));
@@ -76,7 +76,7 @@ test("the shipped corpus exposes those plannings, checked on the day a human ver
 test("the shipped corpus passes its own build controls", () => {
   const result = checkCorpus({ config });
   assert.deepEqual(result.failures, []);
-  assert.ok(result.status.gymsWithPlanning >= 3, "at least three clubs should have a published planning");
+  assert.equal(result.status.gymsWithPlanning, result.status.gymCount, "every open club should have a published planning");
 });
 
 test("a club-specific question is answered from that club, or handed over — never from a club-wide page", () => {
@@ -93,7 +93,7 @@ test("a club-specific question is answered from that club, or handed over — ne
   assert.equal(etatsUnis.sources[0], "bc-etats-unis-planning");
   assert.match(etatsUnis.chunks.map((chunk) => chunk.content).join("\n"), /Jiu-jitsu brésilien/);
 
-  // Balma has no planning in the corpus yet: the offer page must not stand in for one.
-  const balma = knowledge.retrieve("c'est quoi le planning du mardi à Balma ?", { now });
-  assert.deepEqual(balma.missingForGym, [{ gymId: "balma", docType: "planning" }]);
+  // No club has its practical sheet yet: the offer page must not stand in for an address.
+  const address = knowledge.retrieve("c'est quoi l'adresse de la salle des Minimes ?", { now });
+  assert.deepEqual(address.missingForGym, [{ gymId: "minimes", docType: "profile" }]);
 });

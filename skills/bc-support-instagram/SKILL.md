@@ -21,16 +21,18 @@ il compose une réponse déjà autorisée à partir de preuves déjà retrouvée
 
 ## Ce que le bot sait, et d'où il le sait
 
-`knowledge/registry/gyms.json` est le seul endroit où une salle existe : Balma,
-Saint-Cyprien, États-Unis, Minimes, Ramonville, Portet — orthographe officielle, alias
-tels que les clients les écrivent (`st cyp`, `portet sur garonne`, `route d'espagne`), et
-les sources à relever pour chacune. Tout en découle : la détection dans un message, la
+`knowledge/registry/gyms.json` est le seul endroit où une salle existe : Saint-Cyprien,
+États-Unis, Minimes, Ramonville, Portet — orthographe officielle, alias tels que les
+clients les écrivent (`st cyp`, `portet sur garonne`, `route d'espagne`), et les sources à
+relever pour chacune. **Une salle fermée sort du registre** (Balma, septembre 2026) : le
+nom cesse d'être reconnu, et la question redevient « quelle salle ? » au lieu d'emprunter
+le planning d'une autre. Tout en découle : la détection dans un message, la
 portée de la recherche, la structure du corpus, la question « quelle salle ? », le rapport
 de couverture.
 
 Règle dure, jamais un simple classement : **le planning d'une salle ne répond jamais pour
 une autre.** Une question qui nomme Ramonville et ne trouve rien pour Ramonville part à
-l'équipe ; elle n'emprunte pas la réponse de Balma.
+l'équipe ; elle n'emprunte pas la réponse d'une autre salle.
 
 ## Le contrat du corpus — un fait, un endroit, une source, une date
 
@@ -74,8 +76,9 @@ Manuel : `npm run knowledge:sync`. Détail complet : `docs/KNOWLEDGE_SYNC.md`.
 
 **Les plannings de saison transmis à la main** vivent dans `knowledge/exports/plannings/`
 (un fichier par salle, `verifiedAt` = le jour où un humain l'a vérifié, `maxAgeDays` 365 sur
-la source du registre). Saint-Cyprien, États-Unis (trois espaces) et Minimes y sont déjà,
-transcrits de ses affiches 2026-2027. Pour en ajouter un : déposer le fichier, pointer la
+la source du registre). Les cinq salles y sont, transcrites de ses affiches
+2026-2027 : Saint-Cyprien (29 créneaux), États-Unis (46, trois espaces), Minimes (27),
+Portet (31, affiche marquée provisoire) et Ramonville (22). Pour en ajouter un : déposer le fichier, pointer la
 source du registre dessus en `kind: "file"`, relancer `npm run knowledge:sync`. Les tests
 refusent un export dont un créneau ne survit pas à la normalisation.
 

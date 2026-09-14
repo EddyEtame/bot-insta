@@ -3,6 +3,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
+const { optionalNumber } = require("./config");
 const { containsPhrase, flatten, slugify } = require("./text");
 
 /** "SAINT-CYPRIEN" → "Saint-Cyprien": the print spelling, written the way a DM reads. */
@@ -41,7 +42,7 @@ function normalizeSource(raw, { gymId = null, errors, index }) {
     required: raw?.required === true,
     // Per-source overrides: a season planning handed over as a file does not expire
     // on the same clock as a web page that can change silently.
-    maxAgeDays: Number.isFinite(Number(raw?.maxAgeDays)) ? Number(raw.maxAgeDays) : null,
+    maxAgeDays: optionalNumber(raw?.maxAgeDays),
     effectiveFrom: raw?.effectiveFrom ? String(raw.effectiveFrom) : null,
     effectiveUntil: raw?.effectiveUntil ? String(raw.effectiveUntil) : null,
     label: raw?.label ? String(raw.label) : null,

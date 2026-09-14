@@ -17,27 +17,30 @@ function registry() {
   }
 }
 
-test("the registry carries the six clubs with their official spelling and no errors", () => {
+test("the registry carries the open clubs with their official spelling and no errors", () => {
   const gyms = registry();
   assert.deepEqual(gyms.errors, []);
-  assert.deepEqual(gyms.gyms.map((gym) => gym.displayName), ["BALMA", "SAINT-CYPRIEN", "ÉTATS-UNIS", "MINIMES", "RAMONVILLE", "PORTET"]);
-  assert.deepEqual(gyms.gyms.map((gym) => gym.label), ["Balma", "Saint-Cyprien", "États-Unis", "Minimes", "Ramonville", "Portet"]);
+  assert.deepEqual(gyms.gyms.map((gym) => gym.displayName), ["SAINT-CYPRIEN", "ÉTATS-UNIS", "MINIMES", "RAMONVILLE", "PORTET"]);
+  assert.deepEqual(gyms.gyms.map((gym) => gym.label), ["Saint-Cyprien", "États-Unis", "Minimes", "Ramonville", "Portet"]);
   assert.equal(titleCase("SAINT-CYPRIEN"), "Saint-Cyprien");
+  // Balma closed: gone from the registry, so it can never be detected or answered for.
+  assert.deepEqual(gyms.detect("le planning à Balma"), []);
+  assert.equal(gyms.get("balma"), null);
 });
 
 test("a club is recognised from how customers actually write it, and never from a word that merely contains it", () => {
   const gyms = registry();
   assert.deepEqual(gyms.detect("le planning de st cyp svp"), ["saint-cyprien"]);
   assert.deepEqual(gyms.detect("vous êtes où à Portet-sur-Garonne ?"), ["portet"]);
-  assert.deepEqual(gyms.detect("cours le mardi aux Minimes et à Balma"), ["balma", "minimes"]);
-  assert.deepEqual(gyms.detect("balmasol est une marque"), []);
+  assert.deepEqual(gyms.detect("cours le mardi aux Minimes et à Ramonville"), ["minimes", "ramonville"]);
+  assert.deepEqual(gyms.detect("ramonvillage est un autre mot"), []);
   assert.equal(gyms.mentionsAllGyms("je peux aller dans toutes les salles ?"), true);
 });
 
 test("a registry that disagrees with itself reports the problem instead of loading silently", () => {
   const broken = parseRegistry({
     club: { gymCount: 3 },
-    gyms: [{ id: "balma", displayName: "BALMA", sources: [{ id: "x", docType: "unknown", kind: "ftp" }] }, { id: "balma", displayName: "BALMA" }],
+    gyms: [{ id: "essai", displayName: "ESSAI", sources: [{ id: "x", docType: "unknown", kind: "ftp" }] }, { id: "essai", displayName: "ESSAI" }],
   }, "memory");
   assert.ok(broken.errors.some((message) => message.includes("duplicate gym ids")));
   assert.ok(broken.errors.some((message) => message.includes("gymCount")));
@@ -78,7 +81,7 @@ test("a discipline is classified by its most specific name, and an ambiguous lab
 
 test("a planning is deduplicated, ordered, rendered per day and turned into one fact per day", () => {
   const planning = normalizePlanning({
-    gymId: "balma",
+    gymId: "ramonville",
     sessions: [
       { day: "Mardi", start: "18h30", end: "20h00", discipline: "Boxe anglaise", level: "tous niveaux" },
       { day: "mardi", start: "12h15", discipline: "Boxing fitness" },
@@ -90,11 +93,11 @@ test("a planning is deduplicated, ordered, rendered per day and turned into one 
   });
   assert.equal(planning.sessions.length, 3);
   assert.deepEqual(planning.sessions.map((session) => session.start), ["12:15", "18:30", "10:00"]);
-  const rendered = renderPlanning(planning, { gymLabel: "Balma" });
+  const rendered = renderPlanning(planning, { gymLabel: "Ramonville" });
   assert.match(rendered, /MARDI : 12h15 Boxing fitness \| 18h30–20h Boxe anglaise · tous niveaux/);
   assert.match(rendered, /Planning aménagé fin juillet–mi-août/);
-  assert.equal(renderPlanning(planning, { gymLabel: "Balma", days: ["samedi"] }).includes("MARDI"), false);
-  assert.deepEqual(planningFacts(planning).map((fact) => fact.key), ["planning_balma_mardi", "planning_balma_samedi"]);
+  assert.equal(renderPlanning(planning, { gymLabel: "Ramonville", days: ["samedi"] }).includes("MARDI"), false);
+  assert.deepEqual(planningFacts(planning).map((fact) => fact.key), ["planning_ramonville_mardi", "planning_ramonville_samedi"]);
   assert.equal(filterSessions(planning.sessions, { disciplines: ["mma"] }).length, 0);
   assert.equal(filterSessions(planning.sessions, { audiences: ["enfants"] }).length, 1);
 });

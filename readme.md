@@ -1,6 +1,6 @@
 # Boxing Center Instagram Support Agent
 
-A secure Node.js service that answers Instagram DMs for the six Boxing Center clubs. It
+A secure Node.js service that answers Instagram DMs for the five Boxing Center clubs. It
 receives a signed Meta webhook, normalizes the DM, applies deterministic safety and
 business rules, retrieves only approved knowledge **for the club the customer actually
 named**, asks OpenAI to compose a grounded answer, validates that answer against the
@@ -27,25 +27,27 @@ Instagram DM
   → Instagram reply and optional human escalation
 
 every Sunday 04:30 Europe/Paris
-  → registry of the six clubs
+  → registry of the open clubs
   → robots-aware, allowlisted, conditional fetch of each club's pages
   → snapshot → normalize → diff → corpus → changelog → report
   → live corpus swapped in memory, no restart
 ```
 
-## The six clubs
+## The five clubs
 
-`knowledge/registry/gyms.json` holds Balma, Saint-Cyprien, États-Unis, Minimes,
-Ramonville and Portet: their official spelling, the ways customers actually write them
-(`st cyp`, `portet sur garonne`, `route d'espagne`), and the sources to poll for each —
+`knowledge/registry/gyms.json` holds Saint-Cyprien, États-Unis, Minimes, Ramonville and
+Portet: their official spelling, the ways customers actually write them (`st cyp`,
+`portet sur garonne`, `route d'espagne`), and the sources to poll for each —
 `boxingcenter.fr`, the boutique, `boxing-center-portet.fr`, `club-boxe-toulouse.com`,
-`mmatoulouse.com` and `clubmma.fr`.
+`mmatoulouse.com` and `clubmma.fr`. Balma has closed and is out of the registry, so the
+name is no longer a club the bot recognises or answers for.
 
-Three clubs answer from their real season planning today, transcribed from the club's own
-2026-2027 posters into `knowledge/exports/plannings/`: **Saint-Cyprien** (29 slots),
-**États-Unis** (46 slots across its salle boxe, boxing fitness and salle MMA) and
-**Minimes** (27 slots). Each export carries the date a human verified it, and the poll
-republishes it without ever pretending to have checked it itself.
+**Every open club answers from its real 2026-2027 season planning**, transcribed slot by
+slot from the club's own posters into `knowledge/exports/plannings/`: Saint-Cyprien (29),
+États-Unis (46 across salle boxe, boxing fitness and salle MMA), Minimes (27), Portet (31,
+marked provisional as the poster is) and Ramonville (22). Each export carries the date a
+human verified it, and the poll republishes it without ever pretending to have checked it
+itself.
 The registry is the only place a club is declared; everything else derives from it —
 detection in a message, retrieval scope, corpus layout, coverage reporting, and the
 "which club do you mean?" question.
@@ -116,7 +118,7 @@ to `https://graph.facebook.com/{version}/{instagram-account-id}/messages`.
 
 ```text
 knowledge/
-  registry/gyms.json     the six clubs and the sources to poll
+  registry/gyms.json     the open clubs and the sources to poll
   exports/plannings/     season plannings handed over by the club, with their verification date
   source/                curated facts, reviewed by a human
   source/generated/      written by the weekly poll, never by hand
@@ -157,7 +159,7 @@ that club's page is never published.
 | --- | --- |
 | Approved, fresh, club-matching evidence | `ANSWER` through the AI composer |
 | Vague message | `CLARIFY` without an AI call |
-| Club-specific question with no club named | `CLARIFY` listing the six clubs |
+| Club-specific question with no club named | `CLARIFY` listing the open clubs |
 | Club named, but no knowledge of that kind for it | `ESCALATE` — a club-wide page never stands in |
 | Evidence exists but is past its freshness budget | `ESCALATE` |
 | Question about a club the corpus does not cover yet | `ESCALATE` |
@@ -208,7 +210,7 @@ use the exact current API/version/permission configuration Meta shows for the ac
 
 ```powershell
 npm test          # 54 tests: retrieval, fetching, normalizing, guards, scheduling, end-to-end DMs, shipped corpus
-npm run evals     # 20 cases: contrôle / bord / limite, plus D0 anti-drift, no API call
+npm run evals     # 21 cases: contrôle / bord / limite, plus D0 anti-drift, no API call
 npm run evals:live  # same cases, composed by the real model, validated as in production
 ```
 
@@ -221,10 +223,10 @@ code stop describing the same world.
 
 - No real Instagram credentials or Meta app configuration are in this workspace, so a
   live end-to-end DM has not been claimed as complete.
-- Saint-Cyprien, États-Unis and Minimes answer from their real season planning. **Balma,
-  Ramonville and Portet still have none** — their posters have not been handed over yet,
-  and the Sunday poll reports them as `unresolved` until their URLs are confirmed. Until
-  then the bot asks the team for those clubs rather than guessing.
+- Every open club has its 2026-2027 planning; **no club has its practical sheet yet** —
+  address, phone and opening hours come from the clubs' own pages, which the Sunday poll
+  fetches. Until a page resolves, an address question goes to the team, not to a guess.
+- Portet's planning is marked **provisoire** on the poster, and the corpus says so.
 - Web fetching has never run against the real domains from this workspace (its egress
   policy blocks them); the first real `npm run knowledge:sync` will say which pages
   resolve and which need their URL written into the registry.

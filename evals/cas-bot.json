@@ -16,11 +16,11 @@
     {
       "id": "C2",
       "famille": "controle",
-      "message": "C'est quoi le planning du mardi à Balma ?",
+      "message": "C'est quoi le planning du mardi à Ramonville ?",
       "attendu": {
         "action": "ANSWER",
         "sources": [
-          "bc-balma-planning"
+          "bc-ramonville-planning"
         ],
         "evidenceMatches": "MARDI"
       }
@@ -28,25 +28,73 @@
     {
       "id": "C3",
       "famille": "controle",
-      "message": "Vous êtes où à Balma ? C'est quoi l'adresse ?",
+      "message": "Vous êtes où à Ramonville ? C'est quoi l'adresse ?",
       "attendu": {
         "action": "ANSWER",
         "sources": [
-          "bc-balma-profile"
+          "bc-ramonville-profile"
         ],
-        "evidenceMatches": "avenue de Gramont"
+        "evidenceMatches": "Adresse"
       }
     },
     {
       "id": "C4",
       "famille": "controle",
-      "message": "Vous avez des cours pour enfants le samedi à Balma ?",
+      "message": "Vous avez des cours pour enfants le samedi à Ramonville ?",
       "attendu": {
         "action": "ANSWER",
         "sources": [
-          "bc-balma-planning"
+          "bc-ramonville-planning"
         ],
         "evidenceMatches": "SAMEDI"
+      }
+    },
+    {
+      "id": "C5",
+      "famille": "controle",
+      "message": "Le planning du mercredi aux Minimes ?",
+      "attendu": {
+        "action": "ANSWER",
+        "sources": [
+          "bc-minimes-planning"
+        ],
+        "evidenceMatches": "MERCREDI"
+      }
+    },
+    {
+      "id": "C6",
+      "famille": "controle",
+      "message": "Vous avez du jiu-jitsu brésilien à États-Unis ?",
+      "attendu": {
+        "action": "ANSWER",
+        "sources": [
+          "bc-etats-unis-planning"
+        ],
+        "evidenceMatches": "Jiu-jitsu brésilien"
+      }
+    },
+    {
+      "id": "C7",
+      "famille": "controle",
+      "message": "Des cours pour enfants le samedi à Saint-Cyprien ?",
+      "attendu": {
+        "action": "ANSWER",
+        "sources": [
+          "bc-saint-cyprien-planning"
+        ],
+        "evidenceMatches": "SAMEDI"
+      }
+    },
+    {
+      "id": "C8",
+      "famille": "controle",
+      "message": "Le planning du vendredi à Portet ?",
+      "attendu": {
+        "action": "ANSWER",
+        "sources": [
+          "bc-portet-planning"
+        ],
+        "evidenceMatches": "VENDREDI"
       }
     },
     {
@@ -61,16 +109,18 @@
     {
       "id": "B2",
       "famille": "bord",
-      "message": "le planning du mardi à Ramonville ?",
+      "message": "Le planning du mardi à Balma ?",
       "attendu": {
-        "action": "ESCALATE",
-        "noSourceFrom": "balma"
-      }
+        "action": "CLARIFY",
+        "replyMatches": "quelle salle",
+        "replyNotMatches": "MARDI"
+      },
+      "note": "Balma est fermée : le nom n'est plus une salle connue, donc la question se ramène à « quelle salle ? ». La réponse envoyée est la question, jamais le planning d'une autre salle."
     },
     {
       "id": "B3",
       "famille": "bord",
-      "message": "le planning du mardi à Balma",
+      "message": "le planning du mardi à Ramonville",
       "attendu": {
         "action": "ANSWER",
         "noSourceFrom": "portet"
@@ -79,11 +129,11 @@
     {
       "id": "B4",
       "famille": "bord",
-      "message": "Le cours de MMA à Balma, c'est à quelle heure ?",
+      "message": "Le cours de MMA à Ramonville, c'est à quelle heure ?",
       "modelReply": {
-        "reply": "À Balma, le MMA est le mardi à 20h45.",
+        "reply": "À Ramonville, le MMA est le mardi à 20h45.",
         "sourceIds": [
-          "bc-balma-planning"
+          "bc-ramonville-planning"
         ]
       },
       "attendu": {
@@ -94,11 +144,11 @@
     {
       "id": "B5",
       "famille": "bord",
-      "message": "Vous faites quoi le dimanche à Balma ?",
+      "message": "Vous faites quoi le dimanche à Ramonville ?",
       "modelReply": {
-        "reply": "Il n'y a pas de cours le dimanche à Balma.",
+        "reply": "Il n'y a pas de cours le dimanche à Ramonville.",
         "sourceIds": [
-          "bc-balma-planning"
+          "bc-ramonville-planning"
         ]
       },
       "attendu": {
@@ -118,6 +168,27 @@
       },
       "attendu": {
         "validationFails": "FAIT_FAUX"
+      }
+    },
+    {
+      "id": "B7",
+      "famille": "bord",
+      "message": "C'est quoi l'adresse de la salle des Minimes ?",
+      "attendu": {
+        "action": "ESCALATE",
+        "noSourceFrom": "ramonville"
+      }
+    },
+    {
+      "id": "B8",
+      "famille": "bord",
+      "message": "Le planning du mardi aux Minimes, il y a du MMA ?",
+      "attendu": {
+        "action": "ANSWER",
+        "sources": [
+          "bc-minimes-planning"
+        ],
+        "noSourceFrom": "etats-unis"
       }
     },
     {
@@ -161,63 +232,6 @@
       "attendu": {
         "action": "ESCALATE",
         "noModelCall": true
-      }
-    },
-    {
-      "id": "C5",
-      "famille": "controle",
-      "message": "Le planning du mercredi aux Minimes ?",
-      "attendu": {
-        "action": "ANSWER",
-        "sources": [
-          "bc-minimes-planning"
-        ],
-        "evidenceMatches": "MERCREDI"
-      }
-    },
-    {
-      "id": "C6",
-      "famille": "controle",
-      "message": "Vous avez du jiu-jitsu brésilien à États-Unis ?",
-      "attendu": {
-        "action": "ANSWER",
-        "sources": [
-          "bc-etats-unis-planning"
-        ],
-        "evidenceMatches": "Jiu-jitsu brésilien"
-      }
-    },
-    {
-      "id": "C7",
-      "famille": "controle",
-      "message": "Des cours pour enfants le samedi à Saint-Cyprien ?",
-      "attendu": {
-        "action": "ANSWER",
-        "sources": [
-          "bc-saint-cyprien-planning"
-        ],
-        "evidenceMatches": "SAMEDI"
-      }
-    },
-    {
-      "id": "B7",
-      "famille": "bord",
-      "message": "Le planning du jeudi à Ramonville ?",
-      "attendu": {
-        "action": "ESCALATE",
-        "noSourceFrom": "minimes"
-      }
-    },
-    {
-      "id": "B8",
-      "famille": "bord",
-      "message": "Le planning du mardi aux Minimes, il y a du MMA ?",
-      "attendu": {
-        "action": "ANSWER",
-        "sources": [
-          "bc-minimes-planning"
-        ],
-        "noSourceFrom": "etats-unis"
       }
     }
   ]

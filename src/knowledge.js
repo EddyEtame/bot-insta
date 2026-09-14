@@ -5,6 +5,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const { DAYS, ageInDays, dayById, detectDays } = require("./calendar");
+const { optionalNumber } = require("./config");
 const { loadGymRegistry } = require("./gyms");
 const { detectAudiences, detectDisciplines } = require("./planning");
 const { containsPhrase, flatten, normalize, tokens } = require("./text");
@@ -74,7 +75,7 @@ function readSource(filePath, sourceDirectory) {
     generated: metadata.generated === true,
     checkedAt: metadata.checkedAt ? String(metadata.checkedAt) : null,
     capturedAt: metadata.capturedAt ? String(metadata.capturedAt) : null,
-    maxAgeDays: Number.isFinite(Number(metadata.maxAgeDays)) ? Number(metadata.maxAgeDays) : null,
+    maxAgeDays: optionalNumber(metadata.maxAgeDays),
     topics: Array.isArray(metadata.topics) ? metadata.topics.map(String) : [],
     facts: Array.isArray(metadata.facts) ? metadata.facts.filter((fact) => fact && fact.key && fact.value) : [],
     hash,

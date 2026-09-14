@@ -1,13 +1,13 @@
 # Weekly corpus poll
 
-Six clubs publish their own plannings, practical information and offers. This document
+Five clubs publish their own plannings, practical information and offers. This document
 describes how those pages become answerable facts, why an answer can be refused even
 when the page exists, and what to do each time the Sunday report shows a gap.
 
 ## The chain
 
 ```text
-knowledge/registry/gyms.json     the six clubs, their aliases, their sources
+knowledge/registry/gyms.json     the open clubs, their aliases, their sources
         ↓  resolve               a configured URL, or a candidate that proves it is that club's page
         ↓  robots + allowlist    only the club's own hosts, only what robots.txt permits
         ↓  conditional GET       ETag / If-Modified-Since, retry with backoff, byte cap

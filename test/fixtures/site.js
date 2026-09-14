@@ -4,20 +4,20 @@ const ROBOTS = "User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: https://www
 
 const SITEMAP = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.boxingcenter.fr/salles/balma</loc></url>
+  <url><loc>https://www.boxingcenter.fr/salles/ramonville</loc></url>
   <url><loc>https://www.boxingcenter.fr/salles/minimes/planning</loc></url>
   <url><loc>https://www.boxingcenter.fr/horaires-minimes</loc></url>
 </urlset>`;
 
-const BALMA_PROFILE = `<html lang="fr"><head><title>Boxing Center Balma</title>
-<meta name="description" content="La salle Boxing Center de Balma">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ExerciseGym","name":"Boxing Center Balma","telephone":"05 61 11 22 33","address":{"@type":"PostalAddress","streetAddress":"12 avenue de Gramont","postalCode":"31130","addressLocality":"Balma"}}</script>
-</head><body><h1>Boxing Center Balma</h1>
+const RAMONVILLE_PROFILE = `<html lang="fr"><head><title>Boxing Center Ramonville</title>
+<meta name="description" content="La salle Boxing Center de Ramonville">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ExerciseGym","name":"Boxing Center Ramonville","telephone":"05 61 11 22 33","address":{"@type":"PostalAddress","streetAddress":"3 rue de la Fixture","postalCode":"31520","addressLocality":"Ramonville-Saint-Agne"}}</script>
+</head><body><h1>Boxing Center Ramonville</h1>
 <p>Du lundi au vendredi : 10h - 21h15</p><p>Samedi : 10h - 18h</p>
 <p>Disciplines : Boxe anglaise, MMA, Cross training.</p></body></html>`;
 
-const BALMA_PLANNING = `<html><head><title>Planning Balma - Boxing Center</title></head><body>
-<h1>Planning Boxing Center Balma saison 2026/2027</h1>
+const RAMONVILLE_PLANNING = `<html><head><title>Planning Ramonville - Boxing Center</title></head><body>
+<h1>Planning Boxing Center Ramonville saison 2026/2027</h1>
 <table>
 <tr><th>Heure</th><th>Lundi</th><th>Mardi</th></tr>
 <tr><td>12h15 - 13h15</td><td>Boxing fitness</td><td>Cross training</td></tr>
@@ -26,7 +26,7 @@ const BALMA_PLANNING = `<html><head><title>Planning Balma - Boxing Center</title
 <h3>Samedi</h3><ul><li>10h - 11h30 Boxe éducative (7-12 ans)</li></ul>
 <p>Planning aménagé fin juillet–mi-août.</p></body></html>`;
 
-const BALMA_PLANNING_V2 = BALMA_PLANNING
+const RAMONVILLE_PLANNING_V2 = RAMONVILLE_PLANNING
   .replace("<tr><td>18h30 - 20h00</td><td>Boxe anglaise (tous niveaux)</td><td>MMA</td></tr>", "<tr><td>19h00 - 20h30</td><td>Boxe anglaise (tous niveaux)</td><td>MMA</td></tr>");
 
 const OFFERS = `<html><head><title>Offres Boxing Center</title></head><body>
@@ -42,8 +42,8 @@ function defaultPages() {
     "https://boutique.boxingcenter.fr/robots.txt": { type: "text/plain", body: "User-agent: *\nAllow: /\n" },
     "https://www.boxingcenter.fr/sitemap.xml": { type: "application/xml", body: SITEMAP },
     "https://www.boxingcenter.fr/": { type: "text/html", body: HOME },
-    "https://www.boxingcenter.fr/salles/balma": { type: "text/html", body: BALMA_PROFILE },
-    "https://www.boxingcenter.fr/salles/balma/planning": { type: "text/html", body: BALMA_PLANNING },
+    "https://www.boxingcenter.fr/salles/ramonville": { type: "text/html", body: RAMONVILLE_PROFILE },
+    "https://www.boxingcenter.fr/salles/ramonville/planning": { type: "text/html", body: RAMONVILLE_PLANNING },
     "https://boutique.boxingcenter.fr/offre/29": { type: "text/html", body: OFFERS },
   };
 }
@@ -64,4 +64,4 @@ function createFakeFetch({ pages = defaultPages(), log = [] } = {}) {
   return fakeFetch;
 }
 
-module.exports = { BALMA_PLANNING, BALMA_PLANNING_V2, BALMA_PROFILE, HOME, OFFERS, ROBOTS, SITEMAP, createFakeFetch, defaultPages };
+module.exports = { RAMONVILLE_PLANNING, RAMONVILLE_PLANNING_V2, RAMONVILLE_PROFILE, HOME, OFFERS, ROBOTS, SITEMAP, createFakeFetch, defaultPages };

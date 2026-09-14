@@ -90,6 +90,9 @@ function evaluateCase(bench, testCase, { live = false, ai = null } = {}) {
   if (expected.replyMatches && !new RegExp(expected.replyMatches, "i").test(decision.reply || "")) {
     problems.push(`réponse sans « ${expected.replyMatches} »`);
   }
+  if (expected.replyNotMatches && new RegExp(expected.replyNotMatches).test(decision.reply || "")) {
+    problems.push(`la réponse contient « ${expected.replyNotMatches} », qui ne devait pas sortir`);
+  }
 
   const canned = testCase.modelReply;
   if (canned || expected.validationFails) {

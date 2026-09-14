@@ -42,11 +42,11 @@ function planningDocument({ gymId, id, checkedAt, content, facts = [] }) {
 function seeded(now = "2026-09-14T04:30:00Z") {
   const workspace = createWorkspace();
   writeGenerated(workspace, planningDocument({
-    gymId: "balma",
-    id: "bc-balma-planning",
+    gymId: "minimes",
+    id: "bc-minimes-planning",
     checkedAt: now,
-    content: "Planning Balma\nMARDI : 18h30–20h Boxe anglaise\nSAMEDI : 10h–11h30 Boxe éducative · 7-12 ans\nPlanning aménagé fin juillet–mi-août",
-    facts: [{ key: "planning_balma_mardi", value: "18h30–20h Boxe anglaise" }],
+    content: "Planning Minimes\nMARDI : 18h30–20h Boxe anglaise\nSAMEDI : 10h–11h30 Boxe éducative · 7-12 ans\nPlanning aménagé fin juillet–mi-août",
+    facts: [{ key: "planning_minimes_mardi", value: "18h30–20h Boxe anglaise" }],
   }));
   writeGenerated(workspace, planningDocument({
     gymId: "portet",
@@ -62,8 +62,8 @@ function seeded(now = "2026-09-14T04:30:00Z") {
 test("a question naming a club never retrieves another club's planning", () => {
   const { workspace, knowledge } = seeded();
   try {
-    const result = knowledge.retrieve("le planning du mardi à Balma", { now: new Date("2026-09-14T09:00:00Z") });
-    assert.deepEqual(result.sources, ["bc-balma-planning"]);
+    const result = knowledge.retrieve("le planning du mardi aux Minimes", { now: new Date("2026-09-14T09:00:00Z") });
+    assert.deepEqual(result.sources, ["bc-minimes-planning"]);
     assert.ok(result.wrongGymSources.includes("bc-portet-planning"));
     assert.equal(result.chunks[0].content.includes("MMA"), false);
   } finally {
@@ -74,7 +74,7 @@ test("a question naming a club never retrieves another club's planning", () => {
 test("a planning answer is narrowed to the day the customer asked about", () => {
   const { workspace, knowledge } = seeded();
   try {
-    const result = knowledge.retrieve("vous avez quoi le samedi à Balma ?", { now: new Date("2026-09-14T09:00:00Z") });
+    const result = knowledge.retrieve("vous avez quoi le samedi aux Minimes ?", { now: new Date("2026-09-14T09:00:00Z") });
     assert.match(result.chunks[0].content, /SAMEDI/);
     assert.equal(result.chunks[0].content.includes("MARDI"), false);
     assert.match(result.chunks[0].content, /Planning aménagé/);
@@ -86,7 +86,7 @@ test("a planning answer is narrowed to the day the customer asked about", () => 
 test("a planning past its freshness budget stops being evidence and is reported as stale", () => {
   const { workspace, knowledge } = seeded("2026-08-01T04:30:00Z");
   try {
-    const result = knowledge.retrieve("le planning du mardi à Balma", { now: new Date("2026-09-14T09:00:00Z") });
+    const result = knowledge.retrieve("le planning du mardi aux Minimes", { now: new Date("2026-09-14T09:00:00Z") });
     assert.equal(result.hasEvidence, false);
     assert.equal(result.staleSources.length >= 1, true);
     assert.equal(result.staleSources[0].maxAgeDays, 10);
@@ -100,7 +100,7 @@ test("a club-less planning question is flagged so the bot asks which club instea
   const { workspace, knowledge } = seeded();
   try {
     assert.equal(knowledge.retrieve("c'est quoi le planning du mardi ?").needsGym, true);
-    assert.equal(knowledge.retrieve("le planning du mardi à Balma").needsGym, false);
+    assert.equal(knowledge.retrieve("le planning du mardi aux Minimes").needsGym, false);
     assert.equal(knowledge.retrieve("quel est le prix de l'offre 29 ?").needsGym, false);
   } finally {
     workspace.cleanup();
@@ -111,11 +111,11 @@ test("coverage and status say exactly which clubs are documented", () => {
   const { workspace, knowledge } = seeded();
   try {
     const status = knowledge.getStatus(new Date("2026-09-14T09:00:00Z"));
-    assert.equal(status.gymCount, 6);
+    assert.equal(status.gymCount, 5);
     assert.equal(status.gymsWithPlanning, 2);
     assert.equal(status.gymsWithProfile, 0);
     assert.equal(status.fetchedSourceCount, 2);
-    const balma = knowledge.coverage().find((entry) => entry.gymId === "balma");
+    const balma = knowledge.coverage().find((entry) => entry.gymId === "minimes");
     assert.deepEqual(balma.docTypes, ["planning"]);
   } finally {
     workspace.cleanup();
@@ -137,7 +137,7 @@ test("query analysis reads club, day, discipline and intent out of one sentence"
 });
 
 test("focusing a planning keeps the header and notes even when the day is absent", () => {
-  const content = "Planning Balma\nMARDI : 18h30 MMA\nPlanning aménagé fin juillet";
+  const content = "Planning Minimes\nMARDI : 18h30 MMA\nPlanning aménagé fin juillet";
   assert.equal(focusPlanningContent(content, ["dimanche"]), content);
   assert.match(focusPlanningContent(content, ["mardi"]), /MARDI/);
 });

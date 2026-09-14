@@ -4,7 +4,7 @@
     "id": "boxing-center",
     "name": "Boxing Center",
     "area": "Toulouse et agglomération",
-    "gymCount": 6,
+    "gymCount": 5,
     "sites": {
       "principal": "https://boxingcenter.fr",
       "boutique": "https://boutique.boxingcenter.fr",
@@ -43,46 +43,6 @@
     "www.clubmma.fr"
   ],
   "gyms": [
-    {
-      "id": "balma",
-      "displayName": "BALMA",
-      "name": "Boxing Center Balma",
-      "commune": "Balma",
-      "aliases": [
-        "balma",
-        "balmas",
-        "salle de balma",
-        "boxing center balma",
-        "gramont"
-      ],
-      "status": "active",
-      "repo": null,
-      "sources": [
-        {
-          "id": "balma-profile",
-          "docType": "profile",
-          "kind": "url",
-          "url": null,
-          "candidates": [
-            "https://www.boxingcenter.fr/salles/balma",
-            "https://www.boxingcenter.fr/salle/balma",
-            "https://www.boxingcenter.fr/nos-salles/balma",
-            "https://www.boxingcenter.fr/balma"
-          ]
-        },
-        {
-          "id": "balma-planning",
-          "docType": "planning",
-          "kind": "url",
-          "url": null,
-          "candidates": [
-            "https://www.boxingcenter.fr/salles/balma/planning",
-            "https://www.boxingcenter.fr/planning/balma",
-            "https://www.boxingcenter.fr/planning-balma"
-          ]
-        }
-      ]
-    },
     {
       "id": "saint-cyprien",
       "displayName": "SAINT-CYPRIEN",
@@ -237,13 +197,12 @@
         {
           "id": "ramonville-planning",
           "docType": "planning",
-          "kind": "url",
+          "kind": "file",
           "url": null,
-          "candidates": [
-            "https://www.boxingcenter.fr/salles/ramonville/planning",
-            "https://www.boxingcenter.fr/planning/ramonville",
-            "https://www.boxingcenter.fr/planning-ramonville"
-          ]
+          "candidates": [],
+          "file": "plannings/ramonville.json",
+          "label": "Planning officiel saison 2026-2027 (ramonville)",
+          "maxAgeDays": 365
         }
       ]
     },
@@ -278,16 +237,12 @@
         {
           "id": "portet-planning",
           "docType": "planning",
-          "kind": "url",
+          "kind": "file",
           "url": null,
-          "candidates": [
-            "https://www.boxingcenter.fr/salles/portet/planning",
-            "https://www.boxingcenter.fr/planning/portet",
-            "https://www.boxingcenter.fr/planning-portet",
-            "https://boxing-center-portet.fr/planning",
-            "https://boxing-center-portet.fr/le-planning",
-            "https://boxing-center-portet.fr/plannings"
-          ]
+          "candidates": [],
+          "file": "plannings/portet.json",
+          "label": "Planning officiel saison 2026-2027 (portet)",
+          "maxAgeDays": 365
         }
       ]
     }

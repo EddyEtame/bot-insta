@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "id": "bc-ramonville-planning",
+    "title": "Planning RAMONVILLE",
+    "sourceType": "web",
+    "sourceUrl": null,
+    "visibility": "public",
+    "verificationStatus": "verified_public",
+    "priority": 92,
+    "language": "fr",
+    "effectiveFrom": null,
+    "effectiveUntil": null,
+    "docType": "planning",
+    "gyms": [
+      "ramonville"
+    ],
+    "generated": true,
+    "checkedAt": "2026-09-14T00:00:00.000Z",
+    "capturedAt": "2026-09-14T00:00:00.000Z",
+    "maxAgeDays": 365,
+    "topics": [
+      "RAMONVILLE",
+      "Boxing Center Ramonville",
+      "Ramonville-Saint-Agne",
+      "boxing center ramonville",
+      "ramonville saint agne",
+      "ramonville st agne",
+      "ramonville",
+      "planning",
+      "horaires",
+      "cours",
+      "creneaux",
+      "lundi",
+      "mardi",
+      "mercredi",
+      "jeudi",
+      "vendredi",
+      "samedi",
+      "Boxing Camp",
+      "Lady Punch",
+      "Boxe pieds-poings",
+      "Boxe anglaise",
+      "Grappling",
+      "Asso MMA",
+      "Boxe éducative",
+      "Baby boxe"
+    ],
+    "facts": [
+      {
+        "key": "planning_ramonville_lundi",
+        "value": "12h40–13h20 Boxing Camp | 18h–18h40 Lady Punch | 18h40–19h40 Boxe pieds-poings | 19h45–21h15 Boxe anglaise · loisirs"
+      },
+      {
+        "key": "planning_ramonville_mardi",
+        "value": "12h40–13h20 Boxe anglaise | 18h40–19h40 Grappling | 19h45–21h15 Asso MMA"
+      },
+      {
+        "key": "planning_ramonville_mercredi",
+        "value": "12h40–13h20 Boxing Camp | 15h–16h Boxe éducative · 7/11 ans | 16h–17h Boxe éducative · 12/16 ans | 18h45–20h15 Boxe anglaise"
+      },
+      {
+        "key": "planning_ramonville_jeudi",
+        "value": "12h40–13h20 Boxe pieds-poings | 18h40–19h40 Boxing Camp | 19h45–21h15 Asso MMA"
+      },
+      {
+        "key": "planning_ramonville_vendredi",
+        "value": "12h40–13h20 Boxe anglaise | 18h–18h40 Lady Punch | 18h40–19h40 Boxe pieds-poings | 19h45–21h15 Boxe anglaise · loisirs"
+      },
+      {
+        "key": "planning_ramonville_samedi",
+        "value": "11h–12h Boxing Camp | 14h15–15h Baby boxe · 3/6 ans | 15h–16h Boxe éducative · 7/11 ans | 16h–17h Boxe éducative · 12/16 ans"
+      }
+    ]
+  },
+  "content": "Planning RAMONVILLE — saison 2026/2027\n\nLUNDI : 12h40–13h20 Boxing Camp | 18h–18h40 Lady Punch | 18h40–19h40 Boxe pieds-poings | 19h45–21h15 Boxe anglaise · loisirs\n\nMARDI : 12h40–13h20 Boxe anglaise | 18h40–19h40 Grappling | 19h45–21h15 Asso MMA\n\nMERCREDI : 12h40–13h20 Boxing Camp | 15h–16h Boxe éducative · 7/11 ans | 16h–17h Boxe éducative · 12/16 ans | 18h45–20h15 Boxe anglaise\n\nJEUDI : 12h40–13h20 Boxe pieds-poings | 18h40–19h40 Boxing Camp | 19h45–21h15 Asso MMA\n\nVENDREDI : 12h40–13h20 Boxe anglaise | 18h–18h40 Lady Punch | 18h40–19h40 Boxe pieds-poings | 19h45–21h15 Boxe anglaise · loisirs\n\nSAMEDI : 11h–12h Boxing Camp | 14h15–15h Baby boxe · 3/6 ans | 15h–16h Boxe éducative · 7/11 ans | 16h–17h Boxe éducative · 12/16 ans\n\nCase libre = salle ouverte. Accès badge, entraînement libre."
+}
