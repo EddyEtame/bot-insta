@@ -15,8 +15,8 @@
       "saint-cyprien"
     ],
     "generated": true,
-    "checkedAt": "2026-09-14T16:35:14.363Z",
-    "capturedAt": "2026-09-14T16:35:14.363Z",
+    "checkedAt": "2026-09-15T07:53:56.178Z",
+    "capturedAt": "2026-09-15T07:53:56.178Z",
     "maxAgeDays": 120,
     "topics": [
       "SAINT-CYPRIEN",
@@ -40,7 +40,7 @@
     "facts": [
       {
         "key": "address_saint-cyprien",
-        "value": "11 rue Sainte-Lucie, 31300 Toulouse Métro Ligne A"
+        "value": "11 rue Sainte-Lucie, 31300 Toulouse"
       },
       {
         "key": "phone_saint-cyprien",
@@ -52,5 +52,5 @@
       }
     ]
   },
-  "content": "Boxing Center — salle Boxing Center à Toulouse.\nAdresse : 11 rue Sainte-Lucie, 31300 Toulouse Métro Ligne A.\nTéléphone : 05 62 24 46 82.\nHoraires d’ouverture : lundi 10h–21h15.\nDisciplines annoncées sur la page : Boxe anglaise, Cross training."
+  "content": "Boxing Center — salle Boxing Center à Toulouse.\nAdresse : 11 rue Sainte-Lucie, 31300 Toulouse.\nTéléphone : 05 62 24 46 82.\nHoraires d’ouverture : lundi 10h–21h15.\nDisciplines annoncées sur la page : Boxe anglaise, Cross training."
 }

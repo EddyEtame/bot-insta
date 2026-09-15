@@ -7,8 +7,8 @@
   "address": {
     "street": "11 rue Sainte-Lucie",
     "postalCode": "31300",
-    "city": "Toulouse Métro Ligne A",
-    "full": "11 rue Sainte-Lucie, 31300 Toulouse Métro Ligne A",
+    "city": "Toulouse",
+    "full": "11 rue Sainte-Lucie, 31300 Toulouse",
     "source": "text",
     "evidence": "Adresse 11 rue Sainte-Lucie, 31300 Toulouse Métro Ligne A · Saint-Cyprien République (4 min) Horaires Lun – Sam · 10h00 – 21h15"
   },
@@ -28,7 +28,7 @@
     "Cross training"
   ],
   "hasStructuredData": true,
-  "checkedAt": "2026-09-14T16:35:14.363Z",
-  "polledAt": "2026-09-14T16:35:14.363Z",
+  "checkedAt": "2026-09-15T07:53:56.178Z",
+  "polledAt": "2026-09-15T07:53:56.178Z",
   "contentHash": "b3a4016ffcf54caee677f49cc2389cff2477f53e1ef974efda7babb3425e643a"
 }

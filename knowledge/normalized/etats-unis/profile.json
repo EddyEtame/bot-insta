@@ -11,7 +11,7 @@
     "full": "388 Avenue des États-Unis, 31200 Toulouse",
     "source": "json-ld"
   },
-  "phone": "+33562244682",
+  "phone": "05 62 24 46 82",
   "email": "boxingcenter31@gmail.com",
   "hours": [
     {
@@ -59,7 +59,7 @@
     "Hyrox"
   ],
   "hasStructuredData": true,
-  "checkedAt": "2026-09-14T16:35:14.363Z",
-  "polledAt": "2026-09-14T16:35:14.363Z",
+  "checkedAt": "2026-09-15T07:53:56.178Z",
+  "polledAt": "2026-09-15T07:53:56.178Z",
   "contentHash": "d4f76f2b760d30485991b22a68d4aa610c71d91efd04d7b0eef58853a1f7be47"
 }

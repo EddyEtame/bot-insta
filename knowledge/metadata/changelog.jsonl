@@ -18,3 +18,7 @@
 {"at":"2026-09-14T16:35:14.363Z","sourceId":"minimes-profile","gymId":"minimes","docType":"profile","url":"https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-minimes/","detail":{"fields":["phone","email","address","hours"],"changed":true}}
 {"at":"2026-09-14T16:35:14.363Z","sourceId":"ramonville-profile","gymId":"ramonville","docType":"profile","url":"https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-ramonville/","detail":{"fields":["phone","email","address","hours"],"changed":true}}
 {"at":"2026-09-14T16:35:14.363Z","sourceId":"portet-profile","gymId":"portet","docType":"profile","url":"https://boxing-center-portet.fr/","detail":{"fields":["phone","email","address","hours"],"changed":true}}
+{"at":"2026-09-15T07:53:56.178Z","sourceId":"saint-cyprien-profile","gymId":"saint-cyprien","docType":"profile","url":"https://club-boxe-toulouse.com/","detail":{"fields":["address"],"changed":true}}
+{"at":"2026-09-15T07:53:56.178Z","sourceId":"etats-unis-profile","gymId":"etats-unis","docType":"profile","url":"https://clubmma.fr/","detail":{"fields":["phone"],"changed":true}}
+{"at":"2026-09-15T07:53:56.178Z","sourceId":"ramonville-profile","gymId":"ramonville","docType":"profile","url":"https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-ramonville/","detail":{"fields":["address"],"changed":true}}
+{"at":"2026-09-15T07:53:56.178Z","sourceId":"portet-profile","gymId":"portet","docType":"profile","url":"https://boxing-center-portet.fr/","detail":{"fields":["phone"],"changed":true}}

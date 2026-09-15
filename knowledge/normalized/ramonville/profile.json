@@ -7,8 +7,8 @@
   "address": {
     "street": "33 rue des Ormes",
     "postalCode": "31520",
-    "city": "Ramonville-Saint-Agne Suivre l'intinérair",
-    "full": "33 rue des Ormes, 31520 Ramonville-Saint-Agne Suivre l'intinérair",
+    "city": "Ramonville-Saint-Agne",
+    "full": "33 rue des Ormes, 31520 Ramonville-Saint-Agne",
     "source": "text",
     "evidence": "33 rue des Ormes, 31520 Ramonville-Saint-Agne Suivre l'intinéraire Vous Aimerez Aussi"
   },
@@ -67,7 +67,7 @@
     "Boxe éducative"
   ],
   "hasStructuredData": true,
-  "checkedAt": "2026-09-14T16:35:14.363Z",
-  "polledAt": "2026-09-14T16:35:14.363Z",
-  "contentHash": "c782d886923daf03960ceddf17c9a673f3561ca8ffa0a5321fdd72444abe91d0"
+  "checkedAt": "2026-09-15T07:53:56.178Z",
+  "polledAt": "2026-09-15T07:53:56.178Z",
+  "contentHash": "8778b125d1f12fb498bd1c131e4bca4b960a24c567986f940e8d9557a93516e3"
 }
