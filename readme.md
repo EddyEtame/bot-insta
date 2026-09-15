@@ -173,6 +173,12 @@ answer from retrieved public evidence. Output that is empty, too long, untraceab
 secret-like, absence-led, contradicting a truth control, or carrying a figure no source
 supports is rejected and escalated.
 
+## Going live
+
+Where every credential comes from (Meta, OpenAI), what a host has to provide for a webhook
+this shape, and the back office that decides what actually gets sent:
+[docs/MISE_EN_LIGNE.md](docs/MISE_EN_LIGNE.md).
+
 ## Webhook setup and local test
 
 The server exposes:
