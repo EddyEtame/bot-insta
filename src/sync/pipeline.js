@@ -13,6 +13,13 @@ const { normalizeOffersDocument } = require("./normalizers/offers");
 const { normalizePlanningDocument } = require("./normalizers/planning");
 const { normalizeProfileDocument } = require("./normalizers/profile");
 
+/**
+ * Bumped whenever a normalizer changes what it extracts. Without it, a page that has not
+ * changed keeps the document its old extractor produced — a fixed parser would never
+ * reach the corpus until the club happened to edit the page.
+ */
+const EXTRACTOR_VERSION = 2;
+
 const STATUS = Object.freeze({
   UPDATED: "updated",
   UNCHANGED: "unchanged",
@@ -262,6 +269,8 @@ function createPipeline({ config, registry, http, robots, store, logger = { log(
     let url = sourceState.resolvedUrl || source.url || null;
     let headers = {};
     let fileCheckedAt = null;
+    // An extractor that has moved on must read the page again, whatever the cache says.
+    const extractorMoved = sourceState.extractorVersion !== EXTRACTOR_VERSION;
 
     if (source.kind === "file") {
       const file = readFileSource(source);
@@ -312,7 +321,7 @@ function createPipeline({ config, registry, http, robots, store, logger = { log(
       }
       if (body === null) {
         try {
-          const response = await http.get(url, { etag: sourceState.etag, lastModified: sourceState.lastModified });
+          const response = await http.get(url, extractorMoved ? {} : { etag: sourceState.etag, lastModified: sourceState.lastModified });
           if (response.notModified) {
             sourceState.lastCheckedAt = checkedAt;
             sourceState.lastStatus = STATUS.UNCHANGED;
@@ -345,7 +354,7 @@ function createPipeline({ config, registry, http, robots, store, logger = { log(
 
     result.url = url;
     const contentHash = hashContent(body);
-    if (contentHash === sourceState.contentHash) {
+    if (contentHash === sourceState.contentHash && !extractorMoved) {
       sourceState.lastCheckedAt = checkedAt;
       sourceState.lastStatus = STATUS.UNCHANGED;
       sourceState.failures = 0;
@@ -396,6 +405,7 @@ function createPipeline({ config, registry, http, robots, store, logger = { log(
     sourceState.etag = headers.etag || null;
     sourceState.lastModified = headers.lastModified || null;
     sourceState.contentHash = contentHash;
+    sourceState.extractorVersion = EXTRACTOR_VERSION;
     sourceState.lastCheckedAt = checkedAt;
     sourceState.lastChangedAt = changes.changed || !previous ? checkedAt : sourceState.lastChangedAt || checkedAt;
     sourceState.lastStatus = STATUS.UPDATED;
@@ -463,4 +473,4 @@ function createPipeline({ config, registry, http, robots, store, logger = { log(
   return { run, syncSource, probeCandidates, discoverFromSitemap, STATUS };
 }
 
-module.exports = { STATUS, createPipeline, diffOffers, diffPlanning, diffProfile, discoveryScore, identifiesGym, parseSitemap };
+module.exports = { EXTRACTOR_VERSION, STATUS, createPipeline, diffOffers, diffPlanning, diffProfile, discoveryScore, identifiesGym, parseSitemap };

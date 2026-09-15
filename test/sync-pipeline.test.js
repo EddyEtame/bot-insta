@@ -8,7 +8,7 @@ const test = require("node:test");
 const { loadGymRegistry } = require("../src/gyms");
 const { loadKnowledgeBase } = require("../src/knowledge");
 const { createHttpClient } = require("../src/sync/http");
-const { createPipeline, discoveryScore } = require("../src/sync/pipeline");
+const { EXTRACTOR_VERSION, createPipeline, discoveryScore } = require("../src/sync/pipeline");
 const { createRobotsGate } = require("../src/sync/robots");
 const { createStore } = require("../src/sync/store");
 const { createSyncService, summarizeReport } = require("../src/sync/service");
@@ -207,4 +207,25 @@ test("normalizers read a real-shaped page: grid planning, JSON-LD profile, price
     ["Abonnement annuel", "259 €", "annuel"],
   ]);
   assert.equal(offers.offers[0].commitment.id, "sans_engagement");
+});
+
+test("a page that has not changed is read again when the extractor has moved on", async () => {
+  const { workspace, store, pipeline } = harness();
+  try {
+    await pipeline.run({ now: new Date("2026-09-13T04:30:00Z") });
+    const unchanged = await pipeline.run({ now: new Date("2026-09-20T04:30:00Z") });
+    assert.equal(unchanged.stats.updated, 0);
+
+    // A normalizer fix lands: every source is re-read even though no page changed.
+    const state = store.loadState();
+    for (const entry of Object.values(state.sources)) entry.extractorVersion = 0;
+    store.saveState(state);
+
+    const rebuilt = await pipeline.run({ now: new Date("2026-09-27T04:30:00Z") });
+    assert.ok(rebuilt.stats.updated >= 4, `expected the corpus to be rebuilt, got ${rebuilt.stats.updated}`);
+    assert.equal(rebuilt.changes.length, 0, "a rebuild with identical facts is not a change");
+    assert.equal(store.loadState().sources["ramonville-planning"].extractorVersion, EXTRACTOR_VERSION);
+  } finally {
+    workspace.cleanup();
+  }
 });
