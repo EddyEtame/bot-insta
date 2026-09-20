@@ -1,6 +1,6 @@
 {
-  "startedAt": "2026-09-15T07:53:56.178Z",
-  "finishedAt": "2026-09-15T07:54:07.637Z",
+  "startedAt": "2026-09-20T08:43:51.165Z",
+  "finishedAt": "2026-09-20T08:44:05.454Z",
   "dryRun": false,
   "registryErrors": [],
   "sources": [
@@ -8,14 +8,9 @@
       "sourceId": "club-offers",
       "gymId": null,
       "docType": "offer",
-      "status": "updated",
+      "status": "unchanged",
       "url": "https://boutique.boxingcenter.fr/offre/29",
-      "changes": {
-        "added": [],
-        "removed": [],
-        "repriced": [],
-        "changed": false
-      },
+      "changes": null,
       "error": null
     },
     {
@@ -34,56 +29,36 @@
       "sourceId": "saint-cyprien-profile",
       "gymId": "saint-cyprien",
       "docType": "profile",
-      "status": "updated",
+      "status": "unchanged",
       "url": "https://club-boxe-toulouse.com/",
-      "changes": {
-        "fields": [
-          "address"
-        ],
-        "changed": true
-      },
+      "changes": null,
       "error": null
     },
     {
       "sourceId": "saint-cyprien-planning",
       "gymId": "saint-cyprien",
       "docType": "planning",
-      "status": "updated",
+      "status": "unchanged",
       "url": "file:///home/runner/work/bot-insta/bot-insta/knowledge/exports/plannings/saint-cyprien.json",
-      "changes": {
-        "added": [],
-        "removed": [],
-        "notesChanged": false,
-        "changed": false
-      },
+      "changes": null,
       "error": null
     },
     {
       "sourceId": "etats-unis-profile",
       "gymId": "etats-unis",
       "docType": "profile",
-      "status": "updated",
+      "status": "unchanged",
       "url": "https://clubmma.fr/",
-      "changes": {
-        "fields": [
-          "phone"
-        ],
-        "changed": true
-      },
+      "changes": null,
       "error": null
     },
     {
       "sourceId": "etats-unis-planning",
       "gymId": "etats-unis",
       "docType": "planning",
-      "status": "updated",
+      "status": "unchanged",
       "url": "file:///home/runner/work/bot-insta/bot-insta/knowledge/exports/plannings/etats-unis.json",
-      "changes": {
-        "added": [],
-        "removed": [],
-        "notesChanged": false,
-        "changed": false
-      },
+      "changes": null,
       "error": null
     },
     {
@@ -102,14 +77,9 @@
       "sourceId": "minimes-planning",
       "gymId": "minimes",
       "docType": "planning",
-      "status": "updated",
+      "status": "unchanged",
       "url": "file:///home/runner/work/bot-insta/bot-insta/knowledge/exports/plannings/minimes.json",
-      "changes": {
-        "added": [],
-        "removed": [],
-        "notesChanged": false,
-        "changed": false
-      },
+      "changes": null,
       "error": null
     },
     {
@@ -119,10 +89,8 @@
       "status": "updated",
       "url": "https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-ramonville/",
       "changes": {
-        "fields": [
-          "address"
-        ],
-        "changed": true
+        "fields": [],
+        "changed": false
       },
       "error": null
     },
@@ -130,14 +98,9 @@
       "sourceId": "ramonville-planning",
       "gymId": "ramonville",
       "docType": "planning",
-      "status": "updated",
+      "status": "unchanged",
       "url": "file:///home/runner/work/bot-insta/bot-insta/knowledge/exports/plannings/ramonville.json",
-      "changes": {
-        "added": [],
-        "removed": [],
-        "notesChanged": false,
-        "changed": false
-      },
+      "changes": null,
       "error": null
     },
     {
@@ -147,10 +110,8 @@
       "status": "updated",
       "url": "https://boxing-center-portet.fr/",
       "changes": {
-        "fields": [
-          "phone"
-        ],
-        "changed": true
+        "fields": [],
+        "changed": false
       },
       "error": null
     },
@@ -158,75 +119,17 @@
       "sourceId": "portet-planning",
       "gymId": "portet",
       "docType": "planning",
-      "status": "updated",
+      "status": "unchanged",
       "url": "file:///home/runner/work/bot-insta/bot-insta/knowledge/exports/plannings/portet.json",
-      "changes": {
-        "added": [],
-        "removed": [],
-        "notesChanged": false,
-        "changed": false
-      },
+      "changes": null,
       "error": null
     }
   ],
-  "changes": [
-    {
-      "at": "2026-09-15T07:53:56.178Z",
-      "sourceId": "saint-cyprien-profile",
-      "gymId": "saint-cyprien",
-      "docType": "profile",
-      "url": "https://club-boxe-toulouse.com/",
-      "detail": {
-        "fields": [
-          "address"
-        ],
-        "changed": true
-      }
-    },
-    {
-      "at": "2026-09-15T07:53:56.178Z",
-      "sourceId": "etats-unis-profile",
-      "gymId": "etats-unis",
-      "docType": "profile",
-      "url": "https://clubmma.fr/",
-      "detail": {
-        "fields": [
-          "phone"
-        ],
-        "changed": true
-      }
-    },
-    {
-      "at": "2026-09-15T07:53:56.178Z",
-      "sourceId": "ramonville-profile",
-      "gymId": "ramonville",
-      "docType": "profile",
-      "url": "https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-ramonville/",
-      "detail": {
-        "fields": [
-          "address"
-        ],
-        "changed": true
-      }
-    },
-    {
-      "at": "2026-09-15T07:53:56.178Z",
-      "sourceId": "portet-profile",
-      "gymId": "portet",
-      "docType": "profile",
-      "url": "https://boxing-center-portet.fr/",
-      "detail": {
-        "fields": [
-          "phone"
-        ],
-        "changed": true
-      }
-    }
-  ],
+  "changes": [],
   "stats": {
     "total": 12,
-    "updated": 12,
-    "unchanged": 0,
+    "updated": 4,
+    "unchanged": 8,
     "failed": 0,
     "blocked": 0,
     "unresolved": 0,
