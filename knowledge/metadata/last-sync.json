@@ -1,6 +1,6 @@
 {
-  "startedAt": "2026-10-04T09:58:39.635Z",
-  "finishedAt": "2026-10-04T10:00:29.206Z",
+  "startedAt": "2026-10-11T10:11:44.766Z",
+  "finishedAt": "2026-10-11T10:12:15.838Z",
   "dryRun": false,
   "registryErrors": [],
   "sources": [
@@ -17,18 +17,26 @@
       "sourceId": "club-home",
       "gymId": null,
       "docType": "profile",
-      "status": "failed",
+      "status": "updated",
       "url": "https://boxingcenter.fr/",
-      "changes": null,
-      "error": "HTTP 503"
+      "changes": {
+        "fields": [],
+        "changed": false
+      },
+      "error": null
     },
     {
       "sourceId": "saint-cyprien-profile",
       "gymId": "saint-cyprien",
       "docType": "profile",
-      "status": "unchanged",
+      "status": "updated",
       "url": "https://club-boxe-toulouse.com/",
-      "changes": null,
+      "changes": {
+        "fields": [
+          "hours"
+        ],
+        "changed": true
+      },
       "error": null
     },
     {
@@ -44,9 +52,12 @@
       "sourceId": "etats-unis-profile",
       "gymId": "etats-unis",
       "docType": "profile",
-      "status": "unchanged",
+      "status": "updated",
       "url": "https://clubmma.fr/",
-      "changes": null,
+      "changes": {
+        "fields": [],
+        "changed": false
+      },
       "error": null
     },
     {
@@ -62,10 +73,13 @@
       "sourceId": "minimes-profile",
       "gymId": "minimes",
       "docType": "profile",
-      "status": "failed",
+      "status": "updated",
       "url": "https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-minimes/",
-      "changes": null,
-      "error": "HTTP 503"
+      "changes": {
+        "fields": [],
+        "changed": false
+      },
+      "error": null
     },
     {
       "sourceId": "minimes-planning",
@@ -80,10 +94,13 @@
       "sourceId": "ramonville-profile",
       "gymId": "ramonville",
       "docType": "profile",
-      "status": "failed",
+      "status": "updated",
       "url": "https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-ramonville/",
-      "changes": null,
-      "error": "Request timed out"
+      "changes": {
+        "fields": [],
+        "changed": false
+      },
+      "error": null
     },
     {
       "sourceId": "ramonville-planning",
@@ -116,16 +133,30 @@
       "error": null
     }
   ],
-  "changes": [],
+  "changes": [
+    {
+      "at": "2026-10-11T10:11:44.766Z",
+      "sourceId": "saint-cyprien-profile",
+      "gymId": "saint-cyprien",
+      "docType": "profile",
+      "url": "https://club-boxe-toulouse.com/",
+      "detail": {
+        "fields": [
+          "hours"
+        ],
+        "changed": true
+      }
+    }
+  ],
   "stats": {
     "total": 12,
-    "updated": 1,
-    "unchanged": 8,
-    "failed": 3,
+    "updated": 6,
+    "unchanged": 6,
+    "failed": 0,
     "blocked": 0,
     "unresolved": 0,
     "empty": 0,
     "skipped": 0
   },
-  "ok": false
+  "ok": true
 }
