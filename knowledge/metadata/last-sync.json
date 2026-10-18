@@ -1,6 +1,6 @@
 {
-  "startedAt": "2026-10-11T10:11:44.766Z",
-  "finishedAt": "2026-10-11T10:12:15.838Z",
+  "startedAt": "2026-10-18T08:12:25.047Z",
+  "finishedAt": "2026-10-18T08:12:37.832Z",
   "dryRun": false,
   "registryErrors": [],
   "sources": [
@@ -8,9 +8,14 @@
       "sourceId": "club-offers",
       "gymId": null,
       "docType": "offer",
-      "status": "unchanged",
+      "status": "updated",
       "url": "https://boutique.boxingcenter.fr/offre/29",
-      "changes": null,
+      "changes": {
+        "added": [],
+        "removed": [],
+        "repriced": [],
+        "changed": false
+      },
       "error": null
     },
     {
@@ -32,10 +37,8 @@
       "status": "updated",
       "url": "https://club-boxe-toulouse.com/",
       "changes": {
-        "fields": [
-          "hours"
-        ],
-        "changed": true
+        "fields": [],
+        "changed": false
       },
       "error": null
     },
@@ -133,25 +136,11 @@
       "error": null
     }
   ],
-  "changes": [
-    {
-      "at": "2026-10-11T10:11:44.766Z",
-      "sourceId": "saint-cyprien-profile",
-      "gymId": "saint-cyprien",
-      "docType": "profile",
-      "url": "https://club-boxe-toulouse.com/",
-      "detail": {
-        "fields": [
-          "hours"
-        ],
-        "changed": true
-      }
-    }
-  ],
+  "changes": [],
   "stats": {
     "total": 12,
-    "updated": 6,
-    "unchanged": 6,
+    "updated": 7,
+    "unchanged": 5,
     "failed": 0,
     "blocked": 0,
     "unresolved": 0,
