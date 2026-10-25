@@ -1,27 +1,30 @@
 {
   "gymId": null,
   "sourceId": "club-offers",
-  "sourceUrl": "https://boutique.boxingcenter.fr/offre/29",
+  "sourceUrl": "https://boutique.boxingcenter.fr/abonnements",
   "offers": [
     {
-      "id": "abonnement-boxe-des-29-boxing-center-toulouse",
-      "name": "Abonnement boxe dès 29 € — Boxing Center Toulouse",
-      "price": 29,
+      "id": "abonnement-boxe-boxing-center-toulouse",
+      "name": "Abonnement boxe — Boxing Center Toulouse",
+      "price": 0,
       "currency": "EUR",
-      "priceText": "29,00 €",
-      "period": null,
+      "priceText": "0 €",
+      "period": {
+        "id": "annuel",
+        "label": "à l’année"
+      },
       "commitment": {
         "id": "sans_engagement",
         "label": "sans engagement"
       },
-      "url": "https://boutique.boxingcenter.fr/offre/29",
-      "availability": "InStock",
-      "evidence": "JSON-LD Abonnement boxe dès 29 € — Boxing Center Toulouse",
+      "url": "https://boutique.boxingcenter.fr/abonnements",
+      "availability": null,
+      "evidence": "JSON-LD Abonnement boxe — Boxing Center Toulouse",
       "source": "json-ld"
     }
   ],
   "hasStructuredData": true,
-  "checkedAt": "2026-10-18T08:12:25.047Z",
-  "polledAt": "2026-10-18T08:12:25.047Z",
-  "contentHash": "97fb0cd7ab67e95ba03ff9944c1f8234f9a4d0f282d2aa55da52f1c75ff7d052"
+  "checkedAt": "2026-10-25T08:36:03.767Z",
+  "polledAt": "2026-10-25T08:36:03.767Z",
+  "contentHash": "701a882c3156d5b860bd26f9da624913ec75803133b0ab3dfe33a39783905a6e"
 }

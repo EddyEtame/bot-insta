@@ -1,6 +1,6 @@
 {
-  "startedAt": "2026-10-18T08:12:25.047Z",
-  "finishedAt": "2026-10-18T08:12:37.832Z",
+  "startedAt": "2026-10-25T08:36:03.767Z",
+  "finishedAt": "2026-10-25T08:36:13.672Z",
   "dryRun": false,
   "registryErrors": [],
   "sources": [
@@ -9,12 +9,16 @@
       "gymId": null,
       "docType": "offer",
       "status": "updated",
-      "url": "https://boutique.boxingcenter.fr/offre/29",
+      "url": "https://boutique.boxingcenter.fr/abonnements",
       "changes": {
-        "added": [],
-        "removed": [],
+        "added": [
+          "abonnement-boxe-boxing-center-toulouse"
+        ],
+        "removed": [
+          "abonnement-boxe-des-29-boxing-center-toulouse"
+        ],
         "repriced": [],
-        "changed": false
+        "changed": true
       },
       "error": null
     },
@@ -136,7 +140,25 @@
       "error": null
     }
   ],
-  "changes": [],
+  "changes": [
+    {
+      "at": "2026-10-25T08:36:03.767Z",
+      "sourceId": "club-offers",
+      "gymId": null,
+      "docType": "offer",
+      "url": "https://boutique.boxingcenter.fr/abonnements",
+      "detail": {
+        "added": [
+          "abonnement-boxe-boxing-center-toulouse"
+        ],
+        "removed": [
+          "abonnement-boxe-des-29-boxing-center-toulouse"
+        ],
+        "repriced": [],
+        "changed": true
+      }
+    }
+  ],
   "stats": {
     "total": 12,
     "updated": 7,

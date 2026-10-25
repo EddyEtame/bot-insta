@@ -10,7 +10,7 @@
     "city": "Portet-sur-Garonne",
     "full": "61 route d’Espagne, 31120 Portet-sur-Garonne",
     "source": "text",
-    "evidence": "Au 61 route d’Espagne, 31120 Portet-sur-Garonne — la salle phare du groupe Boxing Center, 600 m² dédiés aux sports de combat. Combien coûte l’offre de rentrée ?"
+    "evidence": "Au 61 route d’Espagne, 31120 Portet-sur-Garonne — la salle phare du groupe Boxing Center, 600 m² dédiés aux sports de combat. Combien coûte l’abonnement ? Sans "
   },
   "phone": "09 56 65 37 82",
   "email": "boxingcenterportet@gmail.com",
@@ -65,7 +65,7 @@
     "Boxe éducative"
   ],
   "hasStructuredData": true,
-  "checkedAt": "2026-10-18T08:12:25.047Z",
-  "polledAt": "2026-10-18T08:12:25.047Z",
-  "contentHash": "ec080f55ce4fe77ae984292fe55a876c2d1830502e74189788973ba75c82b2a4"
+  "checkedAt": "2026-10-25T08:36:03.767Z",
+  "polledAt": "2026-10-25T08:36:03.767Z",
+  "contentHash": "81cbf3f9b7ebae33d27b020ad0f5ed0b7c80bacf63f8147982a15d433e742c72"
 }

@@ -23,3 +23,4 @@
 {"at":"2026-09-15T07:53:56.178Z","sourceId":"ramonville-profile","gymId":"ramonville","docType":"profile","url":"https://boxingcenter.fr/salle-de-sport-toulouse/salle-de-boxe-toulouse-ramonville/","detail":{"fields":["address"],"changed":true}}
 {"at":"2026-09-15T07:53:56.178Z","sourceId":"portet-profile","gymId":"portet","docType":"profile","url":"https://boxing-center-portet.fr/","detail":{"fields":["phone"],"changed":true}}
 {"at":"2026-10-11T10:11:44.766Z","sourceId":"saint-cyprien-profile","gymId":"saint-cyprien","docType":"profile","url":"https://club-boxe-toulouse.com/","detail":{"fields":["hours"],"changed":true}}
+{"at":"2026-10-25T08:36:03.767Z","sourceId":"club-offers","gymId":null,"docType":"offer","url":"https://boutique.boxingcenter.fr/abonnements","detail":{"added":["abonnement-boxe-boxing-center-toulouse"],"removed":["abonnement-boxe-des-29-boxing-center-toulouse"],"repriced":[],"changed":true}}
